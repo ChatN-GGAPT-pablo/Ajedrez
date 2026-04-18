@@ -7,4 +7,14 @@ public class Caballo extends Pieza{
     public String toString() {
         return "C" + this.getColor() + this.getNumeroPieza();
     }
-}
+
+    //if(!puedeMover()){
+
+    }
+    /**
+    @Override
+    public void mover(Pieza p) {
+        super.mover(p);
+        tablero[][]
+    }
+    **/

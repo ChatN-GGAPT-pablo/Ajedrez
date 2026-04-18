@@ -7,4 +7,6 @@ public class Rey extends Pieza{
     public String toString() {
         return "R" + this.getColor();
     }
+
+
 }

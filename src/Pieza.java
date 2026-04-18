@@ -3,7 +3,7 @@ public abstract class Pieza {
     private String nombrePieza;
     private String color;
     private int numeroPieza;
-
+    boolean reyPeligro = false;
     /**
      * Constructor para rey y reina pq solo hay uno de cada y no necesitan "numero"
      * @param nombrePieza
@@ -47,4 +47,19 @@ public abstract class Pieza {
     public void setNumeroPieza(int numeroPieza) {
         this.numeroPieza = numeroPieza;
     }
+
+    public boolean hayJaque(){
+        if (reyPeligro){
+            return true;
+        }
+        return false;
+    }
+    public boolean puedeMover(){
+        if (hayJaque()){
+            return false;
+        }
+        return false;
+    }
+
+
 }
