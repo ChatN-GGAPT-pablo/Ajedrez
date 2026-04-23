@@ -4,6 +4,11 @@ public class Dama extends Pieza{
     }
 
     @Override
+    public void posiblesMovimiento(int iActual, int jActual) {
+
+    }
+
+    @Override
     public String toString() {
         return "D" + this.getColor();
     }

@@ -12,6 +12,10 @@ public class Main{
         this.turno = turno;
     }
 
+
+    public static int iActual = 0;
+    public static int jActual = 0;
+
     public static void main(String[] args) {
 
 
@@ -243,6 +247,7 @@ public class Main{
 
 
 
+
             String piezaActual = "DB";
             for (int i = 0; i < tamanio; i++) {
                 for (int j = 0; j < tamanio; j++) {
@@ -252,7 +257,11 @@ public class Main{
                             System.out.println("Tu pieza está en la casilla: ");
                             System.out.println(i);
                             System.out.println(j);
+                            iActual = i;
+                            jActual = j;
+                            String[] movimientosDisponibles;
                             break;
+
 
                         }
 

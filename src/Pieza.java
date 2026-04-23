@@ -1,4 +1,4 @@
-public abstract class Pieza {
+public abstract class Pieza implements Movible {
 
     private String nombrePieza;
     private String color;
@@ -62,4 +62,7 @@ public abstract class Pieza {
     }
 
 
+
+    @Override
+    public abstract void posiblesMovimiento(int iActual, int jActual);
 }
