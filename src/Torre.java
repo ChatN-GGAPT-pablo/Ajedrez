@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 
 public class Torre extends Pieza{
-    public Torre(String nombrePieza, String color, int numeroPieza) {
-        super(nombrePieza, color, numeroPieza);
+    public Torre(String nombrePieza, String color, int numeroPieza, int i, int j) {
+        super(nombrePieza, color, numeroPieza, i, j);
     }
 
 
@@ -16,7 +16,7 @@ public class Torre extends Pieza{
 
 
     @Override
-    public void posiblesMovimiento(int iActual, int jActual) {
+    public void posiblesMovimiento(Pieza p) {
         //Hacer comprobaciones de si se puede mover
         if (!hayJaque()){
 
@@ -25,19 +25,19 @@ public class Torre extends Pieza{
             boolean ABAJO = false;
             boolean IZQUIERDA = false;
 
-            if (iActual > 0){
+            if (p.getI() > 0){
                 ARRIBA = true;
             }
 
-            if (jActual < 8){
+            if (p.getJ() < 8){
                 DERECHA = true;
             }
 
-            if (iActual < 8){
+            if (p.getI() < 8){
                 ABAJO = true;
             }
 
-            if (jActual > 0){
+            if (p.getJ() > 0){
                 IZQUIERDA = true;
             }
 
@@ -65,42 +65,42 @@ public class Torre extends Pieza{
             int decision = sc.nextInt();
             if (decision == 1 && ARRIBA){
                 System.out.println("Cuantas hacia arriba?" );
-                int capeada = (iActual);
+                int capeada = (p.getI());
                 for (int z = 1; z < capeada + 1; z++){
                     System.out.println(z + "casillas");
                 }
                 int movARRIBA = sc.nextInt();
-                iActual = iActual - movARRIBA;
+                p.setI(p.getI()- movARRIBA);
             }
 
             if (decision == 2 && DERECHA){
                 System.out.println("Cuantas hacia la derecha?" );
-                int capeada = (8-jActual );
+                int capeada = (8-p.getJ() );
                 for (int z = 1; z < capeada + 1; z++){
                     System.out.println(z + "casillas");
                 }
                 int movDERECHA = sc.nextInt();
-                jActual = jActual + movDERECHA;
+                p.setJ(p.getJ()-movDERECHA);
             }
 
             if (decision == 3 && ABAJO){
                 System.out.println("Cuantas hacia abajo?" );
-                int capeada = (8-iActual);
+                int capeada = (8-p.getI());
                 for (int z = 1; z < capeada + 1; z++){
                     System.out.println(z + "casillas");
                 }
                 int movABAJO = sc.nextInt();
-                iActual = iActual + movABAJO;
+                p.setI(p.getI()+ movABAJO);
             }
 
             if (decision == 4 && IZQUIERDA){
                 System.out.println("Cuantas hacia la izquierda?" );
-                int capeada = (8-jActual);
+                int capeada = (8-p.getJ());
                 for (int z = 1; z < capeada + 1; z++){
                     System.out.println(z + "casillas");
                 }
                 int movIZQUIERDA = sc.nextInt();
-                jActual = jActual - movIZQUIERDA;
+                p.setJ(p.getJ()-movIZQUIERDA);
             }
         }
 

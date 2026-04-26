@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Peon extends Pieza{
 
-    public Peon(String nombrePieza, String color, int numeroPieza) {
-        super(nombrePieza, color, numeroPieza);
+    public Peon(String nombrePieza, String color, int numeroPieza, int i, int j) {
+        super(nombrePieza, color, numeroPieza, i, j);
     }
 
 String colorString = this.getColor();

@@ -24,16 +24,16 @@ public class Main{
 
         //peones blancos
         for (int i = 0; i < tamanio; i++) {
-            tablero[6][i] = new Peon("Peón", "B", i + 1);
+            tablero[6][i] = new Peon("Peón", "B", i + 1, 6, i);
         }
         //peones negros
         for (int i = 0; i < tamanio; i++) {
-            tablero[1][i] = new Peon("Peón", "N", i + 1);
+            tablero[1][i] = new Peon("Peón", "N", i + 1,1, i);
         }
 
         //Torres blancas
-        tablero[7][0] = new Torre("Torre", "B", 1);
-        tablero[7][7] = new Torre("Torre", "B", 2);
+        tablero[7][0] = new Torre("Torre", "B", 1, 7,0);
+        tablero[7][7] = new Torre("Torre", "B", 2,7,7);
         //Torres negras
         tablero[0][0] = new Torre("Torre", "N", 1);
         tablero[0][7] = new Torre("Torre", "N", 2);
