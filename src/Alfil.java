@@ -16,7 +16,6 @@ public class Alfil extends Pieza{
     public void posiblesMovimiento(int iActual, int jActual) {
             if (!hayJaque()){
 
-
                 boolean ARRIBADERECHA = false;
                 boolean ABAJODERECHA = false;
                 boolean ABAJOIZQUIERDA = false;
