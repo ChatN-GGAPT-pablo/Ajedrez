@@ -75,7 +75,7 @@ public class Torre extends Pieza{
 
             if (decision == 2 && DERECHA){
                 System.out.println("Cuantas hacia la derecha?" );
-                int capeada = (8-jActual);
+                int capeada = (8-jActual );
                 for (int z = 1; z < capeada + 1; z++){
                     System.out.println(z + "casillas");
                 }

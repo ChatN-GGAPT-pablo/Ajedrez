@@ -64,7 +64,95 @@ public class Alfil extends Pieza{
                 int decision = sc.nextInt();
 
                 if (decision == 1 && ARRIBADERECHA){
+                    int capeadoVertical = iActual;
+                    int capeadoHorizontal = 8-jActual;
 
+                    System.out.println("Cuantas casillas quieres moverte");
+                    if (capeadoVertical > capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal){
+                            System.out.println(z + "casillas");
+                        }
+                    }else if (capeadoVertical < capeadoHorizontal){
+                        for (int z = 1; z < capeadoVertical){
+                            System.out.println(z + "casillas");
+                        }
+                    }else if (capeadoVertical == capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal){
+                            System.out.println(z + "casillas");
+                        }
+                    }
+                    int movDiagonal = sc.nextInt();
+                    iActual -= movDiagonal;
+                    jActual += movDiagonal;
+                }
+
+                if (decision == 2 && ABAJODERECHA){
+                    int capeadoVertical = iActual;
+                    int capeadoHorizontal = 8-jActual;
+
+                    System.out.println("Cuantas casillas quieres moverte");
+                    if (capeadoVertical > capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal){
+                            System.out.println(z + "casillas");
+                        }
+                    }else if (capeadoVertical < capeadoHorizontal){
+                        for (int z = 1; z < capeadoVertical){
+                            System.out.println(z + "casillas");
+                        }
+                    }else if (capeadoVertical == capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal){
+                            System.out.println(z + "casillas");
+                        }
+                    }
+                    int movDiagonal = sc.nextInt();
+                    iActual += movDiagonal;
+                    jActual += movDiagonal;
+                }
+
+                if (decision == 3 && ABAJOIZQUIERDA){
+                    int capeadoVertical = iActual;
+                    int capeadoHorizontal = 8-jActual;
+
+                    System.out.println("Cuantas casillas quieres moverte");
+                    if (capeadoVertical > capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal){
+                            System.out.println(z + "casillas");
+                        }
+                    }else if (capeadoVertical < capeadoHorizontal){
+                        for (int z = 1; z < capeadoVertical){
+                            System.out.println(z + "casillas");
+                        }
+                    }else if (capeadoVertical == capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal){
+                            System.out.println(z + "casillas");
+                        }
+                    }
+                    int movDiagonal = sc.nextInt();
+                    iActual += movDiagonal;
+                    jActual -= movDiagonal;
+                }
+
+                if (decision == 4 && ARRIBAIZQUIERDA){
+                    int capeadoVertical = iActual;
+                    int capeadoHorizontal = 8-jActual;
+
+                    System.out.println("Cuantas casillas quieres moverte");
+                    if (capeadoVertical > capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal){
+                            System.out.println(z + "casillas");
+                        }
+                    }else if (capeadoVertical < capeadoHorizontal){
+                        for (int z = 1; z < capeadoVertical){
+                            System.out.println(z + "casillas");
+                        }
+                    }else if (capeadoVertical == capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal){
+                            System.out.println(z + "casillas");
+                        }
+                    }
+                    int movDiagonal = sc.nextInt();
+                    iActual -= movDiagonal;
+                    jActual -= movDiagonal;
                 }
 
             }
