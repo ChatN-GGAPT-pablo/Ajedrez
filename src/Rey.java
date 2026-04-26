@@ -12,7 +12,7 @@ public class Rey extends Pieza{
 
 
     @Override
-    public void posiblesMovimiento(int iActual, int jActual) {
+    public void posiblesMovimiento(Pieza p) {
     if (!hayJaque()){
         boolean ARRIBA = false;
         boolean ARRIBADERECHA = false;

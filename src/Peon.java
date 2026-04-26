@@ -17,7 +17,7 @@ String colorString = this.getColor();
     }
 
     @Override
-    public void posiblesMovimiento(int iActual, int jActual) {
+    public void posiblesMovimiento(Pieza p) {
         /**if (Main.getTurno().equals("B")){
             if (primerMovimientoPeon == true ){
                 System.out.println("Qué prefieres, que se mueva 1 o 2 posiciones");
