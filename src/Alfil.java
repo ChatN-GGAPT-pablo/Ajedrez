@@ -69,15 +69,15 @@ public class Alfil extends Pieza{
 
                     System.out.println("Cuantas casillas quieres moverte");
                     if (capeadoVertical > capeadoHorizontal){
-                        for (int z = 1; z < capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal;z++){
                             System.out.println(z + "casillas");
                         }
                     }else if (capeadoVertical < capeadoHorizontal){
-                        for (int z = 1; z < capeadoVertical){
+                        for (int z = 1; z < capeadoVertical;z++){
                             System.out.println(z + "casillas");
                         }
                     }else if (capeadoVertical == capeadoHorizontal){
-                        for (int z = 1; z < capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal;z++){
                             System.out.println(z + "casillas");
                         }
                     }
@@ -92,15 +92,15 @@ public class Alfil extends Pieza{
 
                     System.out.println("Cuantas casillas quieres moverte");
                     if (capeadoVertical > capeadoHorizontal){
-                        for (int z = 1; z < capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal;z++){
                             System.out.println(z + "casillas");
                         }
                     }else if (capeadoVertical < capeadoHorizontal){
-                        for (int z = 1; z < capeadoVertical){
+                        for (int z = 1; z < capeadoVertical;z++){
                             System.out.println(z + "casillas");
                         }
                     }else if (capeadoVertical == capeadoHorizontal){
-                        for (int z = 1; z < capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal;z++){
                             System.out.println(z + "casillas");
                         }
                     }
@@ -115,15 +115,15 @@ public class Alfil extends Pieza{
 
                     System.out.println("Cuantas casillas quieres moverte");
                     if (capeadoVertical > capeadoHorizontal){
-                        for (int z = 1; z < capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal;z++){
                             System.out.println(z + "casillas");
                         }
                     }else if (capeadoVertical < capeadoHorizontal){
-                        for (int z = 1; z < capeadoVertical){
+                        for (int z = 1; z < capeadoVertical;z++){
                             System.out.println(z + "casillas");
                         }
                     }else if (capeadoVertical == capeadoHorizontal){
-                        for (int z = 1; z < capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal;z++){
                             System.out.println(z + "casillas");
                         }
                     }
@@ -138,15 +138,15 @@ public class Alfil extends Pieza{
 
                     System.out.println("Cuantas casillas quieres moverte");
                     if (capeadoVertical > capeadoHorizontal){
-                        for (int z = 1; z < capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal;z++){
                             System.out.println(z + "casillas");
                         }
                     }else if (capeadoVertical < capeadoHorizontal){
-                        for (int z = 1; z < capeadoVertical){
+                        for (int z = 1; z < capeadoVertical;z++){
                             System.out.println(z + "casillas");
                         }
                     }else if (capeadoVertical == capeadoHorizontal){
-                        for (int z = 1; z < capeadoHorizontal){
+                        for (int z = 1; z < capeadoHorizontal;z++){
                             System.out.println(z + "casillas");
                         }
                     }
