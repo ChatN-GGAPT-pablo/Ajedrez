@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main{
     static String turno = "B";
@@ -133,24 +134,32 @@ public class Main{
                     System.out.println(damaNDisponible);
                 }
 
-                String piezaActual = "DB";
-                for (int i = 0; i < tamanio; i++) {
-                    for (int j = 0; j < tamanio; j++) {
 
-                        if (!(tablero[i][j] == null)){
-                            if (tablero[i][j].toString().equals(piezaActual)){
-                                System.out.println("Tu pieza está en la casilla: ");
-                                System.out.println(i);
-                                System.out.println(j);
-                                iActual = i;
-                                jActual = j;
-                                String[] movimientosDisponibles;
-                                break;
-                            }
-                        }
+            }
+    }
+
+    public static String piezaSeleccionada(){
+
+        System.out.println("Qué pieza quieres seleccionar?");
+        Scanner sc = new Scanner(System.in);
+        String piezaActual = sc.nextLine();
+
+        for (int i = 0; i < tamanio; i++) {
+            for (int j = 0; j < tamanio; j++) {
+
+                if (!(tablero[i][j] == null)){
+                    if (tablero[i][j].toString().equals(piezaActual)){
+                        System.out.println("Tu pieza está en la casilla: ");
+                        System.out.println(i);
+                        System.out.println(j);
+                        iActual = i;
+                        jActual = j;
+                        break;
                     }
                 }
             }
+        }
+        return piezaActual;
     }
 
 
@@ -159,9 +168,8 @@ public class Main{
 
 
 
+
     public static void main(String[] args) {
-
-
         //COnstructor piezas
         {
             //peones blancos
@@ -210,18 +218,20 @@ public class Main{
         }
 
 
-
-        for (int i = 0; i < tamanio; i++) {
-
-            System.out.println(Arrays.toString(tablero[i]));
-        }
-
         //Hacer un tablero más bonito
         System.out.println(tablero[0][0]);
 
 
         mostrarTablero();
         mostrarPiezas();
+
+
+
+
+
+        piezaSeleccionada();
+
+        //ahora seria, la pieza seleccionada ps mover y con el respectivo metodo de cada ficha
 
 
     }
