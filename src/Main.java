@@ -228,7 +228,6 @@ public class Main{
 
 
 
-
         piezaSeleccionada();
 
         //ahora seria, la pieza seleccionada ps mover y con el respectivo metodo de cada ficha
