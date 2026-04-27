@@ -1,6 +1,8 @@
-/**public class Tablero extends Pieza{
+public class Tablero {
 
-for (int i = 0; i < tablero.length; )
+    static Pieza[][] tablero = new Pieza[8][8];
+    static int tamanio = 8;
 
 
-}**/
+
+}

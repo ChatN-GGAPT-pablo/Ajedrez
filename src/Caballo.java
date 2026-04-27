@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Caballo extends Pieza{
-    public Caballo(String nombrePieza, String color, int numeroPieza) {
-        super(nombrePieza, color, numeroPieza);
+    public Caballo(String nombrePieza, String color, int numeroPieza, int i, int j) {
+        super(nombrePieza, color, numeroPieza, i, j);
     }
 
 
@@ -16,10 +16,8 @@ public class Caballo extends Pieza{
 
 
     @Override
-    public void posiblesMovimiento(int iActual, int jActual) {
+    public void posiblesMovimiento(Pieza p) {
         if (!hayJaque()){
-
-
 
             boolean ARRIBADERECHA = false;
             boolean DERECHAARRIBA = false;
@@ -30,28 +28,28 @@ public class Caballo extends Pieza{
             boolean IZQUIERDAARRIBA = false;
             boolean ARRIBAIZQUIERDA = false;
 
-            if (iActual - 2 > 0 && jActual + 1 < 8){
+            if (p.getI() - 2 > 0 && p.getJ() + 1 < 8){
                 ARRIBADERECHA = true;
             }
-            if (iActual - 1 > 0 && jActual + 2 < 8){
+            if (p.getI() - 1 > 0 && p.getJ() + 2 < 8){
                 DERECHAARRIBA = true;
             }
-            if (iActual + 1 < 8 && jActual + 2 < 8){
+            if (p.getI() + 1 < 8 && p.getJ() + 2 < 8){
                 DERECHAABAJO = true;
             }
-            if (iActual + 2 < 8 && jActual + 1 < 8){
+            if (p.getI() + 2 < 8 && p.getJ() + 1 < 8){
                 ABAJODERECHA = true;
             }
-            if (iActual + 2 < 8 && jActual - 1 > 0){
+            if (p.getI() + 2 < 8 && p.getJ() - 1 > 0){
                 ABAJOIZQUIERDA = true;
             }
-            if (iActual + 1 < 8 && jActual - 2 > 0){
+            if (p.getI() + 1 < 8 && p.getJ() - 2 > 0){
                 IZQUIERDAABAJO = true;
             }
-            if (iActual - 1 > 0 && jActual - 2 > 0){
+            if (p.getI() - 1 > 0 && p.getJ() - 2 > 0){
                 IZQUIERDAARRIBA = true;
             }
-            if (iActual - 2 > 0 && jActual -1 > 0){
+            if (p.getI() - 2 > 0 && p.getJ() - 1 > 0){
                 ARRIBAIZQUIERDA = true;
             }
 
@@ -94,29 +92,29 @@ public class Caballo extends Pieza{
             Scanner sc = new Scanner(System.in);
             int decision = sc.nextInt();
             if (decision == 1 && ARRIBADERECHA){
-                iActual -=2;
-                jActual +=1;
+                p.setI(p.getI()-2);
+                p.setJ(p.getI()+1);
             }else if (decision == 2 && DERECHAARRIBA){
-                iActual -=1;
-                jActual +=2;
+                p.setI(p.getI()-1);
+                p.setJ(p.getI()+2);
             }else if (decision == 3 && DERECHAABAJO){
-                iActual +=1;
-                jActual +=2;
+                p.setI(p.getI()+1);
+                p.setJ(p.getI()+2);
             }else if (decision == 4 && ABAJODERECHA){
-                iActual +=2;
-                jActual +=1;
+                p.setI(p.getI()+2);
+                p.setJ(p.getI()+1);
             }else if (decision == 5 && ABAJOIZQUIERDA){
-                iActual +=2;
-                jActual -=1;
+                p.setI(p.getI()+2);
+                p.setJ(p.getI()-1);
             }else if (decision == 6 && IZQUIERDAABAJO){
-                iActual +=1;
-                jActual -=2;
+                p.setI(p.getI()+1);
+                p.setJ(p.getI()-2);
             }else if (decision == 7 && IZQUIERDAARRIBA){
-                iActual -=1;
-                jActual -=2;
+                p.setI(p.getI()-1);
+                p.setJ(p.getI()-2);
             }else if (decision == 8 && ARRIBAIZQUIERDA){
-                iActual -=2;
-                jActual -=1;
+                p.setI(p.getI()-2);
+                p.setJ(p.getI()-1);
             }
         }
     }

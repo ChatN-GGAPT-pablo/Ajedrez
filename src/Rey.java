@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Rey extends Pieza{
     public Rey(String nombrePieza, String color, int i, int j) {
         super(nombrePieza, color, i, j);
@@ -9,6 +11,8 @@ public class Rey extends Pieza{
     public String toString() {
         return "R" + this.getColor();
     }
+
+
 
 
     @Override
@@ -23,35 +27,35 @@ public class Rey extends Pieza{
         boolean IZQUIERDA = false;
         boolean ARRIBAIZQUIERDA = false;
 
-        if (iActual > 0){
+        if (p.getI() > 0){
             ARRIBA = true;
         }
 
-        if (iActual > 0 && jActual < 8){
+        if (p.getI() > 0 && p.getJ() < 8){
             ARRIBADERECHA = true;
         }
 
-        if (jActual < 8){
+        if (p.getJ() < 8){
             DERECHA = true;
         }
 
-        if (iActual < 8 && jActual < 8){
+        if (p.getI() < 8 && p.getJ() < 8){
             ABAJODERECHA = true;
         }
 
-        if (iActual < 8){
+        if (p.getI() < 8){
             ABAJO = true;
         }
 
-        if (iActual < 8 && jActual > 0){
+        if (p.getI() < 8 && p.getJ() > 0){
             ABAJOIZQUIERDA = true;
         }
 
-        if (jActual > 0){
+        if (p.getJ() > 0){
             IZQUIERDA = true;
         }
 
-        if (iActual > 0 && jActual > 0){
+        if (p.getI() > 0 && p.getJ() > 0){
             ARRIBAIZQUIERDA = true;
         }
 
@@ -88,6 +92,48 @@ public class Rey extends Pieza{
         if (ARRIBAIZQUIERDA){
             System.out.println("8. Arriba izquierda");
         }
-    }
+
+
+        Scanner sc = new Scanner(System.in);
+        int decision = sc.nextInt();
+
+        if (decision == 1 && ARRIBA){
+            p.setI(p.getI()-1);
+        }
+
+        if (decision == 2 && ARRIBADERECHA){
+            p.setI(p.getI()-1);
+            p.setJ(p.getJ()+1);
+        }
+
+        if (decision == 3 && DERECHA){
+            p.setJ(p.getJ()+1);
+        }
+
+        if (decision == 4 && ABAJODERECHA){
+            p.setI(p.getI()+1);
+            p.setJ(p.getJ()+1);
+        }
+
+        if (decision == 5 && ABAJO){
+            p.setI(p.getI()+1);
+        }
+
+        if (decision == 6 && ABAJOIZQUIERDA){
+            p.setI(p.getI()+1);
+            p.setJ(p.getJ()-1);
+        }
+
+        if (decision == 7 && IZQUIERDA){
+            p.setJ(p.getJ()-1);
+        }
+
+        if (decision == 8 && ARRIBAIZQUIERDA){
+            p.setI(p.getI()-1);
+            p.setJ(p.getJ()-1);
+        }
+
+
+        }
     }
 }
