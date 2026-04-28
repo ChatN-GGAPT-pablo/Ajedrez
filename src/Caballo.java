@@ -28,28 +28,28 @@ public class Caballo extends Pieza{
             boolean IZQUIERDAARRIBA = false;
             boolean ARRIBAIZQUIERDA = false;
 
-            if (p.getI() - 2 > 0 && p.getJ() + 1 < 8){
+            if (p.getI() - 2 >= 0 && p.getJ() + 1 <= 7){
                 ARRIBADERECHA = true;
             }
-            if (p.getI() - 1 > 0 && p.getJ() + 2 < 8){
+            if (p.getI() - 1 >= 0 && p.getJ() + 2 <= 7){
                 DERECHAARRIBA = true;
             }
-            if (p.getI() + 1 < 8 && p.getJ() + 2 < 8){
+            if (p.getI() + 1 <= 7 && p.getJ() + 2 <= 7){
                 DERECHAABAJO = true;
             }
-            if (p.getI() + 2 < 8 && p.getJ() + 1 < 8){
+            if (p.getI() + 2 <= 7 && p.getJ() + 1 <= 7){
                 ABAJODERECHA = true;
             }
-            if (p.getI() + 2 < 8 && p.getJ() - 1 > 0){
+            if (p.getI() + 2 <= 7 && p.getJ() - 1 >= 0){
                 ABAJOIZQUIERDA = true;
             }
-            if (p.getI() + 1 < 8 && p.getJ() - 2 > 0){
+            if (p.getI() + 1 <= 7 && p.getJ() - 2 >= 0){
                 IZQUIERDAABAJO = true;
             }
-            if (p.getI() - 1 > 0 && p.getJ() - 2 > 0){
+            if (p.getI() - 1 >= 0 && p.getJ() - 2 >= 0){
                 IZQUIERDAARRIBA = true;
             }
-            if (p.getI() - 2 > 0 && p.getJ() - 1 > 0){
+            if (p.getI() - 2 >= 0 && p.getJ() - 1 >= 0){
                 ARRIBAIZQUIERDA = true;
             }
 
@@ -91,30 +91,68 @@ public class Caballo extends Pieza{
 
             Scanner sc = new Scanner(System.in);
             int decision = sc.nextInt();
+
+
+
+            int iOriginal = p.getI();
+            int jOriginal = p.getJ();
+
+            int iProvisional = p.getI();
+            int jProvisional = p.getJ();
+
             if (decision == 1 && ARRIBADERECHA){
-                p.setI(p.getI()-2);
-                p.setJ(p.getI()+1);
+                iProvisional = p.getI()-2;
+                jProvisional = p.getJ()+1;
             }else if (decision == 2 && DERECHAARRIBA){
-                p.setI(p.getI()-1);
-                p.setJ(p.getI()+2);
+                iProvisional = p.getI()-1;
+                jProvisional = p.getJ()+2;
             }else if (decision == 3 && DERECHAABAJO){
-                p.setI(p.getI()+1);
-                p.setJ(p.getI()+2);
+                iProvisional = p.getI()+1;
+                jProvisional = p.getJ()+2;
             }else if (decision == 4 && ABAJODERECHA){
-                p.setI(p.getI()+2);
-                p.setJ(p.getI()+1);
+                iProvisional = p.getI()+2;
+                jProvisional = p.getJ()+1;
             }else if (decision == 5 && ABAJOIZQUIERDA){
-                p.setI(p.getI()+2);
-                p.setJ(p.getI()-1);
+                iProvisional = p.getI()+2;
+                jProvisional = p.getJ()-1;
             }else if (decision == 6 && IZQUIERDAABAJO){
-                p.setI(p.getI()+1);
-                p.setJ(p.getI()-2);
+                iProvisional = p.getI()+1;
+                jProvisional = p.getJ()-2;
             }else if (decision == 7 && IZQUIERDAARRIBA){
-                p.setI(p.getI()-1);
-                p.setJ(p.getI()-2);
+                iProvisional = p.getI()-1;
+                jProvisional = p.getJ()-2;
             }else if (decision == 8 && ARRIBAIZQUIERDA){
-                p.setI(p.getI()-2);
-                p.setJ(p.getI()-1);
+                iProvisional = p.getI()-2;
+                jProvisional = p.getJ()-1;
+            }
+
+            Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+            if (piezaComida != null && piezaComida.getColor().equals(p.getColor())){
+                System.out.println("No te puedes comer una pieza de tu color");
+                return;
+            }
+
+            Main.tablero[iOriginal][jOriginal] = null;
+            Main.tablero[iProvisional][jProvisional] = p;
+
+            p.setI(iProvisional);
+            p.setJ(jProvisional);
+
+            if (hayJaque()){
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                System.out.println("Movimiento ilegal");
+            }else{
+                if (piezaComida != null){
+                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                }else{
+                    System.out.println("Pieza movida.");
+                }
             }
         }
     }
