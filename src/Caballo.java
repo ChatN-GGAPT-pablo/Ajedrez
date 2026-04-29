@@ -110,7 +110,7 @@ public class Caballo extends Pieza{
                 } else if (decision == 8 && ARRIBAIZQUIERDA) {
                     break;
                 } else {
-                    System.out.println("Opción no válida, inténtalo otra vez.");
+                    System.out.println("Repite decisión");
                 }
             }
 
