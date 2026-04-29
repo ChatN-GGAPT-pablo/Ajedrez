@@ -83,303 +83,459 @@ public abstract class Pieza implements Movible {
         int iPieza = this.getI() - 1;
         int jPieza = this.getJ();
 
-        //Vertical
-        while (iPieza >= 0) {
+        while (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
 
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || (casilla.getNombrePieza().equals("Torre"))) {
+                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Torre")) {
                         return true;
                     }
                 }
                 return false;
             }
+
             iPieza--;
         }
-        return false;
 
+        return false;
     }
+
+
 
     public boolean hayJaqueARRIBADERECHA() {
 
         int iPieza = this.getI() - 1;
-        int jPieza = this.getJ() +1;
+        int jPieza = this.getJ() + 1;
 
-        //Horizontal
-        while (jPieza <=8  && iPieza >=0) {
+        while (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
 
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || (casilla.getNombrePieza().equals("Alfil"))) {
+                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Alfil")) {
                         return true;
                     }
                 }
                 return false;
             }
+
             iPieza--;
             jPieza++;
         }
+
         return false;
     }
+
+
 
     public boolean hayJaqueDERECHA() {
 
         int iPieza = this.getI();
         int jPieza = this.getJ() + 1;
 
-        //Horizontal
-        while (jPieza < 8) {
+        while (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
 
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || (casilla.getNombrePieza().equals("Torre"))) {
+                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Torre")) {
                         return true;
                     }
                 }
                 return false;
             }
+
             jPieza++;
         }
+
         return false;
     }
+
+
 
     public boolean hayJaqueABAJODERECHA() {
 
         int iPieza = this.getI() + 1;
         int jPieza = this.getJ() + 1;
 
-        //Horizontal
-        while (jPieza <=8  && iPieza >=0) {
+        while (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
 
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || (casilla.getNombrePieza().equals("Alfil"))) {
+                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Alfil")) {
                         return true;
                     }
                 }
                 return false;
             }
+
             iPieza++;
             jPieza++;
         }
+
         return false;
     }
+
+
 
     public boolean hayJaqueABAJO() {
 
         int iPieza = this.getI() + 1;
         int jPieza = this.getJ();
 
-        //Vertical
-        while (iPieza < 8) {
+        while (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
 
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || (casilla.getNombrePieza().equals("Torre"))) {
+                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Torre")) {
                         return true;
                     }
                 }
                 return false;
             }
+
             iPieza++;
         }
+
         return false;
     }
+
+
 
     public boolean hayJaqueABAJOIZQUIERDA() {
 
         int iPieza = this.getI() + 1;
         int jPieza = this.getJ() - 1;
 
-        //Horizontal
-        while (jPieza <=8  && iPieza >=0) {
+        while (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
 
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || (casilla.getNombrePieza().equals("Alfil"))) {
+                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Alfil")) {
                         return true;
                     }
                 }
                 return false;
             }
+
             iPieza++;
             jPieza--;
         }
+
         return false;
     }
+
+
 
     public boolean hayJaqueIZQUIERDA() {
 
         int iPieza = this.getI();
         int jPieza = this.getJ() - 1;
 
-        //Horizontal
-        while (jPieza >= 0) {
+        while (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
 
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || (casilla.getNombrePieza().equals("Torre"))) {
+                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Torre")) {
                         return true;
                     }
                 }
                 return false;
             }
+
             jPieza--;
         }
+
         return false;
     }
+
+
 
     public boolean hayJaqueARRIBAIZQUIERDA() {
 
         int iPieza = this.getI() - 1;
         int jPieza = this.getJ() - 1;
 
-        //Horizontal
-        while (jPieza <=8  && iPieza >=0) {
+        while (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
 
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || (casilla.getNombrePieza().equals("Alfil"))) {
+                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Alfil")) {
                         return true;
                     }
                 }
                 return false;
             }
+
             iPieza--;
             jPieza--;
         }
+
         return false;
     }
 
 
 
+    public boolean hayJaqueCaballoARRIBADERECHA() {
 
-    public boolean hayJaqueCaballoARRIBADERECHA(){
         int iPieza = this.getI() - 2;
         int jPieza = this.getJ() + 1;
 
-        Pieza casilla = Main.tablero[iPieza][jPieza];
+        if (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
+            Pieza casilla = Main.tablero[iPieza][jPieza];
 
-        if (!(casilla.getColor().equals(this.getColor()))) {
-            if (casilla.getNombrePieza().equals("Caballo") ) {
-                return true;
+            if (casilla != null) {
+                if (!(casilla.getColor().equals(this.getColor()))) {
+                    if (casilla.getNombrePieza().equals("Caballo")) {
+                        return true;
+                    }
+                }
             }
         }
+
         return false;
     }
 
-    public boolean hayJaqueCaballoDERECHAARRIBA(){
+
+
+    public boolean hayJaqueCaballoDERECHAARRIBA() {
+
         int iPieza = this.getI() - 1;
         int jPieza = this.getJ() + 2;
 
-        Pieza casilla = Main.tablero[iPieza][jPieza];
+        if (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
+            Pieza casilla = Main.tablero[iPieza][jPieza];
 
-        if (!(casilla.getColor().equals(this.getColor()))) {
-            if (casilla.getNombrePieza().equals("Caballo") ) {
-                return true;
+            if (casilla != null) {
+                if (!(casilla.getColor().equals(this.getColor()))) {
+                    if (casilla.getNombrePieza().equals("Caballo")) {
+                        return true;
+                    }
+                }
             }
         }
+
         return false;
     }
 
-    public boolean hayJaqueCaballoDERECHAABAJO(){
-        int iPieza = this.getI() +1;
+
+
+    public boolean hayJaqueCaballoDERECHAABAJO() {
+
+        int iPieza = this.getI() + 1;
         int jPieza = this.getJ() + 2;
 
-        Pieza casilla = Main.tablero[iPieza][jPieza];
+        if (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
+            Pieza casilla = Main.tablero[iPieza][jPieza];
 
-        if (!(casilla.getColor().equals(this.getColor()))) {
-            if (casilla.getNombrePieza().equals("Caballo") ) {
-                return true;
+            if (casilla != null) {
+                if (!(casilla.getColor().equals(this.getColor()))) {
+                    if (casilla.getNombrePieza().equals("Caballo")) {
+                        return true;
+                    }
+                }
             }
         }
+
         return false;
     }
 
-    public boolean hayJaqueCaballoABAJODERECHA(){
+
+
+    public boolean hayJaqueCaballoABAJODERECHA() {
+
         int iPieza = this.getI() + 2;
         int jPieza = this.getJ() + 1;
 
-        Pieza casilla = Main.tablero[iPieza][jPieza];
+        if (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
+            Pieza casilla = Main.tablero[iPieza][jPieza];
 
-        if (!(casilla.getColor().equals(this.getColor()))) {
-            if (casilla.getNombrePieza().equals("Caballo") ) {
-                return true;
+            if (casilla != null) {
+                if (!(casilla.getColor().equals(this.getColor()))) {
+                    if (casilla.getNombrePieza().equals("Caballo")) {
+                        return true;
+                    }
+                }
             }
         }
+
         return false;
     }
 
-    public boolean hayJaqueCaballoABAJOIZQUIERDA(){
+
+
+    public boolean hayJaqueCaballoABAJOIZQUIERDA() {
+
         int iPieza = this.getI() + 2;
         int jPieza = this.getJ() - 1;
 
-        Pieza casilla = Main.tablero[iPieza][jPieza];
+        if (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
+            Pieza casilla = Main.tablero[iPieza][jPieza];
 
-        if (!(casilla.getColor().equals(this.getColor()))) {
-            if (casilla.getNombrePieza().equals("Caballo") ) {
-                return true;
+            if (casilla != null) {
+                if (!(casilla.getColor().equals(this.getColor()))) {
+                    if (casilla.getNombrePieza().equals("Caballo")) {
+                        return true;
+                    }
+                }
             }
         }
+
         return false;
     }
 
-    public boolean hayJaqueCaballoIZQUIERDAABAJO(){
+
+
+    public boolean hayJaqueCaballoIZQUIERDAABAJO() {
+
         int iPieza = this.getI() + 1;
         int jPieza = this.getJ() - 2;
 
-        Pieza casilla = Main.tablero[iPieza][jPieza];
+        if (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
+            Pieza casilla = Main.tablero[iPieza][jPieza];
 
-        if (!(casilla.getColor().equals(this.getColor()))) {
-            if (casilla.getNombrePieza().equals("Caballo") ) {
-                return true;
+            if (casilla != null) {
+                if (!(casilla.getColor().equals(this.getColor()))) {
+                    if (casilla.getNombrePieza().equals("Caballo")) {
+                        return true;
+                    }
+                }
             }
         }
+
         return false;
     }
 
-    public boolean hayJaqueCaballoIZQUIERDAARRIBA(){
+
+
+    public boolean hayJaqueCaballoIZQUIERDAARRIBA() {
+
         int iPieza = this.getI() - 1;
         int jPieza = this.getJ() - 2;
 
-        Pieza casilla = Main.tablero[iPieza][jPieza];
+        if (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
+            Pieza casilla = Main.tablero[iPieza][jPieza];
 
-        if (!(casilla.getColor().equals(this.getColor()))) {
-            if (casilla.getNombrePieza().equals("Caballo") ) {
-                return true;
+            if (casilla != null) {
+                if (!(casilla.getColor().equals(this.getColor()))) {
+                    if (casilla.getNombrePieza().equals("Caballo")) {
+                        return true;
+                    }
+                }
             }
         }
+
         return false;
     }
 
-    public boolean hayJaqueCaballoARRIBAARRIBA(){
+
+
+    public boolean hayJaqueCaballoARRIBAIZQUIERDA() {
+
         int iPieza = this.getI() - 2;
         int jPieza = this.getJ() - 1;
 
-        Pieza casilla = Main.tablero[iPieza][jPieza];
+        if (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
+            Pieza casilla = Main.tablero[iPieza][jPieza];
 
-        if (!(casilla.getColor().equals(this.getColor()))) {
-            if (casilla.getNombrePieza().equals("Caballo") ) {
-                return true;
+            if (casilla != null) {
+                if (!(casilla.getColor().equals(this.getColor()))) {
+                    if (casilla.getNombrePieza().equals("Caballo")) {
+                        return true;
+                    }
+                }
             }
         }
+
         return false;
+    }
+
+
+
+    public boolean hayJaquePeones() {
+
+        if (this.getColor().equals("B")) {
+
+            int iPieza = this.getI() - 1;
+            int jPieza = this.getJ() - 1;
+
+            if (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
+                Pieza casilla = Main.tablero[iPieza][jPieza];
+
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(this.getColor()))) {
+                        if (casilla.getNombrePieza().equals("Peón")) {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            int iPieza2 = this.getI() - 1;
+            int jPieza2 = this.getJ() + 1;
+
+            if (iPieza2 >= 0 && iPieza2 < 8 && jPieza2 >= 0 && jPieza2 < 8) {
+                Pieza casilla2 = Main.tablero[iPieza2][jPieza2];
+
+                if (casilla2 != null) {
+                    if (!(casilla2.getColor().equals(this.getColor()))) {
+                        if (casilla2.getNombrePieza().equals("Peón")) {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+
+        } else {
+
+            int iPieza = this.getI() + 1;
+            int jPieza = this.getJ() - 1;
+
+            if (iPieza >= 0 && iPieza < 8 && jPieza >= 0 && jPieza < 8) {
+                Pieza casilla = Main.tablero[iPieza][jPieza];
+
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(this.getColor()))) {
+                        if (casilla.getNombrePieza().equals("Peón")) {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            int iPieza2 = this.getI() + 1;
+            int jPieza2 = this.getJ() + 1;
+
+            if (iPieza2 >= 0 && iPieza2 < 8 && jPieza2 >= 0 && jPieza2 < 8) {
+                Pieza casilla2 = Main.tablero[iPieza2][jPieza2];
+
+                if (casilla2 != null) {
+                    if (!(casilla2.getColor().equals(this.getColor()))) {
+                        if (casilla2.getNombrePieza().equals("Peón")) {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 
 
@@ -401,11 +557,8 @@ public abstract class Pieza implements Movible {
                 hayJaqueCaballoABAJOIZQUIERDA() ||
                 hayJaqueCaballoIZQUIERDAABAJO() ||
                 hayJaqueCaballoIZQUIERDAARRIBA() ||
-                hayJaqueCaballoARRIBAARRIBA()
-
-
-                //Falta para peones
-                ;
+                hayJaqueCaballoARRIBAIZQUIERDA() ||
+                hayJaquePeones();
     }
 
 
