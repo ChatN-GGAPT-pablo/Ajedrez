@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Caballo extends Pieza{
+    Scanner sc = new Scanner(System.in);
     public Caballo(String nombrePieza, String color, int numeroPieza, int i, int j) {
         super(nombrePieza, color, numeroPieza, i, j);
     }
@@ -53,44 +54,65 @@ public class Caballo extends Pieza{
                 ARRIBAIZQUIERDA = true;
             }
 
-            System.out.println("Hacia donde quieres moverte:");
+            int decision;
+            while (true){
+                System.out.println("Hacia donde quieres moverte:");
 
-            if ( ARRIBADERECHA){
-                System.out.println("1. Arriba-Derecha");
+                if ( ARRIBADERECHA){
+                    System.out.println("1. Arriba-Derecha");
+                }
+
+                if (DERECHAARRIBA){
+                    System.out.println("2. Derecha-Arriba");
+                }
+
+                if(DERECHAABAJO){
+                    System.out.println("3. Derecha-Abajo");
+                }
+
+                if (ABAJODERECHA){
+                    System.out.println("4. Abajo-Derecha");
+                }
+
+                if(ABAJOIZQUIERDA){
+                    System.out.println("5. Abajo-Izquierda");
+                }
+
+                if(IZQUIERDAABAJO){
+                    System.out.println("6. Izquierda-Abajo");
+                }
+
+                if (IZQUIERDAARRIBA){
+                    System.out.println("7. Izquierda-Arriba");
+                }
+
+                if (ARRIBAIZQUIERDA){
+                    System.out.println("8. Arriba-Izquierda");
+                }
+
+
+                decision = sc.nextInt();
+
+                if (decision == 1 && ARRIBADERECHA) {
+                    break;
+                } else if (decision == 2 && DERECHAARRIBA) {
+                    break;
+                } else if (decision == 3 && DERECHAABAJO) {
+                    break;
+                } else if (decision == 4 && ABAJODERECHA) {
+                    break;
+                } else if (decision == 5 && ABAJOIZQUIERDA) {
+                    break;
+                } else if (decision == 6 && IZQUIERDAABAJO) {
+                    break;
+                } else if (decision == 7 && IZQUIERDAARRIBA) {
+                    break;
+                } else if (decision == 8 && ARRIBAIZQUIERDA) {
+                    break;
+                } else {
+                    System.out.println("Opción no válida, inténtalo otra vez.");
+                }
             }
-
-            if (DERECHAARRIBA){
-                System.out.println("2. Derecha-Arriba");
-            }
-
-            if(DERECHAABAJO){
-                System.out.println("3. Derecha-Abajo");
-            }
-
-            if (ABAJODERECHA){
-                System.out.println("4. Abajo-Derecha");
-            }
-
-            if(ABAJOIZQUIERDA){
-                System.out.println("5. Abajo-Izquierda");
-            }
-
-            if(IZQUIERDAABAJO){
-                System.out.println("6. Izquierda-Abajo");
-            }
-
-            if (IZQUIERDAARRIBA){
-                System.out.println("7. Izquierda-Arriba");
-            }
-
-            if (ARRIBAIZQUIERDA){
-                System.out.println("8. Arriba-Izquierda");
-            }
-
-
-
-            Scanner sc = new Scanner(System.in);
-            int decision = sc.nextInt();
 
 
 

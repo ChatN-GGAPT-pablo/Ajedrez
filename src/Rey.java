@@ -29,14 +29,7 @@ public class Rey extends Pieza{
             boolean IZQUIERDA = false;
             boolean ARRIBAIZQUIERDA = false;
 
-            boolean CaballoARRIBADERECHA = false;
-            boolean CaballoDERECHAARRIBA = false;
-            boolean CaballoDERECHAABAJO = false;
-            boolean CaballoABAJODERECHA = false;
-            boolean CaballoABAJOIZQUIERDA = false;
-            boolean CaballoIZQUIERDAABAJO = false;
-            boolean CaballoIZQUIERDAARRIBA = false;
-            boolean CaballoARRIBAARRIBA = false;
+
 
 
 
