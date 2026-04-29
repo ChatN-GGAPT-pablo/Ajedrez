@@ -267,6 +267,122 @@ public abstract class Pieza implements Movible {
         return false;
     }
 
+
+
+
+    public boolean hayJaqueCaballoARRIBADERECHA(){
+        int iPieza = this.getI() - 2;
+        int jPieza = this.getJ() + 1;
+
+        Pieza casilla = Main.tablero[iPieza][jPieza];
+
+        if (!(casilla.getColor().equals(this.getColor()))) {
+            if (casilla.getNombrePieza().equals("Caballo") ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hayJaqueCaballoDERECHAARRIBA(){
+        int iPieza = this.getI() - 1;
+        int jPieza = this.getJ() + 2;
+
+        Pieza casilla = Main.tablero[iPieza][jPieza];
+
+        if (!(casilla.getColor().equals(this.getColor()))) {
+            if (casilla.getNombrePieza().equals("Caballo") ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hayJaqueCaballoDERECHAABAJO(){
+        int iPieza = this.getI() +1;
+        int jPieza = this.getJ() + 2;
+
+        Pieza casilla = Main.tablero[iPieza][jPieza];
+
+        if (!(casilla.getColor().equals(this.getColor()))) {
+            if (casilla.getNombrePieza().equals("Caballo") ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hayJaqueCaballoABAJODERECHA(){
+        int iPieza = this.getI() + 2;
+        int jPieza = this.getJ() + 1;
+
+        Pieza casilla = Main.tablero[iPieza][jPieza];
+
+        if (!(casilla.getColor().equals(this.getColor()))) {
+            if (casilla.getNombrePieza().equals("Caballo") ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hayJaqueCaballoABAJOIZQUIERDA(){
+        int iPieza = this.getI() + 2;
+        int jPieza = this.getJ() - 1;
+
+        Pieza casilla = Main.tablero[iPieza][jPieza];
+
+        if (!(casilla.getColor().equals(this.getColor()))) {
+            if (casilla.getNombrePieza().equals("Caballo") ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hayJaqueCaballoIZQUIERDAABAJO(){
+        int iPieza = this.getI() + 1;
+        int jPieza = this.getJ() - 2;
+
+        Pieza casilla = Main.tablero[iPieza][jPieza];
+
+        if (!(casilla.getColor().equals(this.getColor()))) {
+            if (casilla.getNombrePieza().equals("Caballo") ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hayJaqueCaballoIZQUIERDAARRIBA(){
+        int iPieza = this.getI() - 1;
+        int jPieza = this.getJ() - 2;
+
+        Pieza casilla = Main.tablero[iPieza][jPieza];
+
+        if (!(casilla.getColor().equals(this.getColor()))) {
+            if (casilla.getNombrePieza().equals("Caballo") ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hayJaqueCaballoARRIBAARRIBA(){
+        int iPieza = this.getI() - 2;
+        int jPieza = this.getJ() - 1;
+
+        Pieza casilla = Main.tablero[iPieza][jPieza];
+
+        if (!(casilla.getColor().equals(this.getColor()))) {
+            if (casilla.getNombrePieza().equals("Caballo") ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     public boolean hayJaque(){
         return hayJaqueARRIBA() ||
                 hayJaqueARRIBADERECHA() ||
@@ -275,7 +391,21 @@ public abstract class Pieza implements Movible {
                 hayJaqueABAJO() ||
                 hayJaqueABAJOIZQUIERDA() ||
                 hayJaqueIZQUIERDA() ||
-                hayJaqueARRIBAIZQUIERDA();
+                hayJaqueARRIBAIZQUIERDA() ||
+
+
+                hayJaqueCaballoARRIBADERECHA() ||
+                hayJaqueCaballoDERECHAARRIBA() ||
+                hayJaqueCaballoDERECHAABAJO() ||
+                hayJaqueCaballoABAJODERECHA() ||
+                hayJaqueCaballoABAJOIZQUIERDA() ||
+                hayJaqueCaballoIZQUIERDAABAJO() ||
+                hayJaqueCaballoIZQUIERDAARRIBA() ||
+                hayJaqueCaballoARRIBAARRIBA()
+
+
+                //Falta para peones
+                ;
     }
 
 

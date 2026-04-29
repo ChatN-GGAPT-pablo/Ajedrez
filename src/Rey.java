@@ -29,6 +29,17 @@ public class Rey extends Pieza{
             boolean IZQUIERDA = false;
             boolean ARRIBAIZQUIERDA = false;
 
+            boolean CaballoARRIBADERECHA = false;
+            boolean CaballoDERECHAARRIBA = false;
+            boolean CaballoDERECHAABAJO = false;
+            boolean CaballoABAJODERECHA = false;
+            boolean CaballoABAJOIZQUIERDA = false;
+            boolean CaballoIZQUIERDAABAJO = false;
+            boolean CaballoIZQUIERDAARRIBA = false;
+            boolean CaballoARRIBAARRIBA = false;
+
+
+
             if (p.getI() > 0) ARRIBA = true;
             if (p.getI() > 0 && p.getJ() < 7) ARRIBADERECHA = true;
             if (p.getJ() < 7) DERECHA = true;
@@ -37,6 +48,8 @@ public class Rey extends Pieza{
             if (p.getI() < 7 && p.getJ() > 0) ABAJOIZQUIERDA = true;
             if (p.getJ() > 0) IZQUIERDA = true;
             if (p.getI() > 0 && p.getJ() > 0) ARRIBAIZQUIERDA = true;
+
+
 
             System.out.println("A donde quieres moverte");
 
