@@ -17,7 +17,7 @@ public class Torre extends Pieza{
 
 
     @Override
-    public void posiblesMovimiento(Pieza p) {
+    public void posiblesMovimientos(Pieza p) {
         //Hacer comprobaciones de si se puede mover
         if (!hayJaque()){
 

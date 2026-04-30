@@ -13,7 +13,7 @@ public class Peon extends Pieza{
     }
 
     @Override
-    public void posiblesMovimiento(Pieza p) {
+    public void posiblesMovimientos(Pieza p) {
         //BLANCOS
         if (Main.getTurno().equals("B")) {
             boolean moverprimera1 = false;

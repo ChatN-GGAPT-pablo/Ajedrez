@@ -14,7 +14,7 @@ public class Dama extends Pieza{
     }
 
     @Override
-    public void posiblesMovimiento(Pieza p) {
+    public void posiblesMovimientos(Pieza p) {
 
         if (!hayJaque()) {
 

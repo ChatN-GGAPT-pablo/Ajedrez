@@ -1,5 +1,5 @@
 public interface Movible {
-    void posiblesMovimiento(Pieza p);
+    void posiblesMovimientos(Pieza p);
 
 
 }

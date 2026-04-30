@@ -571,7 +571,7 @@ public abstract class Pieza implements Movible {
 
 
 @Override
-public void posiblesMovimiento(Pieza p) {
+public void posiblesMovimientos(Pieza p) {
 
 }
 }
