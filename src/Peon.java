@@ -154,6 +154,7 @@ public class Peon extends Pieza{
 
                 int decision;
                 while(true){
+                    System.out.println("Qué quieres hacer?");
                     if (mover){
                         System.out.println("1. Mover");
                     }
@@ -379,6 +380,7 @@ public class Peon extends Pieza{
                 int decision;
 
                 while (true){
+                    System.out.println("Qué quieres hacer?");
                     if (mover){
                         System.out.println("1. Mover");
                     }

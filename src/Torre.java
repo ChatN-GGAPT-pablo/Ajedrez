@@ -26,20 +26,60 @@ public class Torre extends Pieza{
             boolean ABAJO = false;
             boolean IZQUIERDA = false;
 
-            if (p.getI() > 0){
-                ARRIBA = true;
+            for (int z = 1; z <= p.getI(); z++) {
+                Pieza casilla = Main.tablero[p.getI() - z][p.getJ()];
+
+                if (casilla != null) {
+                    if (!casilla.getColor().equals(p.getColor())) {
+                        ARRIBA = true;
+                    }
+                    break;
+                } else {
+                    ARRIBA = true;
+                    break;
+                }
             }
 
-            if (p.getJ() < 7){
-                DERECHA = true;
+            for (int z = 1; z <= 7 - p.getJ(); z++) {
+                Pieza casilla = Main.tablero[p.getI()][p.getJ() + z];
+
+                if (casilla != null) {
+                    if (!casilla.getColor().equals(p.getColor())) {
+                        DERECHA = true;
+                    }
+                    break;
+                } else {
+                    DERECHA = true;
+                    break;
+                }
             }
 
-            if (p.getI() < 7){
-                ABAJO = true;
+            for (int z = 1; z <= 7 - p.getI(); z++) {
+                Pieza casilla = Main.tablero[p.getI() + z][p.getJ()];
+
+                if (casilla != null) {
+                    if (!casilla.getColor().equals(p.getColor())) {
+                        ABAJO = true;
+                    }
+                    break;
+                } else {
+                    ABAJO = true;
+                    break;
+                }
             }
 
-            if (p.getJ() > 0){
-                IZQUIERDA = true;
+            for (int z = 1; z <= p.getJ(); z++) {
+                Pieza casilla = Main.tablero[p.getI()][p.getJ() - z];
+
+                if (casilla != null) {
+                    if (!casilla.getColor().equals(p.getColor())) {
+                        IZQUIERDA = true;
+                    }
+                    break;
+                } else {
+                    IZQUIERDA = true;
+                    break;
+                }
             }
 
 
@@ -84,10 +124,6 @@ public class Torre extends Pieza{
                 }
             }
 
-
-
-
-
                 if (decision == 1 && ARRIBA){
                     System.out.println("Cuantas hacia arriba?" );
                     int capeada = (p.getI());
@@ -113,7 +149,7 @@ public class Torre extends Pieza{
                     int movARRIBA = sc.nextInt();
 
                     while (movARRIBA < 1 || movARRIBA > maximo ){
-                        System.out.printf("Te sales del rango de movs permitidos, repite.");
+                        System.out.println("Te sales del rango de movs permitidos, repite.");
                         movARRIBA = sc.nextInt();
                     }
 

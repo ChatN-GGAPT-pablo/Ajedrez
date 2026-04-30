@@ -93,6 +93,13 @@ public class Caballo extends Pieza{
                 }
             }
 
+
+            if (!ARRIBADERECHA && !DERECHAARRIBA && !DERECHAABAJO && !ABAJODERECHA &&
+                    !ABAJOIZQUIERDA && !IZQUIERDAABAJO && !IZQUIERDAARRIBA && !ARRIBAIZQUIERDA) {
+                System.out.println("No hay movimientos disponibles");
+                return;
+            }
+
             int decision;
             while (true){
                 System.out.println("Hacia donde quieres moverte:");

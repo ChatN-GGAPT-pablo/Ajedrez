@@ -23,21 +23,199 @@ public class Alfil extends Pieza{
             boolean ABAJOIZQUIERDA = false;
             boolean ARRIBAIZQUIERDA = false;
 
-            if (p.getI() > 0 && p.getJ() < 7) {
-                ARRIBADERECHA = true;
+            int capeadoVertical = p.getI();
+            int capeadoHorizontal = 7 - p.getJ();
+
+            if (capeadoVertical > capeadoHorizontal) {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
+
+                    if (casilla != null) {
+                        if (!casilla.getColor().equals(p.getColor())) {
+                            ARRIBADERECHA = true;
+                        }
+                        break;
+                    } else {
+                        ARRIBADERECHA = true;
+                        break;
+                    }
+                }
+            } else if (capeadoVertical < capeadoHorizontal) {
+                for (int z = 1; z <= capeadoVertical; z++) {
+                    Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
+
+                    if (casilla != null) {
+                        if (!casilla.getColor().equals(p.getColor())) {
+                            ARRIBADERECHA = true;
+                        }
+                        break;
+                    } else {
+                        ARRIBADERECHA = true;
+                        break;
+                    }
+                }
+            } else {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
+
+                    if (casilla != null) {
+                        if (!casilla.getColor().equals(p.getColor())) {
+                            ARRIBADERECHA = true;
+                        }
+                        break;
+                    } else {
+                        ARRIBADERECHA = true;
+                        break;
+                    }
+                }
             }
 
-            if (p.getI() < 7 && p.getJ() < 7) {
-                ABAJODERECHA = true;
+            capeadoVertical = 7 - p.getI();
+            capeadoHorizontal = 7 - p.getJ();
+
+            if (capeadoVertical > capeadoHorizontal) {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
+
+                    if (casilla != null) {
+                        if (!casilla.getColor().equals(p.getColor())) {
+                            ABAJODERECHA = true;
+                        }
+                        break;
+                    } else {
+                        ABAJODERECHA = true;
+                        break;
+                    }
+                }
+            } else if (capeadoVertical < capeadoHorizontal) {
+                for (int z = 1; z <= capeadoVertical; z++) {
+                    Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
+
+                    if (casilla != null) {
+                        if (!casilla.getColor().equals(p.getColor())) {
+                            ABAJODERECHA = true;
+                        }
+                        break;
+                    } else {
+                        ABAJODERECHA = true;
+                        break;
+                    }
+                }
+            } else {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
+
+                    if (casilla != null) {
+                        if (!casilla.getColor().equals(p.getColor())) {
+                            ABAJODERECHA = true;
+                        }
+                        break;
+                    } else {
+                        ABAJODERECHA = true;
+                        break;
+                    }
+                }
             }
 
-            if (p.getI() < 7 && p.getJ() > 0) {
-                ABAJOIZQUIERDA = true;
+            capeadoVertical = 7 - p.getI();
+            capeadoHorizontal = p.getJ();
+
+            if (capeadoVertical > capeadoHorizontal) {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
+
+                    if (casilla != null) {
+                        if (!casilla.getColor().equals(p.getColor())) {
+                            ABAJOIZQUIERDA = true;
+                        }
+                        break;
+                    } else {
+                        ABAJOIZQUIERDA = true;
+                        break;
+                    }
+                }
+            } else if (capeadoVertical < capeadoHorizontal) {
+                for (int z = 1; z <= capeadoVertical; z++) {
+                    Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
+
+                    if (casilla != null) {
+                        if (!casilla.getColor().equals(p.getColor())) {
+                            ABAJOIZQUIERDA = true;
+                        }
+                        break;
+                    } else {
+                        ABAJOIZQUIERDA = true;
+                        break;
+                    }
+                }
+            } else {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
+
+                    if (casilla != null) {
+                        if (!casilla.getColor().equals(p.getColor())) {
+                            ABAJOIZQUIERDA = true;
+                        }
+                        break;
+                    } else {
+                        ABAJOIZQUIERDA = true;
+                        break;
+                    }
+                }
             }
 
-            if (p.getI() > 0 && p.getJ() > 0) {
-                ARRIBAIZQUIERDA = true;
+            capeadoVertical = p.getI();
+            capeadoHorizontal = p.getJ();
+
+            if (capeadoVertical > capeadoHorizontal) {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
+
+                    if (casilla != null) {
+                        if (!casilla.getColor().equals(p.getColor())) {
+                            ARRIBAIZQUIERDA = true;
+                        }
+                        break;
+                    } else {
+                        ARRIBAIZQUIERDA = true;
+                        break;
+                    }
+                }
+            } else if (capeadoVertical < capeadoHorizontal) {
+                for (int z = 1; z <= capeadoVertical; z++) {
+                    Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
+
+                    if (casilla != null) {
+                        if (!casilla.getColor().equals(p.getColor())) {
+                            ARRIBAIZQUIERDA = true;
+                        }
+                        break;
+                    } else {
+                        ARRIBAIZQUIERDA = true;
+                        break;
+                    }
+                }
+            } else {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
+
+                    if (casilla != null) {
+                        if (!casilla.getColor().equals(p.getColor())) {
+                            ARRIBAIZQUIERDA = true;
+                        }
+                        break;
+                    } else {
+                        ARRIBAIZQUIERDA = true;
+                        break;
+                    }
+                }
             }
+
+            if (!ARRIBADERECHA && !ABAJODERECHA && !ABAJOIZQUIERDA && !ARRIBAIZQUIERDA) {
+                System.out.println("No hay movimientos disponibles");
+                return;
+            }
+
 
             int decision;
             while (true){
@@ -78,11 +256,13 @@ public class Alfil extends Pieza{
 
 
 
+
+
             if (decision == 1 && ARRIBADERECHA) {
                 System.out.println("Cuantas casillas quieres moverte");
 
-                int capeadoVertical = p.getI();
-                int capeadoHorizontal = 7 - p.getJ();
+                capeadoVertical = p.getI();
+                capeadoHorizontal = 7 - p.getJ();
                 int maximo = 0;
 
                 if (capeadoVertical > capeadoHorizontal) {
@@ -176,8 +356,8 @@ public class Alfil extends Pieza{
 
                 System.out.println("Cuantas casillas quieres moverte");
 
-                int capeadoVertical = 7 - p.getI();
-                int capeadoHorizontal = 7 - p.getJ();
+                capeadoVertical = 7 - p.getI();
+                capeadoHorizontal = 7 - p.getJ();
 
 
 
@@ -271,8 +451,8 @@ public class Alfil extends Pieza{
             if (decision == 3 && ABAJOIZQUIERDA) {
                 System.out.println("Cuantas casillas quieres moverte");
 
-                int capeadoVertical = 7 - p.getI();
-                int capeadoHorizontal = p.getJ();
+                capeadoVertical = 7 - p.getI();
+                capeadoHorizontal = p.getJ();
 
                 int maximo = 0;
 
@@ -365,8 +545,8 @@ public class Alfil extends Pieza{
             if (decision == 4 && ARRIBAIZQUIERDA) {
                 System.out.println("Cuantas casillas quieres moverte");
 
-                int capeadoVertical = p.getI();
-                int capeadoHorizontal = p.getJ();
+                capeadoVertical = p.getI();
+                capeadoHorizontal = p.getJ();
 
                 int maximo = 0;
 

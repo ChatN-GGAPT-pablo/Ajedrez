@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Dama extends Pieza{
+    Scanner sc = new Scanner(System.in);
     public Dama(String nombrePieza, String color, int i, int j) {
         super(nombrePieza, color, i, j);
     }
@@ -26,39 +27,266 @@ public class Dama extends Pieza{
             boolean IZQUIERDA = false;
             boolean ARRIBAIZQUIERDA = false;
 
-            if (p.getI() > 0) {
-                ARRIBA = true;
+            //COMPROBACIÓN ARRIBA
+            for (int z = 1; z <= p.getI(); z++) {
+                Pieza casilla = Main.tablero[p.getI() - z][p.getJ()];
+
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(p.getColor()))) {
+                        ARRIBA = true;
+                    }
+                    break;
+                } else {
+                    ARRIBA = true;
+                    break;
+                }
             }
 
-            if (p.getI() > 0 && p.getJ() < 7) {
-                ARRIBADERECHA = true;
+            //COMPROBACIÓN ARRIBADERECHA
+            int capeadoVertical = p.getI();
+            int capeadoHorizontal = 7 - p.getJ();
+
+            if (capeadoVertical > capeadoHorizontal) {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
+
+                    if (casilla != null) {
+                        if (!(casilla.getColor().equals(p.getColor()))) {
+                            ARRIBADERECHA = true;
+                        }
+                        break;
+                    } else {
+                        ARRIBADERECHA = true;
+                        break;
+                    }
+                }
+            } else if (capeadoVertical < capeadoHorizontal) {
+                for (int z = 1; z <= capeadoVertical; z++) {
+                    Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
+
+                    if (casilla != null) {
+                        if (!(casilla.getColor().equals(p.getColor()))) {
+                            ARRIBADERECHA = true;
+                        }
+                        break;
+                    } else {
+                        ARRIBADERECHA = true;
+                        break;
+                    }
+                }
+            } else {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
+
+                    if (casilla != null) {
+                        if (!(casilla.getColor().equals(p.getColor()))) {
+                            ARRIBADERECHA = true;
+                        }
+                        break;
+                    } else {
+                        ARRIBADERECHA = true;
+                        break;
+                    }
+                }
             }
 
-            if (p.getJ() < 7) {
-                DERECHA = true;
+            //COMPROBACIÓN DERECHA
+            for (int z = 1; z <= 7 - p.getJ(); z++) {
+                Pieza casilla = Main.tablero[p.getI()][p.getJ() + z];
+
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(p.getColor()))) {
+                        DERECHA = true;
+                    }
+                    break;
+                } else {
+                    DERECHA = true;
+                    break;
+                }
             }
 
-            if (p.getI() < 7 && p.getJ() < 7) {
-                ABAJODERECHA = true;
+            //COMPROBACIÓN ABAJODERECHA
+            capeadoVertical = 7 - p.getI();
+            capeadoHorizontal = 7 - p.getJ();
+
+            if (capeadoVertical > capeadoHorizontal) {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
+
+                    if (casilla != null) {
+                        if (!(casilla.getColor().equals(p.getColor()))) {
+                            ABAJODERECHA = true;
+                        }
+                        break;
+                    } else {
+                        ABAJODERECHA = true;
+                        break;
+                    }
+                }
+            } else if (capeadoVertical < capeadoHorizontal) {
+                for (int z = 1; z <= capeadoVertical; z++) {
+                    Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
+
+                    if (casilla != null) {
+                        if (!(casilla.getColor().equals(p.getColor()))) {
+                            ABAJODERECHA = true;
+                        }
+                        break;
+                    } else {
+                        ABAJODERECHA = true;
+                        break;
+                    }
+                }
+            } else {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
+
+                    if (casilla != null) {
+                        if (!(casilla.getColor().equals(p.getColor()))) {
+                            ABAJODERECHA = true;
+                        }
+                        break;
+                    } else {
+                        ABAJODERECHA = true;
+                        break;
+                    }
+                }
             }
 
-            if (p.getI() < 7) {
-                ABAJO = true;
+            //COMPROBACIÓN ABAJO
+            for (int z = 1; z <= 7 - p.getI(); z++) {
+                Pieza casilla = Main.tablero[p.getI() + z][p.getJ()];
+
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(p.getColor()))) {
+                        ABAJO = true;
+                    }
+                    break;
+                } else {
+                    ABAJO = true;
+                    break;
+                }
+            }
+            //COMPROBACIÓN ABAJOIZQUIERDA
+
+            capeadoVertical = 7 - p.getI();
+            capeadoHorizontal = p.getJ();
+
+            if (capeadoVertical > capeadoHorizontal) {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
+
+                    if (casilla != null) {
+                        if (!(casilla.getColor().equals(p.getColor()))) {
+                            ABAJOIZQUIERDA = true;
+                        }
+                        break;
+                    } else {
+                        ABAJOIZQUIERDA = true;
+                        break;
+                    }
+                }
+            } else if (capeadoVertical < capeadoHorizontal) {
+                for (int z = 1; z <= capeadoVertical; z++) {
+                    Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
+
+                    if (casilla != null) {
+                        if (!(casilla.getColor().equals(p.getColor()))) {
+                            ABAJOIZQUIERDA = true;
+                        }
+                        break;
+                    } else {
+                        ABAJOIZQUIERDA = true;
+                        break;
+                    }
+                }
+            } else {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
+
+                    if (casilla != null) {
+                        if (!(casilla.getColor().equals(p.getColor()))) {
+                            ABAJOIZQUIERDA = true;
+                        }
+                        break;
+                    } else {
+                        ABAJOIZQUIERDA = true;
+                        break;
+                    }
+                }
             }
 
-            if (p.getI() < 7 && p.getJ() > 0) {
-                ABAJOIZQUIERDA = true;
+            //COMPROBACIÓN IZQUIERDA
+            for (int z = 1; z <= p.getJ(); z++) {
+                Pieza casilla = Main.tablero[p.getI()][p.getJ() - z];
+
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(p.getColor()))) {
+                        IZQUIERDA = true;
+                    }
+                    break;
+                } else {
+                    IZQUIERDA = true;
+                    break;
+                }
             }
 
-            if (p.getJ() > 0) {
-                IZQUIERDA = true;
+            //COMPROBACIÓN ARRIBAIZQUIERDA
+            capeadoVertical = p.getI();
+            capeadoHorizontal = p.getJ();
+
+            if (capeadoVertical > capeadoHorizontal) {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
+
+                    if (casilla != null) {
+                        if (!(casilla.getColor().equals(p.getColor()))) {
+                            ARRIBAIZQUIERDA = true;
+                        }
+                        break;
+                    } else {
+                        ARRIBAIZQUIERDA = true;
+                        break;
+                    }
+                }
+            } else if (capeadoVertical < capeadoHorizontal) {
+                for (int z = 1; z <= capeadoVertical; z++) {
+                    Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
+
+                    if (casilla != null) {
+                        if (!(casilla.getColor().equals(p.getColor()))) {
+                            ARRIBAIZQUIERDA = true;
+                        }
+                        break;
+                    } else {
+                        ARRIBAIZQUIERDA = true;
+                        break;
+                    }
+                }
+            } else {
+                for (int z = 1; z <= capeadoHorizontal; z++) {
+                    Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
+
+                    if (casilla != null) {
+                        if (!(casilla.getColor().equals(p.getColor()))) {
+                            ARRIBAIZQUIERDA = true;
+                        }
+                        break;
+                    } else {
+                        ARRIBAIZQUIERDA = true;
+                        break;
+                    }
+                }
             }
 
-            if (p.getI() > 0 && p.getJ() > 0) {
-                ARRIBAIZQUIERDA = true;
+
+            if (!ARRIBA && !ARRIBADERECHA && !DERECHA && !ABAJODERECHA &&
+                    !ABAJO && !ABAJOIZQUIERDA && !IZQUIERDA && !ARRIBAIZQUIERDA) {
+                System.out.println("No hay movimientos disponibles");
+                return;
             }
 
-            Scanner sc = new Scanner(System.in);
+
 
             int decision;
 
@@ -96,6 +324,8 @@ public class Dama extends Pieza{
                 if (ARRIBAIZQUIERDA) {
                     System.out.println("8. Arriba izquierda");
                 }
+
+
 
                 decision = sc.nextInt();
 
@@ -187,8 +417,8 @@ public class Dama extends Pieza{
             if (decision == 2 && ARRIBADERECHA) {
                 System.out.println("Cuantas casillas quieres moverte");
 
-                int capeadoVertical = p.getI();
-                int capeadoHorizontal = 7 - p.getJ();
+                capeadoVertical = p.getI();
+                capeadoHorizontal = 7 - p.getJ();
 
                 int maximo = 0;
 
@@ -343,8 +573,8 @@ public class Dama extends Pieza{
             if (decision == 4 && ABAJODERECHA) {
                 System.out.println("Cuantas casillas quieres moverte");
 
-                int capeadoVertical = 7 - p.getI();
-                int capeadoHorizontal = 7 - p.getJ();
+                capeadoVertical = 7 - p.getI();
+                capeadoHorizontal = 7 - p.getJ();
 
                 int maximo = 0;
 
@@ -499,8 +729,8 @@ public class Dama extends Pieza{
             if (decision == 6 && ABAJOIZQUIERDA) {
                 System.out.println("Cuantas casillas quieres moverte");
 
-                int capeadoVertical = 7 - p.getI();
-                int capeadoHorizontal = p.getJ();
+                capeadoVertical = 7 - p.getI();
+                capeadoHorizontal = p.getJ();
 
                 int maximo = 0;
 
@@ -655,8 +885,8 @@ public class Dama extends Pieza{
             if (decision == 8 && ARRIBAIZQUIERDA) {
                 System.out.println("Cuantas casillas quieres moverte");
 
-                int capeadoVertical = p.getI();
-                int capeadoHorizontal = p.getJ();
+                capeadoVertical = p.getI();
+                capeadoHorizontal = p.getJ();
 
                 int maximo = 0;
 
@@ -744,5 +974,6 @@ public class Dama extends Pieza{
                 }
             }
         }
-    }}
+    }
+}
 
