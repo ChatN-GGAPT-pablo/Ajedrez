@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Alfil extends Pieza{
+    Scanner sc = new Scanner(System.in);
     public Alfil(String nombrePieza, String color, int numeroPieza, int i, int j) {
         super(nombrePieza, color, numeroPieza, i, j);
     }
@@ -38,48 +39,102 @@ public class Alfil extends Pieza{
                 ARRIBAIZQUIERDA = true;
             }
 
-            System.out.println("Hacia dónde quieres mover?");
+            int decision;
+            while (true){
+                System.out.println("Hacia dónde quieres mover?");
 
-            if (ARRIBADERECHA) {
-                System.out.println("1. Arriba derecha");
+                if (ARRIBADERECHA) {
+                    System.out.println("1. Arriba derecha");
+                }
+
+                if (ABAJODERECHA) {
+                    System.out.println("2. Abajo derecha");
+                }
+
+                if (ABAJOIZQUIERDA) {
+                    System.out.println("3. Abajo izquierda");
+                }
+
+                if (ARRIBAIZQUIERDA) {
+                    System.out.println("4. Arriba izquierda");
+                }
+
+                decision = sc.nextInt();
+                if (decision == 1 && ARRIBADERECHA) {
+                    break;
+                } else if (decision == 2 && ABAJODERECHA) {
+                    break;
+                } else if (decision == 3 && ABAJOIZQUIERDA) {
+                    break;
+                } else if (decision == 4 && ARRIBAIZQUIERDA) {
+                    break;
+                } else {
+                    System.out.println("Opción no válida, repite.");
+                }
             }
 
-            if (ABAJODERECHA) {
-                System.out.println("2. Abajo derecha");
-            }
 
-            if (ABAJOIZQUIERDA) {
-                System.out.println("3. Abajo izquierda");
-            }
 
-            if (ARRIBAIZQUIERDA) {
-                System.out.println("4. Arriba izquierda");
-            }
 
-            Scanner sc = new Scanner(System.in);
-            int decision = sc.nextInt();
+
 
             if (decision == 1 && ARRIBADERECHA) {
+                System.out.println("Cuantas casillas quieres moverte");
+
                 int capeadoVertical = p.getI();
                 int capeadoHorizontal = 7 - p.getJ();
-
-                System.out.println("Cuantas casillas quieres moverte");
+                int maximo = 0;
 
                 if (capeadoVertical > capeadoHorizontal) {
                     for (int z = 1; z <= capeadoHorizontal; z++) {
-                        System.out.println(z + " casillas");
+                        if (Main.tablero[p.getI()-z][p.getJ()+z] != null){
+                            if (!(Main.tablero[p.getI()-z][p.getJ()+z].getColor().equals(p.getColor()))){
+                                System.out.println(z + "casillas");
+                                maximo = z;
+                            }
+                            break;
+                        }else{
+                            System.out.println(z + "casillas");
+                            maximo = z;
+                        }
                     }
                 } else if (capeadoVertical < capeadoHorizontal) {
+
                     for (int z = 1; z <= capeadoVertical; z++) {
-                        System.out.println(z + " casillas");
+                        if (Main.tablero[p.getI()-z][p.getJ()+z] != null){
+                            if (!(Main.tablero[p.getI()-z][p.getJ()+z].getColor().equals(p.getColor()))){
+                                System.out.println(z + "casillas");
+                                maximo = z;
+                            }
+                            break;
+                        }else{
+                            System.out.println(z + "casillas");
+                            maximo = z;
+                        }
                     }
                 } else {
                     for (int z = 1; z <= capeadoHorizontal; z++) {
-                        System.out.println(z + " casillas");
+                        if (Main.tablero[p.getI()-z][p.getJ()+z] != null){
+                            if (!(Main.tablero[p.getI()-z][p.getJ()+z].getColor().equals(p.getColor()))){
+                                System.out.println(z + "casillas");
+
+                                maximo = z;
+                            }
+                            break;
+                        }else{
+                            System.out.println(z + "casillas");
+                            maximo = z;
+                        }
                     }
                 }
 
+
                 int movDiagonal = sc.nextInt();
+
+                while (movDiagonal < 1 || movDiagonal > maximo){
+                    System.out.println("Te sales del rango de movs permitidos, repite.");
+                    movDiagonal = sc.nextInt();
+                }
 
                 int iOriginal = p.getI();
                 int jOriginal = p.getJ();
@@ -118,26 +173,64 @@ public class Alfil extends Pieza{
             }
 
             if (decision == 2 && ABAJODERECHA) {
-                int capeadoVertical = 7 - p.getI();
-                int capeadoHorizontal = 7 - p.getJ();
 
                 System.out.println("Cuantas casillas quieres moverte");
 
+                int capeadoVertical = 7 - p.getI();
+                int capeadoHorizontal = 7 - p.getJ();
+
+
+
+                int maximo = 0;
+
                 if (capeadoVertical > capeadoHorizontal) {
                     for (int z = 1; z <= capeadoHorizontal; z++) {
-                        System.out.println(z + " casillas");
+                        if (Main.tablero[p.getI()+z][p.getJ()+z] != null){
+                            if (!(Main.tablero[p.getI()+z][p.getJ()+z].getColor().equals(p.getColor()))){
+                                System.out.println(z + "casillas");
+                                maximo = z;
+                            }
+                            break;
+                        }else{
+                            System.out.println(z + "casillas");
+                            maximo = z;
+                        }
                     }
                 } else if (capeadoVertical < capeadoHorizontal) {
+
                     for (int z = 1; z <= capeadoVertical; z++) {
-                        System.out.println(z + " casillas");
+                        if (Main.tablero[p.getI()+z][p.getJ()+z] != null){
+                            if (!(Main.tablero[p.getI()+z][p.getJ()+z].getColor().equals(p.getColor()))){
+                                System.out.println(z + "casillas");
+                                maximo = z;
+                            }
+                            break;
+                        }else{
+                            System.out.println(z + "casillas");
+                            maximo = z;
+                        }
                     }
                 } else {
                     for (int z = 1; z <= capeadoHorizontal; z++) {
-                        System.out.println(z + " casillas");
+                        if (Main.tablero[p.getI()+z][p.getJ()+z] != null){
+                            if (!(Main.tablero[p.getI()+z][p.getJ()+z].getColor().equals(p.getColor()))){
+                                System.out.println(z + "casillas");
+
+                                maximo = z;
+                            }
+                            break;
+                        }else{
+                            System.out.println(z + "casillas");
+                            maximo = z;
+                        }
                     }
                 }
-
                 int movDiagonal = sc.nextInt();
+
+                while (movDiagonal < 1 || movDiagonal > maximo){
+                    System.out.println("Te sales del rango de movs permitidos, repite.");
+                    movDiagonal = sc.nextInt();
+                }
 
                 int iOriginal = p.getI();
                 int jOriginal = p.getJ();
@@ -176,26 +269,62 @@ public class Alfil extends Pieza{
             }
 
             if (decision == 3 && ABAJOIZQUIERDA) {
+                System.out.println("Cuantas casillas quieres moverte");
+
                 int capeadoVertical = 7 - p.getI();
                 int capeadoHorizontal = p.getJ();
 
-                System.out.println("Cuantas casillas quieres moverte");
+                int maximo = 0;
 
                 if (capeadoVertical > capeadoHorizontal) {
                     for (int z = 1; z <= capeadoHorizontal; z++) {
-                        System.out.println(z + " casillas");
+                        if (Main.tablero[p.getI()+z][p.getJ()-z] != null){
+                            if (!(Main.tablero[p.getI()+z][p.getJ()-z].getColor().equals(p.getColor()))){
+                                System.out.println(z + "casillas");
+                                maximo = z;
+                            }
+                            break;
+                        }else{
+                            System.out.println(z + "casillas");
+                            maximo = z;
+                        }
                     }
                 } else if (capeadoVertical < capeadoHorizontal) {
+
                     for (int z = 1; z <= capeadoVertical; z++) {
-                        System.out.println(z + " casillas");
+                        if (Main.tablero[p.getI()+z][p.getJ()-z] != null){
+                            if (!(Main.tablero[p.getI()+z][p.getJ()-z].getColor().equals(p.getColor()))){
+                                System.out.println(z + "casillas");
+                                maximo = z;
+                            }
+                            break;
+                        }else{
+                            System.out.println(z + "casillas");
+                            maximo = z;
+                        }
                     }
                 } else {
                     for (int z = 1; z <= capeadoHorizontal; z++) {
-                        System.out.println(z + " casillas");
+                        if (Main.tablero[p.getI()+z][p.getJ()-z] != null){
+                            if (!(Main.tablero[p.getI()+z][p.getJ()-z].getColor().equals(p.getColor()))){
+                                System.out.println(z + "casillas");
+
+                                maximo = z;
+                            }
+                            break;
+                        }else{
+                            System.out.println(z + "casillas");
+                            maximo = z;
+                        }
                     }
                 }
 
                 int movDiagonal = sc.nextInt();
+
+                while (movDiagonal < 1 || movDiagonal > maximo){
+                    System.out.println("Te sales del rango de movs permitidos, repite.");
+                    movDiagonal = sc.nextInt();
+                }
 
                 int iOriginal = p.getI();
                 int jOriginal = p.getJ();
@@ -234,26 +363,62 @@ public class Alfil extends Pieza{
             }
 
             if (decision == 4 && ARRIBAIZQUIERDA) {
+                System.out.println("Cuantas casillas quieres moverte");
+
                 int capeadoVertical = p.getI();
                 int capeadoHorizontal = p.getJ();
 
-                System.out.println("Cuantas casillas quieres moverte");
+                int maximo = 0;
 
                 if (capeadoVertical > capeadoHorizontal) {
                     for (int z = 1; z <= capeadoHorizontal; z++) {
-                        System.out.println(z + " casillas");
+                        if (Main.tablero[p.getI()-z][p.getJ()-z] != null){
+                            if (!(Main.tablero[p.getI()-z][p.getJ()-z].getColor().equals(p.getColor()))){
+                                System.out.println(z + "casillas");
+                                maximo = z;
+                            }
+                            break;
+                        }else{
+                            System.out.println(z + "casillas");
+                            maximo = z;
+                        }
                     }
                 } else if (capeadoVertical < capeadoHorizontal) {
+
                     for (int z = 1; z <= capeadoVertical; z++) {
-                        System.out.println(z + " casillas");
+                        if (Main.tablero[p.getI()-z][p.getJ()-z] != null){
+                            if (!(Main.tablero[p.getI()-z][p.getJ()-z].getColor().equals(p.getColor()))){
+                                System.out.println(z + "casillas");
+                                maximo = z;
+                            }
+                            break;
+                        }else{
+                            System.out.println(z + "casillas");
+                            maximo = z;
+                        }
                     }
                 } else {
                     for (int z = 1; z <= capeadoHorizontal; z++) {
-                        System.out.println(z + " casillas");
+                        if (Main.tablero[p.getI()-z][p.getJ()-z] != null){
+                            if (!(Main.tablero[p.getI()-z][p.getJ()-z].getColor().equals(p.getColor()))){
+                                System.out.println(z + "casillas");
+
+                                maximo = z;
+                            }
+                            break;
+                        }else{
+                            System.out.println(z + "casillas");
+                            maximo = z;
+                        }
                     }
                 }
 
                 int movDiagonal = sc.nextInt();
+
+                while (movDiagonal < 1 || movDiagonal > maximo){
+                    System.out.println("Te sales del rango de movs permitidos, repite.");
+                    movDiagonal = sc.nextInt();
+                }
 
                 int iOriginal = p.getI();
                 int jOriginal = p.getJ();

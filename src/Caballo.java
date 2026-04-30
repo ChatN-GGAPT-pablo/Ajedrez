@@ -29,29 +29,68 @@ public class Caballo extends Pieza{
             boolean IZQUIERDAARRIBA = false;
             boolean ARRIBAIZQUIERDA = false;
 
-            if (p.getI() - 2 >= 0 && p.getJ() + 1 <= 7){
-                ARRIBADERECHA = true;
+            if (p.getI() - 2 >= 0 && p.getJ() + 1 <= 7) {
+                Pieza casilla = Main.tablero[p.getI() - 2][p.getJ() + 1];
+
+                if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                    ARRIBADERECHA = true;
+                }
             }
-            if (p.getI() - 1 >= 0 && p.getJ() + 2 <= 7){
-                DERECHAARRIBA = true;
+
+            if (p.getI() - 1 >= 0 && p.getJ() + 2 <= 7) {
+                Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() + 2];
+
+                if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                    DERECHAARRIBA = true;
+                }
             }
-            if (p.getI() + 1 <= 7 && p.getJ() + 2 <= 7){
-                DERECHAABAJO = true;
+
+            if (p.getI() + 1 <= 7 && p.getJ() + 2 <= 7) {
+                Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() + 2];
+
+                if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                    DERECHAABAJO = true;
+                }
             }
-            if (p.getI() + 2 <= 7 && p.getJ() + 1 <= 7){
-                ABAJODERECHA = true;
+
+            if (p.getI() + 2 <= 7 && p.getJ() + 1 <= 7) {
+                Pieza casilla = Main.tablero[p.getI() + 2][p.getJ() + 1];
+
+                if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                    ABAJODERECHA = true;
+                }
             }
-            if (p.getI() + 2 <= 7 && p.getJ() - 1 >= 0){
-                ABAJOIZQUIERDA = true;
+
+            if (p.getI() + 2 <= 7 && p.getJ() - 1 >= 0) {
+                Pieza casilla = Main.tablero[p.getI() + 2][p.getJ() - 1];
+
+                if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                    ABAJOIZQUIERDA = true;
+                }
             }
-            if (p.getI() + 1 <= 7 && p.getJ() - 2 >= 0){
-                IZQUIERDAABAJO = true;
+
+            if (p.getI() + 1 <= 7 && p.getJ() - 2 >= 0) {
+                Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() - 2];
+
+                if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                    IZQUIERDAABAJO = true;
+                }
             }
-            if (p.getI() - 1 >= 0 && p.getJ() - 2 >= 0){
-                IZQUIERDAARRIBA = true;
+
+            if (p.getI() - 1 >= 0 && p.getJ() - 2 >= 0) {
+                Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() - 2];
+
+                if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                    IZQUIERDAARRIBA = true;
+                }
             }
-            if (p.getI() - 2 >= 0 && p.getJ() - 1 >= 0){
-                ARRIBAIZQUIERDA = true;
+
+            if (p.getI() - 2 >= 0 && p.getJ() - 1 >= 0) {
+                Pieza casilla = Main.tablero[p.getI() - 2][p.getJ() - 1];
+
+                if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                    ARRIBAIZQUIERDA = true;
+                }
             }
 
             int decision;
