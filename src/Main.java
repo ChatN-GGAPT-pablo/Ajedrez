@@ -589,10 +589,83 @@ public class Main{
 
         mostrarTablero();
         mostrarPiezas();
-        Pieza piezaAMover = new Peon("Peón", "N",  1, 1, 0);
+        Pieza piezaAMover = mostrarPiezas();
         if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 1){
             piezaAMover = new Peon("Peón", "B",  1, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        } else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 2){
+            piezaAMover = new Peon("Peón", "B",  2, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 3){
+            piezaAMover = new Peon("Peón", "B",  3, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 4){
+            piezaAMover = new Peon("Peón", "B",  4, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 5){
+            piezaAMover = new Peon("Peón", "B",  5, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 6){
+            piezaAMover = new Peon("Peón", "B",  6, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 7){
+            piezaAMover = new Peon("Peón", "B",  7, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 8){
+            piezaAMover = new Peon("Peón", "B",  8, mostrarPiezas().getI(), mostrarPiezas().getJ());
         }
+
+        if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 1){
+            piezaAMover = new Peon("Peón", "N",  1, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        } else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 2){
+            piezaAMover = new Peon("Peón", "N",  2, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 3){
+            piezaAMover = new Peon("Peón", "N",  3, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 4){
+            piezaAMover = new Peon("Peón", "N",  4, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 5){
+            piezaAMover = new Peon("Peón", "N",  5, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 6){
+            piezaAMover = new Peon("Peón", "N",  6, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 7){
+            piezaAMover = new Peon("Peón", "N",  7, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }else if (mostrarPiezas().getNombrePieza().equals("Peón") && mostrarPiezas().getNumeroPieza() == 8){
+            piezaAMover = new Peon("Peón", "N",  8, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }
+
+
+        if (mostrarPiezas().getNombrePieza().equals("Alfil") && mostrarPiezas().getNumeroPieza() == 1){
+            piezaAMover = new Peon("Alfil", "B",  1, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        } else if (mostrarPiezas().getNombrePieza().equals("Alfil") && mostrarPiezas().getNumeroPieza() == 2){
+            piezaAMover = new Peon("Alfil", "B",  2, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }
+
+        if (mostrarPiezas().getNombrePieza().equals("Alfil") && mostrarPiezas().getNumeroPieza() == 1){
+            piezaAMover = new Peon("Alfil", "N",  1, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        } else if (mostrarPiezas().getNombrePieza().equals("Alfil") && mostrarPiezas().getNumeroPieza() == 2){
+            piezaAMover = new Peon("Alfil", "N",  2, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }
+
+        if (mostrarPiezas().getNombrePieza().equals("Caballo") && mostrarPiezas().getNumeroPieza() == 1){
+            piezaAMover = new Peon("Caballo", "B",  1, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        } else if (mostrarPiezas().getNombrePieza().equals("Caballo") && mostrarPiezas().getNumeroPieza() == 2){
+            piezaAMover = new Peon("Caballo", "B",  2, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }
+
+        if (mostrarPiezas().getNombrePieza().equals("Caballo") && mostrarPiezas().getNumeroPieza() == 1){
+            piezaAMover = new Peon("Caballo", "N",  1, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        } else if (mostrarPiezas().getNombrePieza().equals("Caballo") && mostrarPiezas().getNumeroPieza() == 2){
+            piezaAMover = new Peon("Caballo", "N",  2, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }
+
+        if (mostrarPiezas().getNombrePieza().equals("Torre") && mostrarPiezas().getNumeroPieza() == 1){
+            piezaAMover = new Peon("Torre", "B",  1, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        } else if (mostrarPiezas().getNombrePieza().equals("Torre") && mostrarPiezas().getNumeroPieza() == 2){
+            piezaAMover = new Peon("Torre", "B",  2, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }
+
+        if (mostrarPiezas().getNombrePieza().equals("Torre") && mostrarPiezas().getNumeroPieza() == 1){
+            piezaAMover = new Peon("Torre", "N",  1, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        } else if (mostrarPiezas().getNombrePieza().equals("Torre") && mostrarPiezas().getNumeroPieza() == 2){
+            piezaAMover = new Peon("Torre", "N",  2, mostrarPiezas().getI(), mostrarPiezas().getJ());
+        }
+
+
+
+
         piezaAMover.posiblesMovimientos(piezaAMover);
 
 
