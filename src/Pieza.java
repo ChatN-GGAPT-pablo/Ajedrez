@@ -78,6 +78,13 @@ public abstract class Pieza implements Movible {
 
 
 
+
+
+
+
+
+
+
     public boolean hayJaqueARRIBA() {
 
         int iPieza = this.getI() - 1;
@@ -540,6 +547,7 @@ public abstract class Pieza implements Movible {
 
 
     public boolean hayJaque(){
+
         return hayJaqueARRIBA() ||
                 hayJaqueARRIBADERECHA() ||
                 hayJaqueDERECHA() ||
@@ -560,10 +568,6 @@ public abstract class Pieza implements Movible {
                 hayJaqueCaballoARRIBAIZQUIERDA() ||
                 hayJaquePeones();
     }
-
-
-
-
 
 
 

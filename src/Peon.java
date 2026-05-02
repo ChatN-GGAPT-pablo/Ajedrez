@@ -12,8 +12,10 @@ public class Peon extends Pieza{
         return "P" + this.getColor() + this.getNumeroPieza() ;
     }
 
+
     @Override
     public void posiblesMovimientos(Pieza p) {
+        Pieza rey = Main.buscarRey(p.getColor());
         //BLANCOS
         if (Main.getTurno().equals("B")) {
             boolean moverprimera1 = false;
@@ -62,6 +64,8 @@ public class Peon extends Pieza{
 
                 if (!moverprimera1 && !moverprimera2 && !arribaDerecha && !arribaIzquierda) {
                     System.out.println("No hay movimientos disponibles");
+                    Main.setPiezaAMover(Main.mostrarPiezas());
+                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
                     return;
                 }
 
@@ -129,7 +133,7 @@ public class Peon extends Pieza{
                 p.setI(iProvisional);
                 p.setJ(jProvisional);
 
-                if (hayJaque()){
+                if (rey.hayJaque()){
                     Main.tablero[iOriginal][jOriginal] = p;
                     Main.tablero[iProvisional][jProvisional] = piezaComida;
 
@@ -149,6 +153,8 @@ public class Peon extends Pieza{
 
                 if (!mover && !arribaDerecha && !arribaIzquierda) {
                     System.out.println("No hay movimientos disponibles");
+                    Main.setPiezaAMover(Main.mostrarPiezas());
+                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
                     return;
                 }
 
@@ -205,7 +211,7 @@ public class Peon extends Pieza{
             p.setI(iProvisional);
             p.setJ(jProvisional);
 
-            if (hayJaque()){
+            if (rey.hayJaque()){
                 Main.tablero[iOriginal][jOriginal] = p;
                 Main.tablero[iProvisional][jProvisional] = piezaComida;
 
@@ -286,6 +292,8 @@ public class Peon extends Pieza{
 
                 if (!moverprimera1 && !moverprimera2 && !abajoDerecha && !abajoIzquierda) {
                     System.out.println("No hay movimientos disponibles");
+                    Main.setPiezaAMover(Main.mostrarPiezas());
+                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
                     return;
                 }
 
@@ -353,7 +361,7 @@ public class Peon extends Pieza{
                 p.setI(iProvisional);
                 p.setJ(jProvisional);
 
-                if (hayJaque()){
+                if (rey.hayJaque()){
                     Main.tablero[iOriginal][jOriginal] = p;
                     Main.tablero[iProvisional][jProvisional] = piezaComida;
 
@@ -374,6 +382,8 @@ public class Peon extends Pieza{
 
                 if (!mover && !abajoDerecha && !abajoIzquierda) {
                     System.out.println("No hay movimientos disponibles");
+                    Main.setPiezaAMover(Main.mostrarPiezas());
+                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
                     return;
                 }
 
@@ -432,7 +442,7 @@ public class Peon extends Pieza{
             p.setI(iProvisional);
             p.setJ(jProvisional);
 
-            if (hayJaque()){
+            if (rey.hayJaque()){
                 Main.tablero[iOriginal][jOriginal] = p;
                 Main.tablero[iProvisional][jProvisional] = piezaComida;
 
