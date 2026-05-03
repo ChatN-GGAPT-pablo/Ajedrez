@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main{
     static String turno = "B";
@@ -19,6 +17,14 @@ public class Main{
 
     static Pieza[][] tablero = new Pieza[8][8];
     static final int tamanio = tablero.length;
+
+    public static class ComparadorNumeroPieza implements Comparator<Pieza> {
+
+        public int compare(Pieza p1, Pieza p2){
+            return (p1.getNumeroPieza() - p2.getNumeroPieza());
+        }
+
+    }
 
     public static void a(Pieza p){
         System.out.println(p.getI()+p.getJ());
@@ -47,7 +53,7 @@ public class Main{
                         System.out.print(lineas);
                     }
                 } else {
-                    System.out.print("nul");
+                    System.out.print("   ");
                     String lineas = "    |    ";
                     System.out.print(lineas);
                 }
@@ -142,36 +148,42 @@ public class Main{
 
             if (peonesBDisponibles.size() != 0){
                 System.out.println("1. Peones blancos disponibles: ");
+                peonesBDisponibles.sort(new ComparadorNumeroPieza());
                 System.out.println(peonesBDisponibles);
                 peonB = true;
             }
 
-            if (alfilesBDisponibles.size() != 0){
-                System.out.println("2. Alfiles blancos disponibles: ");
-                System.out.println(alfilesBDisponibles);
-                alfilB = true;
-            }
-
-            if (caballosBDisponibles.size() != 0){
-                System.out.println("3. Caballos blancos disponibles: ");
-                System.out.println(caballosBDisponibles);
-                caballoB = true;
-            }
-
             if (torresBDisponibles.size() != 0){
-                System.out.println("4. Torres blancas disponibles: ");
+                System.out.println("2. Torres blancas disponibles: ");
+                torresBDisponibles.sort(new ComparadorNumeroPieza());
                 System.out.println(torresBDisponibles);
                 torreB = true;
             }
 
+            if (caballosBDisponibles.size() != 0){
+                System.out.println("3. Caballos blancos disponibles: ");
+                caballosBDisponibles.sort(new ComparadorNumeroPieza());
+                System.out.println(caballosBDisponibles);
+                caballoB = true;
+            }
+
+            if (alfilesBDisponibles.size() != 0){
+                System.out.println("4. Alfiles blancos disponibles: ");
+                alfilesBDisponibles.sort(new ComparadorNumeroPieza());
+                System.out.println(alfilesBDisponibles);
+                alfilB = true;
+            }
+
             if (damaBDisponible.size() != 0){
                 System.out.println("5. Dama blanca disponible: ");
+                damaBDisponible.sort(new ComparadorNumeroPieza());
                 System.out.println(damaBDisponible);
                 damaB = true;
             }
 
             if (reyBDisponible.size() != 0){
                 System.out.println("6. Rey blanca disponible: ");
+                reyBDisponible.sort(new ComparadorNumeroPieza());
                 System.out.println(reyBDisponible);
                 reyB = true;
             }
@@ -194,7 +206,7 @@ public class Main{
                 return (peones.get(opcion-1));
             }
 
-            if (decision == 2 && alfilB){
+            if (decision == 2 && torreB){
 
                 ArrayList<Pieza> alfiles = new ArrayList<>();
                 for (int i = 0; i < alfilesBDisponibles.size(); i++ ){
@@ -226,7 +238,7 @@ public class Main{
                 return (caballos.get(opcion-1));
             }
 
-            if (decision == 4 && torreB){
+            if (decision == 4 && alfilB){
 
                 ArrayList<Pieza> torres = new ArrayList<>();
                 for (int i = 0; i < torresBDisponibles.size(); i++ ){
@@ -278,36 +290,42 @@ public class Main{
             System.out.println("Qué grupo de piezas quieres seleccionar?");
             if (peonesNDisponibles.size() != 0){
                 System.out.println("1. Peones negros disponibles: ");
+                peonesNDisponibles.sort(new ComparadorNumeroPieza());
                 System.out.println(peonesNDisponibles);
                 peonN = true;
             }
 
             if (alfilesNDisponibles.size() != 0){
                 System.out.println("2. Alfiles negros disponibles: ");
+                alfilesNDisponibles.sort(new ComparadorNumeroPieza());
                 System.out.println(alfilesNDisponibles);
                 alfilN = true;
             }
 
             if (caballosNDisponibles.size() != 0){
                 System.out.println("3. Caballos negros disponibles: ");
+                caballosNDisponibles.sort(new ComparadorNumeroPieza());
                 System.out.println(caballosNDisponibles);
                 caballoN = true;
             }
 
             if (torresNDisponibles.size() != 0){
                 System.out.println("4. Torres negras disponibles: ");
+                torresNDisponibles.sort(new ComparadorNumeroPieza());
                 System.out.println(torresNDisponibles);
                 torreN = true;
             }
 
             if (damaNDisponible.size() != 0){
                 System.out.println("5. Dama negra disponible: ");
+                damaNDisponible.sort(new ComparadorNumeroPieza());
                 System.out.println(damaNDisponible);
                 damaN = true;
             }
 
             if (reyNDisponible.size() != 0){
                 System.out.println("6. Rey negra disponible: ");
+                reyNDisponible.sort(new ComparadorNumeroPieza());
                 System.out.println(reyNDisponible);
                 reyN = true;
             }
@@ -334,7 +352,7 @@ public class Main{
                 return (peones.get(opcion-1));
             }
 
-            if (decision == 2 && alfilN){
+            if (decision == 2 && torreN){
 
                 ArrayList<Pieza> alfiles = new ArrayList<>();
                 for (int i = 0; i < alfilesNDisponibles.size(); i++ ){
@@ -366,7 +384,7 @@ public class Main{
                 return (caballos.get(opcion-1));
             }
 
-            if (decision == 4 && torreN){
+            if (decision == 4 && alfilN){
 
                 ArrayList<Pieza> torres = new ArrayList<>();
                 for (int i = 0; i < torresNDisponibles.size(); i++ ){
@@ -477,21 +495,19 @@ public class Main{
 
 
 
-
-
     public static void main(String[] args) {
         //COnstructor piezas
         {
             //peones blancos
 
             Pieza PB1 = new Peon("Peón", "B",  1, 6, 0);
-            Pieza PB2 = new Peon("Peón", "B",  2, 6, 0);
-            Pieza PB3 = new Peon("Peón", "B",  3, 6, 0);
-            Pieza PB4 = new Peon("Peón", "B",  4, 6, 0);
-            Pieza PB5 = new Peon("Peón", "B",  5, 6, 0);
-            Pieza PB6 = new Peon("Peón", "B",  6, 6, 0);
-            Pieza PB7 = new Peon("Peón", "B",  7, 6, 0);
-            Pieza PB8 = new Peon("Peón", "B",  8, 6, 0);
+            Pieza PB2 = new Peon("Peón", "B",  2, 6, 1);
+            Pieza PB3 = new Peon("Peón", "B",  3, 6, 2);
+            Pieza PB4 = new Peon("Peón", "B",  4, 6, 3);
+            Pieza PB5 = new Peon("Peón", "B",  5, 6, 4);
+            Pieza PB6 = new Peon("Peón", "B",  6, 6, 5);
+            Pieza PB7 = new Peon("Peón", "B",  7, 6, 6);
+            Pieza PB8 = new Peon("Peón", "B",  8, 6, 7);
 
             tablero[6][0] = PB1;
             tablero[6][1] = PB2;
@@ -505,13 +521,13 @@ public class Main{
 
             //peones negros
             Pieza PN1 = new Peon("Peón", "N",  1, 1, 0);
-            Pieza PN2 = new Peon("Peón", "N",  2, 1, 0);
-            Pieza PN3 = new Peon("Peón", "N",  3, 1, 0);
-            Pieza PN4 = new Peon("Peón", "N",  4, 1, 0);
-            Pieza PN5 = new Peon("Peón", "N",  5, 1, 0);
-            Pieza PN6 = new Peon("Peón", "N",  6, 1, 0);
-            Pieza PN7 = new Peon("Peón", "N",  7, 1, 0);
-            Pieza PN8 = new Peon("Peón", "N",  8, 1, 0);
+            Pieza PN2 = new Peon("Peón", "N",  2, 1, 1);
+            Pieza PN3 = new Peon("Peón", "N",  3, 1, 2);
+            Pieza PN4 = new Peon("Peón", "N",  4, 1, 3);
+            Pieza PN5 = new Peon("Peón", "N",  5, 1, 4);
+            Pieza PN6 = new Peon("Peón", "N",  6, 1, 5);
+            Pieza PN7 = new Peon("Peón", "N",  7, 1, 6);
+            Pieza PN8 = new Peon("Peón", "N",  8, 1, 7);
 
             tablero[1][0] = PN1;
             tablero[1][1] = PN2;
@@ -582,19 +598,16 @@ public class Main{
         System.out.println(tablero[0][0]);
 
 
-        mostrarTablero();
+        while (true){
+            mostrarTablero();
 
-        Main.piezaAMover = mostrarPiezas();
-        piezaAMover.posiblesMovimientos(piezaAMover);
+            Main.piezaAMover = mostrarPiezas();
+            piezaAMover.posiblesMovimientos(piezaAMover);
+        }
 
-        mostrarTablero();
 
 
-        cambiarTurno();
-        Main.piezaAMover = mostrarPiezas();
-        Main.piezaAMover.posiblesMovimientos(piezaAMover);
 
-        mostrarTablero();
 
 
 

@@ -216,8 +216,10 @@ public class Rey extends Pieza {
         } else {
             if (piezaComida != null) {
                 System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                Main.cambiarTurno();
             } else {
                 System.out.println("Pieza movida.");
+                Main.cambiarTurno();
             }
         }
 
