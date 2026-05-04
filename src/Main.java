@@ -18,6 +18,30 @@ public class Main{
     static Pieza[][] tablero = new Pieza[8][8];
     static final int tamanio = tablero.length;
 
+
+
+
+
+
+    //Listas piezas blancas para mostrar
+    static ArrayList<Pieza> peonesBDisponibles = new ArrayList<>();
+    static ArrayList<Pieza> alfilesBDisponibles = new ArrayList<>();
+    static ArrayList<Pieza> caballosBDisponibles = new ArrayList<>();
+    static ArrayList<Pieza> torresBDisponibles = new ArrayList<>();
+    static ArrayList<Pieza> damasBDisponibles = new ArrayList<>();
+    static ArrayList<Pieza> reyBDisponible = new ArrayList<>();
+
+
+    //Listas piezas negras para mostrar
+    static ArrayList<Pieza> peonesNDisponibles = new ArrayList<>();
+    static ArrayList<Pieza> alfilesNDisponibles = new ArrayList<>();
+    static ArrayList<Pieza> caballosNDisponibles = new ArrayList<>();
+    static ArrayList<Pieza> torresNDisponibles = new ArrayList<>();
+    static ArrayList<Pieza> damasNDisponibles = new ArrayList<>();
+    static ArrayList<Pieza> reyNDisponible = new ArrayList<>();
+    /**
+     * Comparador de piezas para ordenar en las listas que se muestran
+     */
     public static class ComparadorNumeroPieza implements Comparator<Pieza> {
 
         public int compare(Pieza p1, Pieza p2){
@@ -69,12 +93,14 @@ public class Main{
         Scanner sc = new Scanner(System.in);
 
         //Listas piezas blancas para mostrar
-        ArrayList<Pieza> peonesBDisponibles = new ArrayList<>();
-        ArrayList<Pieza> alfilesBDisponibles = new ArrayList<>();
-        ArrayList<Pieza> caballosBDisponibles = new ArrayList<>();
-        ArrayList<Pieza> torresBDisponibles = new ArrayList<>();
-        ArrayList<Pieza> damaBDisponible = new ArrayList<>();
-        ArrayList<Pieza> reyBDisponible = new ArrayList<>();
+        peonesBDisponibles.clear();
+        alfilesBDisponibles.clear();
+        caballosBDisponibles.clear();
+        torresBDisponibles.clear();
+        damasBDisponibles.clear();
+        reyBDisponible.clear();
+
+
 
 
         boolean peonB = false;
@@ -85,15 +111,13 @@ public class Main{
         boolean reyB = false;
 
 
-
         //Listas piezas negras para mostrar
-        ArrayList<Pieza> peonesNDisponibles = new ArrayList<>();
-        ArrayList<Pieza> alfilesNDisponibles = new ArrayList<>();
-        ArrayList<Pieza> caballosNDisponibles = new ArrayList<>();
-        ArrayList<Pieza> torresNDisponibles = new ArrayList<>();
-        ArrayList<Pieza> damaNDisponible = new ArrayList<>();
-        ArrayList<Pieza> reyNDisponible = new ArrayList<>();
-
+        peonesNDisponibles.clear();
+        alfilesNDisponibles.clear();
+        caballosNDisponibles.clear();
+        torresNDisponibles.clear();
+        damasNDisponibles.clear();
+        reyNDisponible.clear();
 
         boolean peonN = false;
         boolean alfilN = false;
@@ -115,7 +139,7 @@ public class Main{
                     } else if (tablero[i][j].getNombrePieza().equals("Torre") && tablero[i][j].getColor().equals("B")){
                         torresBDisponibles.add(tablero[i][j]);
                     } else if (tablero[i][j].getNombrePieza().equals("Dama") && tablero[i][j].getColor().equals("B")){
-                        damaBDisponible.add(tablero[i][j]);
+                        damasBDisponibles.add(tablero[i][j]);
                     }else if (tablero[i][j].getNombrePieza().equals("Rey") && tablero[i][j].getColor().equals("B")){
                         reyBDisponible.add(tablero[i][j]);
                     }
@@ -136,7 +160,7 @@ public class Main{
                     } else if (tablero[i][j].getNombrePieza().equals("Torre") && tablero[i][j].getColor().equals("N")) {
                         torresNDisponibles.add(tablero[i][j]);
                     } else if (tablero[i][j].getNombrePieza().equals("Dama") && tablero[i][j].getColor().equals("N")) {
-                        damaNDisponible.add(tablero[i][j]);
+                        damasNDisponibles.add(tablero[i][j]);
                     }else if (tablero[i][j].getNombrePieza().equals("Rey") && tablero[i][j].getColor().equals("N")) {
                         reyNDisponible.add(tablero[i][j]);
                     }
@@ -174,10 +198,10 @@ public class Main{
                 alfilB = true;
             }
 
-            if (damaBDisponible.size() != 0){
+            if (damasBDisponibles.size() != 0){
                 System.out.println("5. Dama blanca disponible: ");
-                damaBDisponible.sort(new ComparadorNumeroPieza());
-                System.out.println(damaBDisponible);
+                damasBDisponibles.sort(new ComparadorNumeroPieza());
+                System.out.println(damasBDisponibles);
                 damaB = true;
             }
 
@@ -197,7 +221,7 @@ public class Main{
                     peones.add(peonesBDisponibles.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + peones.size());
+                System.out.println("Elige una opción entre 1 y " + peones.size());
                 opcion = sc.nextInt();
                 while(opcion < 1 || opcion > peones.size()){
                     System.out.println("Opción inválida.");
@@ -214,7 +238,7 @@ public class Main{
                     torres.add(torresBDisponibles.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + torres.size());
+                System.out.println("Elige una opción entre 1 y " + torres.size());
                 opcion = sc.nextInt();
                 while(opcion < 1 || opcion > torres.size()){
                     System.out.println("Opción inválida.");
@@ -230,7 +254,7 @@ public class Main{
                     caballos.add(caballosBDisponibles.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + caballos.size());
+                System.out.println("Elige una opción entre 1 y " + caballos.size());
                 opcion = sc.nextInt();
                 while(opcion < 1 || opcion > caballos.size()){
                     System.out.println("Opción inválida.");
@@ -246,7 +270,7 @@ public class Main{
                     alfiles.add(alfilesBDisponibles.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + alfiles.size());
+                System.out.println("Elige una opción entre 1 y " + alfiles.size());
                 opcion = sc.nextInt();
                 while(opcion < 1 || opcion > alfiles.size()){
                     System.out.println("Opción inválida.");
@@ -257,12 +281,12 @@ public class Main{
             if (decision == 5 && damaB){
 
                 ArrayList<Pieza> dama = new ArrayList<>();
-                for (int i = 0; i < damaBDisponible.size(); i++ ){
-                    System.out.println(i+1 + ". " + damaBDisponible.get(i));
-                    dama.add(damaBDisponible.get(i));
+                for (int i = 0; i < damasBDisponibles.size(); i++ ){
+                    System.out.println(i+1 + ". " + damasBDisponibles.get(i));
+                    dama.add(damasBDisponibles.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + dama.size());
+                System.out.println("Elige una opción entre 1 y " + dama.size());
                 opcion = sc.nextInt();
                 while(opcion < 1 || opcion > dama.size()){
                     System.out.println("Opción inválida.");
@@ -278,7 +302,7 @@ public class Main{
                     rey.add(reyBDisponible.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + rey.size());
+                System.out.println("Elige una opción entre 1 y " + rey.size());
                 opcion = sc.nextInt();
                 while(opcion < 1 || opcion > rey.size()){
                     System.out.println("Opción inválida.");
@@ -316,10 +340,10 @@ public class Main{
                 torreN = true;
             }
 
-            if (damaNDisponible.size() != 0){
+            if (damasNDisponibles.size() != 0){
                 System.out.println("5. Dama negra disponible: ");
-                damaNDisponible.sort(new ComparadorNumeroPieza());
-                System.out.println(damaNDisponible);
+                damasNDisponibles.sort(new ComparadorNumeroPieza());
+                System.out.println(damasNDisponibles);
                 damaN = true;
             }
 
@@ -344,7 +368,7 @@ public class Main{
                     peones.add(peonesNDisponibles.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + peones.size());
+                System.out.println("Elige una opción entre 1 y " + peones.size());
                 opcion = sc.nextInt();
                 while(opcion < 1 || opcion > peones.size()){
                     System.out.println("Opción inválida.");
@@ -360,7 +384,7 @@ public class Main{
                     torres.add(torresNDisponibles.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + torres.size());
+                System.out.println("Elige una opción entre 1 y " + torres.size());
                 opcion = sc.nextInt();
                 while(opcion < 1 || opcion > torres.size()){
                     System.out.println("Opción inválida.");
@@ -376,7 +400,7 @@ public class Main{
                     caballos.add(caballosNDisponibles.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + caballos.size());
+                System.out.println("Elige una opción entre 1 y " + caballos.size());
                 opcion = sc.nextInt();
                 while(opcion < 1 || opcion > caballos.size()){
                     System.out.println("Opción inválida.");
@@ -392,7 +416,7 @@ public class Main{
                     alfiles.add(alfilesNDisponibles.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + alfiles.size());
+                System.out.println("Elige una opción entre 1 y " + alfiles.size());
                 opcion = sc.nextInt();
                 while(opcion < 1 || opcion > alfiles.size()){
                     System.out.println("Opción inválida.");
@@ -403,12 +427,12 @@ public class Main{
             if (decision == 5 && damaN){
 
                 ArrayList<Pieza> dama = new ArrayList<>();
-                for (int i = 0; i < damaNDisponible.size(); i++ ){
-                    System.out.println(i+1 + ". " + damaNDisponible.get(i));
-                    dama.add(damaNDisponible.get(i));
+                for (int i = 0; i < damasNDisponibles.size(); i++ ){
+                    System.out.println(i+1 + ". " + damasNDisponibles.get(i));
+                    dama.add(damasNDisponibles.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + dama.size());
+                System.out.println("Elige una opción entre 1 y " + dama.size());
                 opcion = sc.nextInt();
                 while(opcion < 1 || opcion > dama.size()){
                     System.out.println("Opción inválida.");
@@ -424,7 +448,7 @@ public class Main{
                     rey.add(reyNDisponible.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + rey.size());
+                System.out.println("Elige una opción entre 1 y " + rey.size());
                 opcion = sc.nextInt();
                 while(opcion < 1 || opcion > rey.size()){
                     System.out.println("Opción inválida.");
@@ -577,11 +601,11 @@ public class Main{
             tablero[0][5] =AN2;
 
             //Dama blanca
-            Pieza DB = new Dama("Dama", "B",7,3);
+            Pieza DB = new Dama("Dama", "B",1,7,3);
             tablero[7][3] = DB;
 
             //Dama blanca
-            Pieza DN = new Dama("Dama", "N",0,3);
+            Pieza DN = new Dama("Dama", "N",1,0,3);
             tablero[0][3] = DN;
 
             //Rey blanco
