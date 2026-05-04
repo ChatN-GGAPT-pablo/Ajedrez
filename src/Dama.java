@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Dama extends Pieza{
     Scanner sc = new Scanner(System.in);
     public Dama(String nombrePieza, String color, int numeroPieza, int i, int j) {
-        super(nombrePieza, color,numeroPieza, i, j);
+        super(nombrePieza, color, numeroPieza, i, j);
     }
 
 

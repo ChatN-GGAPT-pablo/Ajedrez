@@ -236,6 +236,28 @@ public class Peon extends Pieza{
                         int promocion = sc.nextInt();
 
                         if (promocion == 1){
+                            Main.tablero[p.getI()][p.getJ()] = new Dama("Dama", getColor(),Main.damasBDisponibles.size()+1, getI(), getJ());
+                        }else if (promocion == 2){
+                            Main.tablero[p.getI()][p.getJ()] = new Torre("Torre", getColor(),Main.torresBDisponibles.size()+1, getI(), getJ());
+                        }else if (promocion == 3){
+                            Main.tablero[p.getI()][p.getJ()] = new Caballo("Caballo", getColor(),Main.caballosBDisponibles.size()+1, getI(), getJ());
+                        }else if (promocion == 4){
+                            Main.tablero[p.getI()][p.getJ()] = new Alfil("Alfil", getColor(),Main.alfilesBDisponibles.size()+1, getI(), getJ());
+                        }
+
+                        Main.cambiarTurno();
+                    }else{
+                        System.out.println("Pieza movida.");
+                        System.out.println("Promoción de peón");
+                        System.out.println("A qué quieres promocionar?");
+
+                        System.out.println("1. Dama");
+                        System.out.println("2. Torre");
+                        System.out.println("3. Caballo");
+                        System.out.println("4. Alfil");
+                        int promocion = sc.nextInt();
+
+                        if (promocion == 1){
                             Main.tablero[getI()][getJ()] = new Dama("Dama", getColor(),Main.damasBDisponibles.size()+1, getI(), getJ());
                         }else if (promocion == 2){
                             Main.tablero[getI()][getJ()] = new Torre("Torre", getColor(),Main.torresBDisponibles.size()+1, getI(), getJ());
@@ -244,10 +266,6 @@ public class Peon extends Pieza{
                         }else if (promocion == 4){
                             Main.tablero[getI()][getJ()] = new Alfil("Alfil", getColor(),Main.alfilesBDisponibles.size()+1, getI(), getJ());
                         }
-
-                        Main.cambiarTurno();
-                    }else{
-                        System.out.println("Pieza movida.");
                         Main.cambiarTurno();
                     }
                 }
@@ -479,6 +497,122 @@ public class Peon extends Pieza{
                         Main.cambiarTurno();
                     }else{
                         System.out.println("Pieza movida.");
+                        Main.cambiarTurno();
+                    }
+                }
+
+            } else if (p.getI() == 6){
+                if (!mover && !abajoDerecha && !abajoIzquierda) {
+                    System.out.println("No hay movimientos disponibles");
+                    Main.setPiezaAMover(Main.mostrarPiezas());
+                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
+                    return;
+                }
+
+                int decision;
+                while(true){
+                    System.out.println("Qué quieres hacer?");
+                    if (mover){
+                        System.out.println("1. Mover");
+                    }
+                    if (abajoDerecha){
+                        System.out.println("2. Comer derecha");
+                    }
+                    if (abajoIzquierda){
+                        System.out.println("3. comer izquierda");
+                    }
+                    decision = sc.nextInt();
+
+                    if (decision == 1 && mover) {
+                        break;
+                    } else if (decision == 2 && abajoDerecha) {
+                        break;
+                    } else if (decision == 3 && abajoIzquierda) {
+                        break;
+                    } else {
+                        System.out.println("Repite decisión");
+                    }
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI();
+                int jProvisional = p.getJ();
+
+                if (decision == 1 && mover){
+                    iProvisional = (p.getI() + 1);
+                } else if (decision == 2 && abajoDerecha) {
+                    iProvisional = (p.getI() + 1);
+                    jProvisional = (p.getJ() + 1);
+                } else if (decision == 3 && abajoIzquierda) {
+                    iProvisional = (p.getI() + 1);
+                    jProvisional = (p.getJ() - 1);
+                }
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                if (piezaComida != null && piezaComida.getColor().equals(p.getColor())){
+                    System.out.println("No te puedes comer una pieza de tu color");
+                    return;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (rey.hayJaque()){
+                    Main.tablero[iOriginal][jOriginal] = p;
+                    Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                    p.setI(iOriginal);
+                    p.setJ(jOriginal);
+
+                    System.out.println("Movimiento ilegal");
+                }else{
+                    if (piezaComida != null){
+                        System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                        System.out.println("Promoción de peón");
+                        System.out.println("A qué quieres promocionar?");
+
+                        System.out.println("1. Dama");
+                        System.out.println("2. Torre");
+                        System.out.println("3. Caballo");
+                        System.out.println("4. Alfil");
+                        int promocion = sc.nextInt();
+
+                        if (promocion == 1){
+                            Main.tablero[p.getI()][p.getJ()] = new Dama("Dama", getColor(),Main.damasNDisponibles.size()+1, getI(), getJ());
+                        }else if (promocion == 2){
+                            Main.tablero[p.getI()][p.getJ()] = new Torre("Torre", getColor(),Main.torresNDisponibles.size()+1, getI(), getJ());
+                        }else if (promocion == 3){
+                            Main.tablero[p.getI()][p.getJ()] = new Caballo("Caballo", getColor(),Main.caballosNDisponibles.size()+1, getI(), getJ());
+                        }else if (promocion == 4){
+                            Main.tablero[p.getI()][p.getJ()] = new Alfil("Alfil", getColor(),Main.alfilesNDisponibles.size()+1, getI(), getJ());
+                        }
+
+                        Main.cambiarTurno();
+                    }else{
+                        System.out.println("Pieza movida.");
+                        System.out.println("Promoción de peón");
+                        System.out.println("A qué quieres promocionar?");
+
+                        System.out.println("1. Dama");
+                        System.out.println("2. Torre");
+                        System.out.println("3. Caballo");
+                        System.out.println("4. Alfil");
+                        int promocion = sc.nextInt();
+
+                        if (promocion == 1){
+                            Main.tablero[getI()][getJ()] = new Dama("Dama", getColor(),Main.damasBDisponibles.size()+1, getI(), getJ());
+                        }else if (promocion == 2){
+                            Main.tablero[getI()][getJ()] = new Torre("Torre", getColor(),Main.torresBDisponibles.size()+1, getI(), getJ());
+                        }else if (promocion == 3){
+                            Main.tablero[getI()][getJ()] = new Caballo("Caballo", getColor(),Main.caballosBDisponibles.size()+1, getI(), getJ());
+                        }else if (promocion == 4){
+                            Main.tablero[getI()][getJ()] = new Alfil("Alfil", getColor(),Main.alfilesBDisponibles.size()+1, getI(), getJ());
+                        }
                         Main.cambiarTurno();
                     }
                 }
