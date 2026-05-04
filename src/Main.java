@@ -354,18 +354,18 @@ public class Main{
 
             if (decision == 2 && torreN){
 
-                ArrayList<Pieza> alfiles = new ArrayList<>();
-                for (int i = 0; i < alfilesNDisponibles.size(); i++ ){
-                    System.out.println(i+1 + ". " + alfilesNDisponibles.get(i));
-                    alfiles.add(alfilesNDisponibles.get(i));
+                ArrayList<Pieza> torres = new ArrayList<>();
+                for (int i = 0; i < torresNDisponibles.size(); i++ ){
+                    System.out.println(i+1 + ". " + torresNDisponibles.get(i));
+                    torres.add(torresNDisponibles.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + alfiles.size());
+                System.out.println("Elige una opcion entre 1 y " + torres.size());
                 opcion = sc.nextInt();
-                while(opcion < 1 || opcion > alfiles.size()){
+                while(opcion < 1 || opcion > torres.size()){
                     System.out.println("Opción inválida.");
                 }
-                return (alfiles.get(opcion-1));
+                return (torres.get(opcion-1));
             }
 
             if (decision == 3 && caballoN){
@@ -386,18 +386,18 @@ public class Main{
 
             if (decision == 4 && alfilN){
 
-                ArrayList<Pieza> torres = new ArrayList<>();
-                for (int i = 0; i < torresNDisponibles.size(); i++ ){
-                    System.out.println(i+1 + ". " + torresNDisponibles.get(i));
-                    torres.add(torresNDisponibles.get(i));
+                ArrayList<Pieza> alfiles = new ArrayList<>();
+                for (int i = 0; i < alfilesNDisponibles.size(); i++ ){
+                    System.out.println(i+1 + ". " + alfilesNDisponibles.get(i));
+                    alfiles.add(alfilesNDisponibles.get(i));
                 }
                 int opcion;
-                System.out.println("Elige una opcion entre 1 y " + torres.size());
+                System.out.println("Elige una opcion entre 1 y " + alfiles.size());
                 opcion = sc.nextInt();
-                while(opcion < 1 || opcion > torres.size()){
+                while(opcion < 1 || opcion > alfiles.size()){
                     System.out.println("Opción inválida.");
                 }
-                return (torres.get(opcion-1));
+                return (alfiles.get(opcion-1));
             }
 
             if (decision == 5 && damaN){
