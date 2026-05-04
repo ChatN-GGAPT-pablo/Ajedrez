@@ -6,6 +6,7 @@ public abstract class Pieza implements Movible {
     boolean reyPeligro = false;
     int i;
     int j;
+    boolean primerMovimiento2 = false;
 
     /**
      * Constructor para rey y reina pq solo hay uno de cada y no necesitan "numero"
@@ -33,6 +34,15 @@ public abstract class Pieza implements Movible {
         this.numeroPieza = numeroPieza;
         this.i = i;
         this.j = j;
+    }
+    //Constructor Peon
+    public Pieza(String nombrePieza, String color, int numeroPieza, int i, int j, boolean primerMovimiento2) {
+        this.nombrePieza = nombrePieza;
+        this.color = color;
+        this.numeroPieza = numeroPieza;
+        this.i = i;
+        this.j = j;
+        this.primerMovimiento2 = primerMovimiento2;
     }
 
 
@@ -76,14 +86,13 @@ public abstract class Pieza implements Movible {
         this.j = j;
     }
 
+    public boolean isPrimerMovimiento() {
+        return primerMovimiento2;
+    }
 
-
-
-
-
-
-
-
+    public void setPrimerMovimiento(boolean primerMovimiento) {
+        this.primerMovimiento2 = primerMovimiento;
+    }
 
     public boolean hayJaqueARRIBA() {
 

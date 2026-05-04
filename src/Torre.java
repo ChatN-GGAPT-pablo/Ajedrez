@@ -185,9 +185,11 @@ public class Torre extends Pieza{
             }else{
                 if (piezaComida != null){
                     System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }else{
                     System.out.println("Pieza movida.");
+                    Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }
             }
@@ -249,9 +251,11 @@ public class Torre extends Pieza{
             }else{
                 if (piezaComida != null){
                     System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }else{
                     System.out.println("Pieza movida.");
+                    Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }
             }
@@ -313,9 +317,11 @@ public class Torre extends Pieza{
             }else{
                 if (piezaComida != null){
                     System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }else{
                     System.out.println("Pieza movida.");
+                    Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }
             }
@@ -377,9 +383,11 @@ public class Torre extends Pieza{
             }else{
                 if (piezaComida != null){
                     System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }else{
                     System.out.println("Pieza movida.");
+                    Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }
             }

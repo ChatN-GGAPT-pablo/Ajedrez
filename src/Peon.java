@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Peon extends Pieza{
 
     Scanner sc = new Scanner(System.in);
-    public Peon(String nombrePieza, String color, int numeroPieza, int i, int j) {
-        super(nombrePieza, color, numeroPieza, i, j);
+    public Peon(String nombrePieza, String color, int numeroPieza, int i, int j, boolean primerMovimiento22) {
+        super(nombrePieza, color, numeroPieza, i, j, primerMovimiento22);
     }
 
     @Override
@@ -26,6 +26,9 @@ public class Peon extends Pieza{
             boolean arribaDerecha = false;
             boolean arribaIzquierda = false;
 
+            boolean enPeassantBlancoDerecha = false;
+            boolean enPeassantBlancoIzquierda = false;
+
             if (p.getI() - 1 >= 0 && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() + 1];
                 if (casilla != null){
@@ -40,6 +43,34 @@ public class Peon extends Pieza{
                 if (casilla != null){
                     if (!(casilla.getColor().equals(p.getColor()))){
                         arribaIzquierda= true;
+                    }
+                }
+            }
+
+
+            //En peassant derecha
+            if (p.getI() == 3 && p.getColor().equals("B")){
+                Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
+                if (casilla != null){
+                    if (!(casilla.getColor().equals(p.getColor()))){
+                        if (casilla.primerMovimiento2 == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")){
+                            enPeassantBlancoDerecha= true;
+                        }
+
+                    }
+                }
+            }
+
+
+            //En peassant izquierda
+            if (p.getI() == 3 && p.getColor().equals("B")){
+                Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
+                if (casilla != null){
+                    if (!(casilla.getColor().equals(p.getColor()))){
+                        if (casilla.primerMovimiento2 == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")){
+                            enPeassantBlancoIzquierda= true;
+                        }
+
                     }
                 }
             }
@@ -114,6 +145,7 @@ public class Peon extends Pieza{
                     iProvisional = (p.getI() - 1);
                 } else if (decision == 2 && moverprimera2) {
                     iProvisional = (p.getI() -2);
+                    p.primerMovimiento2 = true;
                 } else if (decision == 3 && arribaDerecha) {
                     iProvisional = (p.getI() - 1);
                     jProvisional = (p.getJ() + 1);
@@ -145,12 +177,112 @@ public class Peon extends Pieza{
                 }else{
                     if (piezaComida != null){
                         System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                        Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     }else{
                         System.out.println("Pieza movida.");
+                        Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     }
                 }
+
+
+
+                //En Peassant
+            } else if (p.getI() == 3) {
+                if (!mover && !arribaDerecha && !arribaIzquierda && !enPeassantBlancoIzquierda && !enPeassantBlancoDerecha) {
+                    System.out.println("No hay movimientos disponibles");
+                    Main.setPiezaAMover(Main.mostrarPiezas());
+                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
+                    return;
+                }
+
+                int decision;
+                while(true){
+                    System.out.println("Qué quieres hacer?");
+                    if (mover){
+                        System.out.println("1. Mover");
+                    }
+                    if (arribaDerecha){
+                        System.out.println("2. Comer derecha");
+                    }
+                    if (arribaIzquierda){
+                        System.out.println("3. comer izquierda");
+                    }
+                    if (enPeassantBlancoDerecha){
+                        System.out.println("4. En Peassant Derecha");
+                    }
+                    if (enPeassantBlancoIzquierda){
+                        System.out.println("4. En Peassant Izquierda");
+                    }
+                    decision = sc.nextInt();
+
+                    if (decision == 1 && mover) {
+                        break;
+                    } else if (decision == 2 && arribaDerecha) {
+                        break;
+                    } else if (decision == 3 && arribaIzquierda) {
+                        break;
+                    } else if (decision == 4 && enPeassantBlancoDerecha) {
+                        break;
+                    } else if (decision == 5 && enPeassantBlancoIzquierda) {
+                        break;
+                    }else {
+                        System.out.println("Repite decisión");
+                    }
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI();
+                int jProvisional = p.getJ();
+
+                if (decision == 1 && mover){
+                    iProvisional = (p.getI() - 1);
+                } else if (decision == 2 && arribaDerecha) {
+                    iProvisional = (p.getI() - 1);
+                    jProvisional = (p.getJ() + 1);
+                } else if (decision == 3 && arribaIzquierda) {
+                    iProvisional = (p.getI() - 1);
+                    jProvisional = (p.getJ() - 1);
+                } else if (decision == 4 && enPeassantBlancoDerecha) {
+                    iProvisional = (p.getI() - 1);
+                    jProvisional = (p.getJ() + 1);
+                } else if (decision == 5 && enPeassantBlancoIzquierda) {
+                    iProvisional = (p.getI() - 1);
+                    jProvisional = (p.getJ() - 1);
+                }
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                if (piezaComida != null && piezaComida.getColor().equals(p.getColor())){
+                    System.out.println("No te puedes comer una pieza de tu color");
+                    return;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (rey.hayJaque()){
+                    Main.tablero[iOriginal][jOriginal] = p;
+                    Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                    p.setI(iOriginal);
+                    p.setJ(jOriginal);
+
+                    System.out.println("Movimiento ilegal");
+                }else {
+                    if (piezaComida != null) {
+                        System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                        Main.cambiarTurno();
+                    }
+                }
+
+
+
 
 
                 //Peón Promoción
@@ -245,6 +377,7 @@ public class Peon extends Pieza{
                             Main.tablero[p.getI()][p.getJ()] = new Alfil("Alfil", getColor(),Main.alfilesBDisponibles.size()+1, getI(), getJ());
                         }
 
+                        Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     }else{
                         System.out.println("Pieza movida.");
@@ -266,6 +399,7 @@ public class Peon extends Pieza{
                         }else if (promocion == 4){
                             Main.tablero[getI()][getJ()] = new Alfil("Alfil", getColor(),Main.alfilesBDisponibles.size()+1, getI(), getJ());
                         }
+                        Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     }
                 }
@@ -343,9 +477,11 @@ public class Peon extends Pieza{
                 }else{
                     if (piezaComida != null){
                         System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                        Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     }else{
                         System.out.println("Pieza movida.");
+                        Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     }
                 }
@@ -463,6 +599,7 @@ public class Peon extends Pieza{
                     iProvisional = (p.getI() + 1);
                 } else if (decision == 2 && moverprimera2) {
                     iProvisional = (p.getI() +2);
+                    p.primerMovimiento2 = true;
                 } else if (decision == 3 && abajoDerecha) {
                     iProvisional = (p.getI() + 1);
                     jProvisional = (p.getJ() + 1);
@@ -494,9 +631,11 @@ public class Peon extends Pieza{
                 }else{
                     if (piezaComida != null){
                         System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                        Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     }else{
                         System.out.println("Pieza movida.");
+                        Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     }
                 }
@@ -592,6 +731,7 @@ public class Peon extends Pieza{
                             Main.tablero[p.getI()][p.getJ()] = new Alfil("Alfil", getColor(),Main.alfilesNDisponibles.size()+1, getI(), getJ());
                         }
 
+                        Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     }else{
                         System.out.println("Pieza movida.");
@@ -613,6 +753,7 @@ public class Peon extends Pieza{
                         }else if (promocion == 4){
                             Main.tablero[getI()][getJ()] = new Alfil("Alfil", getColor(),Main.alfilesBDisponibles.size()+1, getI(), getJ());
                         }
+                        Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     }
                 }
@@ -693,9 +834,11 @@ public class Peon extends Pieza{
             }else{
                 if (piezaComida != null){
                     System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }else{
                     System.out.println("Pieza movida.");
+                    Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }
             }

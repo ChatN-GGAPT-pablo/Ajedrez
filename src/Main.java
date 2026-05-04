@@ -491,7 +491,7 @@ public class Main{
     }
 
 
-    static Pieza piezaAMover = new Peon("Peón", "B",  1, 6, 0);
+    static Pieza piezaAMover = new Peon("Peón", "B",  1, 6, 0,false);
 
     public static Pieza getPiezaAMover() {
         return piezaAMover;
@@ -519,19 +519,24 @@ public class Main{
 
 
 
+    public static Pieza ultimaPieza(Pieza p){
+        return p;
+    }
+
+
     public static void main(String[] args) {
         //COnstructor piezas
         {
             //peones blancos
 
-            Pieza PB1 = new Peon("Peón", "B",  1, 6, 0);
-            Pieza PB2 = new Peon("Peón", "B",  2, 6, 1);
-            Pieza PB3 = new Peon("Peón", "B",  3, 6, 2);
-            Pieza PB4 = new Peon("Peón", "B",  4, 6, 3);
-            Pieza PB5 = new Peon("Peón", "B",  5, 6, 4);
-            Pieza PB6 = new Peon("Peón", "B",  6, 6, 5);
-            Pieza PB7 = new Peon("Peón", "B",  7, 6, 6);
-            Pieza PB8 = new Peon("Peón", "B",  8, 6, 7);
+            Pieza PB1 = new Peon("Peón", "B",  1, 6, 0,false);
+            Pieza PB2 = new Peon("Peón", "B",  2, 6, 1,false);
+            Pieza PB3 = new Peon("Peón", "B",  3, 6, 2,false);
+            Pieza PB4 = new Peon("Peón", "B",  4, 6, 3,false);
+            Pieza PB5 = new Peon("Peón", "B",  5, 6, 4,false);
+            Pieza PB6 = new Peon("Peón", "B",  6, 6, 5,false);
+            Pieza PB7 = new Peon("Peón", "B",  7, 6, 6,false);
+            Pieza PB8 = new Peon("Peón", "B",  8, 6, 7,false);
 
             tablero[6][0] = PB1;
             tablero[6][1] = PB2;
@@ -544,14 +549,14 @@ public class Main{
 
 
             //peones negros
-            Pieza PN1 = new Peon("Peón", "N",  1, 1, 0);
-            Pieza PN2 = new Peon("Peón", "N",  2, 1, 1);
-            Pieza PN3 = new Peon("Peón", "N",  3, 1, 2);
-            Pieza PN4 = new Peon("Peón", "N",  4, 1, 3);
-            Pieza PN5 = new Peon("Peón", "N",  5, 1, 4);
-            Pieza PN6 = new Peon("Peón", "N",  6, 1, 5);
-            Pieza PN7 = new Peon("Peón", "N",  7, 1, 6);
-            Pieza PN8 = new Peon("Peón", "N",  8, 1, 7);
+            Pieza PN1 = new Peon("Peón", "N",  1, 1, 0,false);
+            Pieza PN2 = new Peon("Peón", "N",  2, 1, 1,false);
+            Pieza PN3 = new Peon("Peón", "N",  3, 1, 2,false);
+            Pieza PN4 = new Peon("Peón", "N",  4, 1, 3,false);
+            Pieza PN5 = new Peon("Peón", "N",  5, 1, 4,false);
+            Pieza PN6 = new Peon("Peón", "N",  6, 1, 5,false);
+            Pieza PN7 = new Peon("Peón", "N",  7, 1, 6,false);
+            Pieza PN8 = new Peon("Peón", "N",  8, 1, 7,false);
 
             tablero[1][0] = PN1;
             tablero[1][1] = PN2;
