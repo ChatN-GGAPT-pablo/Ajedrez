@@ -102,7 +102,30 @@ public class Rey extends Pieza {
                         Main.tablero[7][5] == null &&
                         Main.tablero[7][6] == null) {
 
-                    ENROQUECORTO = true;
+                    Main.tablero[7][4] = null;
+                    Main.tablero[7][5] = p;
+
+                    p.setI(7);
+                    p.setJ(5);
+
+                    if (!p.hayJaque()) {
+                        Main.tablero[7][5] = null;
+                        Main.tablero[7][6] = p;
+
+                        p.setI(7);
+                        p.setJ(6);
+
+                        if (!p.hayJaque()) {
+                            ENROQUECORTO = true;
+                        }
+                    }
+
+                    Main.tablero[7][4] = p;
+                    Main.tablero[7][5] = null;
+                    Main.tablero[7][6] = null;
+
+                    p.setI(7);
+                    p.setJ(4);
                 }
 
                 Pieza torreLarga = Main.tablero[7][0];
@@ -115,7 +138,30 @@ public class Rey extends Pieza {
                         Main.tablero[7][2] == null &&
                         Main.tablero[7][3] == null) {
 
-                    ENROQUELARGO = true;
+                    Main.tablero[7][4] = null;
+                    Main.tablero[7][3] = p;
+
+                    p.setI(7);
+                    p.setJ(3);
+
+                    if (!p.hayJaque()) {
+                        Main.tablero[7][3] = null;
+                        Main.tablero[7][2] = p;
+
+                        p.setI(7);
+                        p.setJ(2);
+
+                        if (!p.hayJaque()) {
+                            ENROQUELARGO = true;
+                        }
+                    }
+
+                    Main.tablero[7][4] = p;
+                    Main.tablero[7][3] = null;
+                    Main.tablero[7][2] = null;
+
+                    p.setI(7);
+                    p.setJ(4);
                 }
             }
         }
@@ -133,7 +179,30 @@ public class Rey extends Pieza {
                         Main.tablero[0][5] == null &&
                         Main.tablero[0][6] == null) {
 
-                    ENROQUECORTO = true;
+                    Main.tablero[0][4] = null;
+                    Main.tablero[0][5] = p;
+
+                    p.setI(0);
+                    p.setJ(5);
+
+                    if (!p.hayJaque()) {
+                        Main.tablero[0][5] = null;
+                        Main.tablero[0][6] = p;
+
+                        p.setI(0);
+                        p.setJ(6);
+
+                        if (!p.hayJaque()) {
+                            ENROQUECORTO = true;
+                        }
+                    }
+
+                    Main.tablero[0][4] = p;
+                    Main.tablero[0][5] = null;
+                    Main.tablero[0][6] = null;
+
+                    p.setI(0);
+                    p.setJ(4);
                 }
 
                 Pieza torreLarga = Main.tablero[0][0];
@@ -146,7 +215,30 @@ public class Rey extends Pieza {
                         Main.tablero[0][2] == null &&
                         Main.tablero[0][3] == null) {
 
-                    ENROQUELARGO = true;
+                    Main.tablero[0][4] = null;
+                    Main.tablero[0][3] = p;
+
+                    p.setI(0);
+                    p.setJ(3);
+
+                    if (!p.hayJaque()) {
+                        Main.tablero[0][3] = null;
+                        Main.tablero[0][2] = p;
+
+                        p.setI(0);
+                        p.setJ(2);
+
+                        if (!p.hayJaque()) {
+                            ENROQUELARGO = true;
+                        }
+                    }
+
+                    Main.tablero[0][4] = p;
+                    Main.tablero[0][3] = null;
+                    Main.tablero[0][2] = null;
+
+                    p.setI(0);
+                    p.setJ(4);
                 }
             }
         }
@@ -289,7 +381,7 @@ public class Rey extends Pieza {
                 p.setI(p.getI());
                 p.setJ(4);
 
-                System.out.println("Movimiento ilegal, el rey pasa por jaque");
+                System.out.println("Movimiento ilegal, el rey pasaría por jaque");
                 return;
             }
 
@@ -354,7 +446,7 @@ public class Rey extends Pieza {
                 p.setI(p.getI());
                 p.setJ(4);
 
-                System.out.println("Movimiento ilegal, el rey pasa por jaque");
+                System.out.println("Movimiento ilegal, el rey pasaría por jaque");
                 return;
             }
 
@@ -523,7 +615,27 @@ public class Rey extends Pieza {
                         Main.tablero[7][5] == null &&
                         Main.tablero[7][6] == null) {
 
-                    ENROQUECORTO = true;
+                    Main.tablero[7][4] = null;
+                    Main.tablero[7][5] = p;
+                    p.setI(7);
+                    p.setJ(5);
+
+                    if (!p.hayJaque()) {
+                        Main.tablero[7][5] = null;
+                        Main.tablero[7][6] = p;
+                        p.setI(7);
+                        p.setJ(6);
+
+                        if (!p.hayJaque()) {
+                            ENROQUECORTO = true;
+                        }
+                    }
+
+                    Main.tablero[7][4] = p;
+                    Main.tablero[7][5] = null;
+                    Main.tablero[7][6] = null;
+                    p.setI(7);
+                    p.setJ(4);
                 }
 
                 Pieza torreLarga = Main.tablero[7][0];
@@ -536,7 +648,27 @@ public class Rey extends Pieza {
                         Main.tablero[7][2] == null &&
                         Main.tablero[7][3] == null) {
 
-                    ENROQUELARGO = true;
+                    Main.tablero[7][4] = null;
+                    Main.tablero[7][3] = p;
+                    p.setI(7);
+                    p.setJ(3);
+
+                    if (!p.hayJaque()) {
+                        Main.tablero[7][3] = null;
+                        Main.tablero[7][2] = p;
+                        p.setI(7);
+                        p.setJ(2);
+
+                        if (!p.hayJaque()) {
+                            ENROQUELARGO = true;
+                        }
+                    }
+
+                    Main.tablero[7][4] = p;
+                    Main.tablero[7][3] = null;
+                    Main.tablero[7][2] = null;
+                    p.setI(7);
+                    p.setJ(4);
                 }
             }
         }
@@ -554,7 +686,27 @@ public class Rey extends Pieza {
                         Main.tablero[0][5] == null &&
                         Main.tablero[0][6] == null) {
 
-                    ENROQUECORTO = true;
+                    Main.tablero[0][4] = null;
+                    Main.tablero[0][5] = p;
+                    p.setI(0);
+                    p.setJ(5);
+
+                    if (!p.hayJaque()) {
+                        Main.tablero[0][5] = null;
+                        Main.tablero[0][6] = p;
+                        p.setI(0);
+                        p.setJ(6);
+
+                        if (!p.hayJaque()) {
+                            ENROQUECORTO = true;
+                        }
+                    }
+
+                    Main.tablero[0][4] = p;
+                    Main.tablero[0][5] = null;
+                    Main.tablero[0][6] = null;
+                    p.setI(0);
+                    p.setJ(4);
                 }
 
                 Pieza torreLarga = Main.tablero[0][0];
@@ -567,10 +719,32 @@ public class Rey extends Pieza {
                         Main.tablero[0][2] == null &&
                         Main.tablero[0][3] == null) {
 
-                    ENROQUELARGO = true;
+                    Main.tablero[0][4] = null;
+                    Main.tablero[0][3] = p;
+                    p.setI(0);
+                    p.setJ(3);
+
+                    if (!p.hayJaque()) {
+                        Main.tablero[0][3] = null;
+                        Main.tablero[0][2] = p;
+                        p.setI(0);
+                        p.setJ(2);
+
+                        if (!p.hayJaque()) {
+                            ENROQUELARGO = true;
+                        }
+                    }
+
+                    Main.tablero[0][4] = p;
+                    Main.tablero[0][3] = null;
+                    Main.tablero[0][2] = null;
+                    p.setI(0);
+                    p.setJ(4);
                 }
             }
         }
+
+
 
         if (!ARRIBA && !ARRIBADERECHA && !DERECHA && !ABAJODERECHA &&
                 !ABAJO && !ABAJOIZQUIERDA && !IZQUIERDA && !ARRIBAIZQUIERDA &&
