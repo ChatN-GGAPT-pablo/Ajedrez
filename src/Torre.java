@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class Torre extends Pieza{
     Scanner sc = new Scanner(System.in);
-    public Torre(String nombrePieza, String color, int numeroPieza, int i, int j) {
-        super(nombrePieza, color, numeroPieza, i, j);
+    public Torre(String nombrePieza, String color, int numeroPieza, int i, int j, boolean Inmovil) {
+        super(nombrePieza, color, numeroPieza, i, j, Inmovil);
     }
 
 
@@ -13,6 +13,7 @@ public class Torre extends Pieza{
     public String toString() {
         return "T" + this.getColor() + this.getNumeroPieza();
     }
+
 
 
 
@@ -85,9 +86,10 @@ public class Torre extends Pieza{
 
         if (!ARRIBA && !DERECHA && !ABAJO && !IZQUIERDA) {
             System.out.println("No hay movimientos disponibles");
-            Main.setPiezaAMover(Main.mostrarPiezas());
-            Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
+            p.setInmovil(true);
             return;
+        }else{
+            p.setInmovil(false);
         }
 
         int decision;
@@ -185,10 +187,12 @@ public class Torre extends Pieza{
             }else{
                 if (piezaComida != null){
                     System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    p.primerMovimiento2OEnroque = true;
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }else{
                     System.out.println("Pieza movida.");
+                    p.primerMovimiento2OEnroque = true;
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }
@@ -251,10 +255,12 @@ public class Torre extends Pieza{
             }else{
                 if (piezaComida != null){
                     System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    p.primerMovimiento2OEnroque = true;
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }else{
                     System.out.println("Pieza movida.");
+                    p.primerMovimiento2OEnroque = true;
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }
@@ -317,10 +323,12 @@ public class Torre extends Pieza{
             }else{
                 if (piezaComida != null){
                     System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    p.primerMovimiento2OEnroque = true;
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }else{
                     System.out.println("Pieza movida.");
+                    p.primerMovimiento2OEnroque = true;
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }
@@ -383,10 +391,12 @@ public class Torre extends Pieza{
             }else{
                 if (piezaComida != null){
                     System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    p.primerMovimiento2OEnroque = true;
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }else{
                     System.out.println("Pieza movida.");
+                    p.primerMovimiento2OEnroque = true;
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }
@@ -398,5 +408,75 @@ public class Torre extends Pieza{
 
 
 
+    }
+
+    @Override
+    public boolean comprobarMovimientos(Pieza p) {
+        boolean ARRIBA = false;
+        boolean DERECHA = false;
+        boolean ABAJO = false;
+        boolean IZQUIERDA = false;
+
+        for (int z = 1; z <= p.getI(); z++) {
+            Pieza casilla = Main.tablero[p.getI() - z][p.getJ()];
+
+            if (casilla != null) {
+                if (!casilla.getColor().equals(p.getColor())) {
+                    ARRIBA = true;
+                }
+                break;
+            } else {
+                ARRIBA = true;
+                break;
+            }
+        }
+
+        for (int z = 1; z <= 7 - p.getJ(); z++) {
+            Pieza casilla = Main.tablero[p.getI()][p.getJ() + z];
+
+            if (casilla != null) {
+                if (!casilla.getColor().equals(p.getColor())) {
+                    DERECHA = true;
+                }
+                break;
+            } else {
+                DERECHA = true;
+                break;
+            }
+        }
+
+        for (int z = 1; z <= 7 - p.getI(); z++) {
+            Pieza casilla = Main.tablero[p.getI() + z][p.getJ()];
+
+            if (casilla != null) {
+                if (!casilla.getColor().equals(p.getColor())) {
+                    ABAJO = true;
+                }
+                break;
+            } else {
+                ABAJO = true;
+                break;
+            }
+        }
+
+        for (int z = 1; z <= p.getJ(); z++) {
+            Pieza casilla = Main.tablero[p.getI()][p.getJ() - z];
+
+            if (casilla != null) {
+                if (!casilla.getColor().equals(p.getColor())) {
+                    IZQUIERDA = true;
+                }
+                break;
+            } else {
+                IZQUIERDA = true;
+                break;
+            }
+        }
+
+
+        if (!ARRIBA && !DERECHA && !ABAJO && !IZQUIERDA) {
+            return false;
+            }
+        return true;
     }
 }

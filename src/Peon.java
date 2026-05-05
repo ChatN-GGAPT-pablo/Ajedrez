@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Peon extends Pieza{
 
     Scanner sc = new Scanner(System.in);
-    public Peon(String nombrePieza, String color, int numeroPieza, int i, int j, boolean primerMovimiento22) {
-        super(nombrePieza, color, numeroPieza, i, j, primerMovimiento22);
+    public Peon(String nombrePieza, String color, int numeroPieza, int i, int j, boolean primerMovimiento22, boolean inmovil) {
+        super(nombrePieza, color, numeroPieza, i, j, primerMovimiento22, inmovil);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class Peon extends Pieza{
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
                 if (casilla != null) {
                     if (!(casilla.getColor().equals(p.getColor()))) {
-                        if (casilla.primerMovimiento2 == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
                             enPassantBlancoDerecha = true;
                         }
 
@@ -67,7 +67,7 @@ public class Peon extends Pieza{
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
                 if (casilla != null) {
                     if (!(casilla.getColor().equals(p.getColor()))) {
-                        if (casilla.primerMovimiento2 == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
                             enPassantBlancoIzquierda = true;
                         }
 
@@ -92,8 +92,7 @@ public class Peon extends Pieza{
 
                 if (!moverprimera1 && !moverprimera2 && !arribaDerecha && !arribaIzquierda) {
                     System.out.println("No hay movimientos disponibles");
-                    Main.setPiezaAMover(Main.mostrarPiezas());
-                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
+                    p.setInmovil(true);
                     return;
                 }
 
@@ -141,7 +140,7 @@ public class Peon extends Pieza{
                     iProvisional = (p.getI() - 1);
                 } else if (decision == 2 && moverprimera2) {
                     iProvisional = (p.getI() - 2);
-                    p.primerMovimiento2 = true;
+                    p.primerMovimiento2OEnroque = true;
                 } else if (decision == 3 && arribaDerecha) {
                     iProvisional = (p.getI() - 1);
                     jProvisional = (p.getJ() + 1);
@@ -187,8 +186,7 @@ public class Peon extends Pieza{
             } else if (p.getI() == 3) {
                 if (!mover && !arribaDerecha && !arribaIzquierda && !enPassantBlancoIzquierda && !enPassantBlancoDerecha) {
                     System.out.println("No hay movimientos disponibles");
-                    Main.setPiezaAMover(Main.mostrarPiezas());
-                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
+                    p.setInmovil(true);
                     return;
                 }
 
@@ -307,8 +305,7 @@ public class Peon extends Pieza{
             } else if (p.getI() == 1) {
                 if (!mover && !arribaDerecha && !arribaIzquierda) {
                     System.out.println("No hay movimientos disponibles");
-                    Main.setPiezaAMover(Main.mostrarPiezas());
-                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
+                    p.setInmovil(true);
                     return;
                 }
 
@@ -385,17 +382,21 @@ public class Peon extends Pieza{
                         System.out.println("4. Alfil");
                         int promocion = sc.nextInt();
 
+
+                        Pieza piezaPromocionada = null;
+
                         if (promocion == 1) {
-                            Main.tablero[p.getI()][p.getJ()] = new Dama("Dama", getColor(), Main.damasBDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Dama("Dama", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         } else if (promocion == 2) {
-                            Main.tablero[p.getI()][p.getJ()] = new Torre("Torre", getColor(), Main.torresBDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Torre("Torre", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         } else if (promocion == 3) {
-                            Main.tablero[p.getI()][p.getJ()] = new Caballo("Caballo", getColor(), Main.caballosBDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Caballo("Caballo", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         } else if (promocion == 4) {
-                            Main.tablero[p.getI()][p.getJ()] = new Alfil("Alfil", getColor(), Main.alfilesBDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Alfil("Alfil", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         }
 
-                        Main.ultimaPieza(p);
+                        Main.tablero[p.getI()][p.getJ()] = piezaPromocionada;
+                        Main.ultimaPieza(piezaPromocionada);
                         Main.cambiarTurno();
                     } else {
                         System.out.println("Pieza movida.");
@@ -408,16 +409,21 @@ public class Peon extends Pieza{
                         System.out.println("4. Alfil");
                         int promocion = sc.nextInt();
 
+
+                        Pieza piezaPromocionada = null;
+
                         if (promocion == 1) {
-                            Main.tablero[getI()][getJ()] = new Dama("Dama", getColor(), Main.damasBDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Dama("Dama", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         } else if (promocion == 2) {
-                            Main.tablero[getI()][getJ()] = new Torre("Torre", getColor(), Main.torresBDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Torre("Torre", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         } else if (promocion == 3) {
-                            Main.tablero[getI()][getJ()] = new Caballo("Caballo", getColor(), Main.caballosBDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Caballo("Caballo", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         } else if (promocion == 4) {
-                            Main.tablero[getI()][getJ()] = new Alfil("Alfil", getColor(), Main.alfilesBDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Alfil("Alfil", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         }
-                        Main.ultimaPieza(p);
+
+                        Main.tablero[p.getI()][p.getJ()] = piezaPromocionada;
+                        Main.ultimaPieza(piezaPromocionada);
                         Main.cambiarTurno();
                     }
                 }
@@ -426,8 +432,7 @@ public class Peon extends Pieza{
 
                 if (!mover && !arribaDerecha && !arribaIzquierda) {
                     System.out.println("No hay movimientos disponibles");
-                    Main.setPiezaAMover(Main.mostrarPiezas());
-                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
+                    p.setInmovil(true);
                     return;
                 }
 
@@ -545,7 +550,7 @@ public class Peon extends Pieza{
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
                 if (casilla != null) {
                     if (!(casilla.getColor().equals(p.getColor()))) {
-                        if (casilla.primerMovimiento2 == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
                             enPassantNegroDerecha = true;
                         }
 
@@ -559,7 +564,7 @@ public class Peon extends Pieza{
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
                 if (casilla != null) {
                     if (!(casilla.getColor().equals(p.getColor()))) {
-                        if (casilla.primerMovimiento2 == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
                             enPassantNegroIzquierda = true;
                         }
 
@@ -584,8 +589,8 @@ public class Peon extends Pieza{
 
                 if (!moverprimera1 && !moverprimera2 && !abajoDerecha && !abajoIzquierda) {
                     System.out.println("No hay movimientos disponibles");
-                    Main.setPiezaAMover(Main.mostrarPiezas());
-                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
+                    p.setInmovil(true);
+
                     return;
                 }
 
@@ -633,7 +638,7 @@ public class Peon extends Pieza{
                     iProvisional = (p.getI() + 1);
                 } else if (decision == 2 && moverprimera2) {
                     iProvisional = (p.getI() + 2);
-                    p.primerMovimiento2 = true;
+                    p.primerMovimiento2OEnroque = true;
                 } else if (decision == 3 && abajoDerecha) {
                     iProvisional = (p.getI() + 1);
                     jProvisional = (p.getJ() + 1);
@@ -677,8 +682,7 @@ public class Peon extends Pieza{
             } else if (p.getI() == 4) {
                 if (!mover && !abajoDerecha && !abajoIzquierda && !enPassantNegroIzquierda && !enPassantNegroDerecha) {
                     System.out.println("No hay movimientos disponibles");
-                    Main.setPiezaAMover(Main.mostrarPiezas());
-                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
+                    p.setInmovil(true);
                     return;
                 }
 
@@ -797,8 +801,7 @@ public class Peon extends Pieza{
             } else if (p.getI() == 6) {
                 if (!mover && !abajoDerecha && !abajoIzquierda) {
                     System.out.println("No hay movimientos disponibles");
-                    Main.setPiezaAMover(Main.mostrarPiezas());
-                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
+                    p.setInmovil(true);
                     return;
                 }
 
@@ -875,17 +878,20 @@ public class Peon extends Pieza{
                         System.out.println("4. Alfil");
                         int promocion = sc.nextInt();
 
+
+                        Pieza piezaPromocionada = null;
                         if (promocion == 1) {
-                            Main.tablero[p.getI()][p.getJ()] = new Dama("Dama", getColor(), Main.damasNDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Dama("Dama", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         } else if (promocion == 2) {
-                            Main.tablero[p.getI()][p.getJ()] = new Torre("Torre", getColor(), Main.torresNDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Torre("Torre", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(),false);
                         } else if (promocion == 3) {
-                            Main.tablero[p.getI()][p.getJ()] = new Caballo("Caballo", getColor(), Main.caballosNDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Caballo("Caballo", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         } else if (promocion == 4) {
-                            Main.tablero[p.getI()][p.getJ()] = new Alfil("Alfil", getColor(), Main.alfilesNDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Alfil("Alfil", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         }
 
-                        Main.ultimaPieza(p);
+                        Main.tablero[p.getI()][p.getJ()] = piezaPromocionada;
+                        Main.ultimaPieza(piezaPromocionada);
                         Main.cambiarTurno();
                     } else {
                         System.out.println("Pieza movida.");
@@ -898,16 +904,19 @@ public class Peon extends Pieza{
                         System.out.println("4. Alfil");
                         int promocion = sc.nextInt();
 
+                        Pieza piezaPromocionada = null;
                         if (promocion == 1) {
-                            Main.tablero[getI()][getJ()] = new Dama("Dama", getColor(), Main.damasNDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Dama("Dama", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         } else if (promocion == 2) {
-                            Main.tablero[getI()][getJ()] = new Torre("Torre", getColor(), Main.torresNDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Torre("Torre", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         } else if (promocion == 3) {
-                            Main.tablero[getI()][getJ()] = new Caballo("Caballo", getColor(), Main.caballosNDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Caballo("Caballo", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         } else if (promocion == 4) {
-                            Main.tablero[getI()][getJ()] = new Alfil("Alfil", getColor(), Main.alfilesNDisponibles.size() + 1, getI(), getJ());
+                            piezaPromocionada = new Alfil("Alfil", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         }
-                        Main.ultimaPieza(p);
+
+                        Main.tablero[p.getI()][p.getJ()] = piezaPromocionada;
+                        Main.ultimaPieza(piezaPromocionada);
                         Main.cambiarTurno();
                     }
                 }
@@ -917,8 +926,7 @@ public class Peon extends Pieza{
 
                 if (!mover && !abajoDerecha && !abajoIzquierda) {
                     System.out.println("No hay movimientos disponibles");
-                    Main.setPiezaAMover(Main.mostrarPiezas());
-                    Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
+                    p.setInmovil(true);
                     return;
                 }
 
@@ -999,6 +1007,191 @@ public class Peon extends Pieza{
 
             }
         }
+    }
+
+    @Override
+    public boolean comprobarMovimientos(Pieza p) {
+        if (Main.getTurno().equals("B")) {
+            boolean moverprimera1 = false;
+            boolean moverprimera2 = false;
+
+            boolean mover = false;
+
+            boolean arribaDerecha = false;
+            boolean arribaIzquierda = false;
+
+            boolean enPassantBlancoDerecha = false;
+            boolean enPassantBlancoIzquierda = false;
+
+            if (p.getI() - 1 >= 0 && p.getJ() + 1 < 8) {
+                Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() + 1];
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(p.getColor()))) {
+                        arribaDerecha = true;
+                    }
+                }
+            }
+
+            if (p.getI() - 1 >= 0 && p.getJ() - 1 >= 0) {
+                Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() - 1];
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(p.getColor()))) {
+                        arribaIzquierda = true;
+                    }
+                }
+            }
+
+
+            //En peassant derecha
+            if (p.getI() == 3 && p.getColor().equals("B") && p.getJ() + 1 < 8) {
+                Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(p.getColor()))) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                            enPassantBlancoDerecha = true;
+                        }
+
+                    }
+                }
+            }
+
+
+            //En peassant izquierda
+            if (p.getI() == 3 && p.getColor().equals("B") && p.getJ() - 1 >= 0) {
+                Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(p.getColor()))) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                            enPassantBlancoIzquierda = true;
+                        }
+
+                    }
+                }
+            }
+
+
+            if (p.getI() == 6 && ((Main.tablero[p.getI() - 1][p.getJ()] == null))) {
+                moverprimera1 = true;
+            }
+            if (p.getI() == 6 && ((Main.tablero[p.getI() - 2][p.getJ()] == null)) && moverprimera1) {
+                moverprimera2 = true;
+            }
+
+            if (((p.getI() - 1) >= 0) && (Main.tablero[p.getI() - 1][p.getJ()] == null)) {
+                mover = true;
+            }
+
+
+            if (p.getI() == 6) {
+
+                if (!moverprimera1 && !moverprimera2 && !arribaDerecha && !arribaIzquierda) {
+                    return false;
+                }
+            }else if (p.getI() == 3) {
+                if (!mover && !arribaDerecha && !arribaIzquierda && !enPassantBlancoIzquierda && !enPassantBlancoDerecha) {
+                    return false;
+                }
+            }else {
+
+                if (!mover && !arribaDerecha && !arribaIzquierda) {
+                    return false;
+                }
+            }
+
+        }else{
+            boolean moverprimera1 = false;
+            boolean moverprimera2 = false;
+
+            boolean mover = false;
+
+            boolean abajoDerecha = false;
+            boolean abajoIzquierda = false;
+
+            boolean enPassantNegroDerecha = false;
+            boolean enPassantNegroIzquierda = false;
+
+
+            if (p.getI() + 1 < 8 && p.getJ() + 1 < 8) {
+                Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() + 1];
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(p.getColor()))) {
+                        abajoDerecha = true;
+                    }
+                }
+            }
+
+            if (p.getI() + 1 < 8 && p.getJ() - 1 >= 0) {
+                Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() - 1];
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(p.getColor()))) {
+                        abajoIzquierda = true;
+                    }
+                }
+            }
+
+
+            //En peassant derecha negro
+            if (p.getI() == 4 && p.getColor().equals("N") && p.getJ() + 1 < 8) {
+                Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(p.getColor()))) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                            enPassantNegroDerecha = true;
+                        }
+
+                    }
+                }
+            }
+
+
+            //En peassant izquierda negro
+            if (p.getI() == 4 && p.getColor().equals("N") && p.getJ() - 1 >= 0) {
+                Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
+                if (casilla != null) {
+                    if (!(casilla.getColor().equals(p.getColor()))) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                            enPassantNegroIzquierda = true;
+                        }
+
+                    }
+                }
+            }
+
+
+            if (p.getI() == 1 && ((Main.tablero[p.getI() + 1][p.getJ()] == null))) {
+                moverprimera1 = true;
+            }
+            if (p.getI() == 1 && ((Main.tablero[p.getI() + 2][p.getJ()] == null)) && moverprimera1) {
+                moverprimera2 = true;
+            }
+
+            if (((p.getI() + 1) < 8) && (Main.tablero[p.getI() + 1][p.getJ()] == null)) {
+                mover = true;
+            }
+
+
+            if (p.getI() == 1) {
+
+                if (!moverprimera1 && !moverprimera2 && !abajoDerecha && !abajoIzquierda) {
+                    return false;
+                }
+            }else if (p.getI() == 4) {
+                if (!mover && !abajoDerecha && !abajoIzquierda && !enPassantNegroIzquierda && !enPassantNegroDerecha) {
+                    return false;
+                }
+            }else if (p.getI() == 6) {
+                if (!mover && !abajoDerecha && !abajoIzquierda) {
+                    return false;
+                }
+            }else {
+
+
+                if (!mover && !abajoDerecha && !abajoIzquierda) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
 

@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Caballo extends Pieza{
     Scanner sc = new Scanner(System.in);
-    public Caballo(String nombrePieza, String color, int numeroPieza, int i, int j) {
-        super(nombrePieza, color, numeroPieza, i, j);
+    public Caballo(String nombrePieza, String color, int numeroPieza, int i, int j, boolean inmovil) {
+        super(nombrePieza, color, numeroPieza, i, j, inmovil);
     }
 
 
@@ -100,9 +100,10 @@ public class Caballo extends Pieza{
         if (!ARRIBADERECHA && !DERECHAARRIBA && !DERECHAABAJO && !ABAJODERECHA &&
                 !ABAJOIZQUIERDA && !IZQUIERDAABAJO && !IZQUIERDAARRIBA && !ARRIBAIZQUIERDA) {
             System.out.println("No hay movimientos disponibles");
-            Main.setPiezaAMover(Main.mostrarPiezas());
-            Main.piezaAMover.posiblesMovimientos(Main.piezaAMover);
+            p.setInmovil(true);
             return;
+        }else{
+            p.setInmovil(false);
         }
 
         int decision;
@@ -232,6 +233,90 @@ public class Caballo extends Pieza{
             }
         }
 
+    }
+
+    @Override
+    public boolean comprobarMovimientos(Pieza p) {
+        boolean ARRIBADERECHA = false;
+        boolean DERECHAARRIBA = false;
+        boolean DERECHAABAJO = false;
+        boolean ABAJODERECHA = false;
+        boolean ABAJOIZQUIERDA = false;
+        boolean IZQUIERDAABAJO = false;
+        boolean IZQUIERDAARRIBA = false;
+        boolean ARRIBAIZQUIERDA = false;
+
+        if (p.getI() - 2 >= 0 && p.getJ() + 1 <= 7) {
+            Pieza casilla = Main.tablero[p.getI() - 2][p.getJ() + 1];
+
+            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                ARRIBADERECHA = true;
+            }
+        }
+
+        if (p.getI() - 1 >= 0 && p.getJ() + 2 <= 7) {
+            Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() + 2];
+
+            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                DERECHAARRIBA = true;
+            }
+        }
+
+        if (p.getI() + 1 <= 7 && p.getJ() + 2 <= 7) {
+            Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() + 2];
+
+            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                DERECHAABAJO = true;
+            }
+        }
+
+        if (p.getI() + 2 <= 7 && p.getJ() + 1 <= 7) {
+            Pieza casilla = Main.tablero[p.getI() + 2][p.getJ() + 1];
+
+            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                ABAJODERECHA = true;
+            }
+        }
+
+        if (p.getI() + 2 <= 7 && p.getJ() - 1 >= 0) {
+            Pieza casilla = Main.tablero[p.getI() + 2][p.getJ() - 1];
+
+            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                ABAJOIZQUIERDA = true;
+            }
+        }
+
+        if (p.getI() + 1 <= 7 && p.getJ() - 2 >= 0) {
+            Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() - 2];
+
+            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                IZQUIERDAABAJO = true;
+            }
+        }
+
+        if (p.getI() - 1 >= 0 && p.getJ() - 2 >= 0) {
+            Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() - 2];
+
+            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                IZQUIERDAARRIBA = true;
+            }
+        }
+
+        if (p.getI() - 2 >= 0 && p.getJ() - 1 >= 0) {
+            Pieza casilla = Main.tablero[p.getI() - 2][p.getJ() - 1];
+
+            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+                ARRIBAIZQUIERDA = true;
+            }
+        }
+
+
+        if (!ARRIBADERECHA && !DERECHAARRIBA && !DERECHAABAJO && !ABAJODERECHA &&
+                !ABAJOIZQUIERDA && !IZQUIERDAABAJO && !IZQUIERDAARRIBA && !ARRIBAIZQUIERDA) {
+
+            return false;
+        }
+        return true;
     }
 }
 

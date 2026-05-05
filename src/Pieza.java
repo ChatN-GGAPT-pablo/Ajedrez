@@ -3,10 +3,11 @@ public abstract class Pieza implements Movible {
     private String nombrePieza;
     private String color;
     private int numeroPieza;
-    boolean reyPeligro = false;
     int i;
     int j;
-    boolean primerMovimiento2 = false;
+    boolean primerMovimiento2OEnroque = false;
+    boolean inmovil = false;
+
 
     /**
      * Constructor para rey y reina pq solo hay uno de cada y no necesitan "numero"
@@ -14,11 +15,12 @@ public abstract class Pieza implements Movible {
      * @param nombrePieza
      * @param color
      */
-    public Pieza(String nombrePieza, String color, int i, int j) {
+    public Pieza(String nombrePieza, String color, int i, int j, boolean inmovil) {
         this.nombrePieza = nombrePieza;
         this.color = color;
         this.i = i;
         this.j = j;
+        this.inmovil = inmovil;
     }
 
     /**
@@ -28,22 +30,28 @@ public abstract class Pieza implements Movible {
      * @param color
      * @param numeroPieza
      */
-    public Pieza(String nombrePieza, String color, int numeroPieza, int i, int j) {
+    public Pieza(String nombrePieza, String color, int numeroPieza, int i, int j, boolean inmovil) {
         this.nombrePieza = nombrePieza;
         this.color = color;
         this.numeroPieza = numeroPieza;
         this.i = i;
         this.j = j;
+        this.inmovil = inmovil;
     }
+
     //Constructor Peon
-    public Pieza(String nombrePieza, String color, int numeroPieza, int i, int j, boolean primerMovimiento2) {
+    public Pieza(String nombrePieza, String color, int numeroPieza, int i, int j, boolean primerMovimiento2OEnroque, boolean inmovil) {
         this.nombrePieza = nombrePieza;
         this.color = color;
         this.numeroPieza = numeroPieza;
         this.i = i;
         this.j = j;
-        this.primerMovimiento2 = primerMovimiento2;
+        this.primerMovimiento2OEnroque = primerMovimiento2OEnroque;
+        this.inmovil = inmovil;
     }
+
+
+    //Constructor Torres
 
 
     public String getNombrePieza() {
@@ -86,13 +94,22 @@ public abstract class Pieza implements Movible {
         this.j = j;
     }
 
-    public boolean isPrimerMovimiento() {
-        return primerMovimiento2;
+    public boolean getPrimerMovimiento2OEnroque() {
+        return primerMovimiento2OEnroque;
     }
 
-    public void setPrimerMovimiento(boolean primerMovimiento) {
-        this.primerMovimiento2 = primerMovimiento;
+    public void setPrimerMovimiento2OEnroque(boolean primerMovimiento) {
+        this.primerMovimiento2OEnroque = primerMovimiento2OEnroque;
     }
+
+    public boolean getInmovil() {
+        return inmovil;
+    }
+
+    public void setInmovil(boolean inmovil) {
+        this.inmovil = inmovil;
+    }
+
 
     public boolean hayJaqueARRIBA() {
 
@@ -117,6 +134,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueARRIBADERECHA() {
 
         int iPieza = this.getI() - 1;
@@ -141,6 +159,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueDERECHA() {
 
         int iPieza = this.getI();
@@ -164,6 +183,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueABAJODERECHA() {
 
         int iPieza = this.getI() + 1;
@@ -188,6 +208,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueABAJO() {
 
         int iPieza = this.getI() + 1;
@@ -211,6 +232,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueABAJOIZQUIERDA() {
 
         int iPieza = this.getI() + 1;
@@ -235,6 +257,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueIZQUIERDA() {
 
         int iPieza = this.getI();
@@ -258,6 +281,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueARRIBAIZQUIERDA() {
 
         int iPieza = this.getI() - 1;
@@ -282,6 +306,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueCaballoARRIBADERECHA() {
 
         int iPieza = this.getI() - 2;
@@ -301,6 +326,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueCaballoDERECHAARRIBA() {
 
         int iPieza = this.getI() - 1;
@@ -320,6 +346,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueCaballoDERECHAABAJO() {
 
         int iPieza = this.getI() + 1;
@@ -339,6 +366,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueCaballoABAJODERECHA() {
 
         int iPieza = this.getI() + 2;
@@ -358,6 +386,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueCaballoABAJOIZQUIERDA() {
 
         int iPieza = this.getI() + 2;
@@ -377,6 +406,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueCaballoIZQUIERDAABAJO() {
 
         int iPieza = this.getI() + 1;
@@ -396,6 +426,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueCaballoIZQUIERDAARRIBA() {
 
         int iPieza = this.getI() - 1;
@@ -415,6 +446,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaqueCaballoARRIBAIZQUIERDA() {
 
         int iPieza = this.getI() - 2;
@@ -434,6 +466,7 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
+
     public boolean hayJaquePeones() {
 
         if (this.getColor().equals("B")) {
@@ -505,7 +538,8 @@ public abstract class Pieza implements Movible {
             return false;
         }
     }
-    public boolean hayJaque(){
+
+    public boolean hayJaque() {
 
         return hayJaqueARRIBA() ||
                 hayJaqueARRIBADERECHA() ||
@@ -529,12 +563,9 @@ public abstract class Pieza implements Movible {
     }
 
 
-
-
-
-
-@Override
-public void posiblesMovimientos(Pieza p) {
-
+    @Override
+    public void posiblesMovimientos(Pieza p) {
+    }
 }
-}
+
+
