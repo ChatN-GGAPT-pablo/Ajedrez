@@ -117,9 +117,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueARRIBADERECHA() {
 
         int iPieza = this.getI() - 1;
@@ -144,9 +141,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueDERECHA() {
 
         int iPieza = this.getI();
@@ -170,9 +164,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueABAJODERECHA() {
 
         int iPieza = this.getI() + 1;
@@ -197,9 +188,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueABAJO() {
 
         int iPieza = this.getI() + 1;
@@ -223,9 +211,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueABAJOIZQUIERDA() {
 
         int iPieza = this.getI() + 1;
@@ -250,9 +235,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueIZQUIERDA() {
 
         int iPieza = this.getI();
@@ -276,9 +258,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueARRIBAIZQUIERDA() {
 
         int iPieza = this.getI() - 1;
@@ -303,9 +282,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueCaballoARRIBADERECHA() {
 
         int iPieza = this.getI() - 2;
@@ -325,9 +301,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueCaballoDERECHAARRIBA() {
 
         int iPieza = this.getI() - 1;
@@ -347,9 +320,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueCaballoDERECHAABAJO() {
 
         int iPieza = this.getI() + 1;
@@ -369,9 +339,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueCaballoABAJODERECHA() {
 
         int iPieza = this.getI() + 2;
@@ -391,9 +358,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueCaballoABAJOIZQUIERDA() {
 
         int iPieza = this.getI() + 2;
@@ -413,9 +377,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueCaballoIZQUIERDAABAJO() {
 
         int iPieza = this.getI() + 1;
@@ -435,9 +396,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueCaballoIZQUIERDAARRIBA() {
 
         int iPieza = this.getI() - 1;
@@ -457,9 +415,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaqueCaballoARRIBAIZQUIERDA() {
 
         int iPieza = this.getI() - 2;
@@ -479,9 +434,6 @@ public abstract class Pieza implements Movible {
 
         return false;
     }
-
-
-
     public boolean hayJaquePeones() {
 
         if (this.getColor().equals("B")) {
@@ -553,8 +505,6 @@ public abstract class Pieza implements Movible {
             return false;
         }
     }
-
-
     public boolean hayJaque(){
 
         return hayJaqueARRIBA() ||
