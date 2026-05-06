@@ -258,6 +258,8 @@ public class Rey extends Pieza {
 
         while (true) {
             System.out.println("A donde quieres moverte");
+            System.out.println("0. Cancelar");
+
 
             if (ARRIBA) {
                 System.out.println("1. Arriba");
@@ -292,6 +294,11 @@ public class Rey extends Pieza {
             }
 
             decision = Main.comprobarScanner(sc);
+
+            if (decision == 0) {
+                System.out.println("Movimiento cancelado");
+                return;
+            }
 
             if (decision == 1 && ARRIBA) {
                 break;

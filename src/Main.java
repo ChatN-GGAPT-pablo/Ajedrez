@@ -219,6 +219,7 @@ public class Main{
         }
         if (getTurno() == Color.BLANCO){
             System.out.println("Qué grupo de piezas quieres seleccionar?");
+            System.out.println("0. Volver");
 
             if (peonesBDisponibles.size() != 0){
                 System.out.println("1. Peones blancos disponibles: ");
@@ -266,6 +267,9 @@ public class Main{
             while (true){
                 int decision = Main.comprobarScanner(sc);
 
+                if (decision == 0){
+                    return null;
+                }
                 if (decision == 1 && peonB){
 
                     ArrayList<Pieza> peones = new ArrayList<>();
@@ -274,11 +278,19 @@ public class Main{
                         peones.add(peonesBDisponibles.get(i));
                     }
                     int opcion;
+                    System.out.println("0. Volver");
                     System.out.println("Elige una opción entre 1 y " + peones.size());
                     opcion = Main.comprobarScanner(sc);
+
+                    if (opcion == 0){
+                        return mostrarPiezas();
+                    }
                     while(opcion < 1 || opcion > peones.size()){
                         System.out.println("Opción inválida.");
                         opcion = Main.comprobarScanner(sc);
+                        if (opcion == 0){
+                            return mostrarPiezas();
+                        }
                     }
                     System.out.println(peones.get(opcion-1));
                     return (peones.get(opcion-1));
@@ -290,11 +302,19 @@ public class Main{
                         torres.add(torresBDisponibles.get(i));
                     }
                     int opcion;
+                    System.out.println("0. Volver");
                     System.out.println("Elige una opción entre 1 y " + torres.size());
                     opcion = Main.comprobarScanner(sc);
+
+                    if (opcion == 0){
+                        return mostrarPiezas();
+                    }
                     while(opcion < 1 || opcion > torres.size()){
                         System.out.println("Opción inválida.");
                         opcion = Main.comprobarScanner(sc);
+                        if (opcion == 0){
+                            return mostrarPiezas();
+                        }
                     }
                     return (torres.get(opcion-1));
                 }else if (decision == 3 && caballoB){
@@ -305,11 +325,18 @@ public class Main{
                         caballos.add(caballosBDisponibles.get(i));
                     }
                     int opcion;
+                    System.out.println("0. Volver");
                     System.out.println("Elige una opción entre 1 y " + caballos.size());
                     opcion = Main.comprobarScanner(sc);
+                    if (opcion == 0){
+                        return mostrarPiezas();
+                    }
                     while(opcion < 1 || opcion > caballos.size()){
                         System.out.println("Opción inválida.");
                         opcion = Main.comprobarScanner(sc);
+                        if (opcion == 0){
+                            return mostrarPiezas();
+                        }
                     }
                     return (caballos.get(opcion-1));
                 }else if (decision == 4 && alfilB){
@@ -320,11 +347,18 @@ public class Main{
                         alfiles.add(alfilesBDisponibles.get(i));
                     }
                     int opcion;
+                    System.out.println("0. Volver");
                     System.out.println("Elige una opción entre 1 y " + alfiles.size());
                     opcion = Main.comprobarScanner(sc);
+                    if (opcion == 0){
+                        return mostrarPiezas();
+                    }
                     while(opcion < 1 || opcion > alfiles.size()){
                         System.out.println("Opción inválida.");
                         opcion = Main.comprobarScanner(sc);
+                        if (opcion == 0){
+                            return mostrarPiezas();
+                        }
                     }
                     return (alfiles.get(opcion-1));
                 }else if (decision == 5 && damaB){
@@ -335,11 +369,18 @@ public class Main{
                         dama.add(damasBDisponibles.get(i));
                     }
                     int opcion;
+                    System.out.println("0. Volver");
                     System.out.println("Elige una opción entre 1 y " + dama.size());
                     opcion = Main.comprobarScanner(sc);
+                    if (opcion == 0){
+                        return mostrarPiezas();
+                    }
                     while(opcion < 1 || opcion > dama.size()){
                         System.out.println("Opción inválida.");
                         opcion = Main.comprobarScanner(sc);
+                        if (opcion == 0){
+                            return mostrarPiezas();
+                        }
                     }
                     return (dama.get(opcion-1));
                 }else if (decision == 6 && reyB){
@@ -350,11 +391,18 @@ public class Main{
                         rey.add(reyBDisponible.get(i));
                     }
                     int opcion;
+                    System.out.println("0. Volver");
                     System.out.println("Elige una opción entre 1 y " + rey.size());
                     opcion = Main.comprobarScanner(sc);
+                    if (opcion == 0){
+                        return mostrarPiezas();
+                    }
                     while(opcion < 1 || opcion > rey.size()){
                         System.out.println("Opción inválida.");
                         opcion = Main.comprobarScanner(sc);
+                        if (opcion == 0){
+                            return mostrarPiezas();
+                        }
                     }
                     return (rey.get(opcion-1));
                 }else{
@@ -365,6 +413,7 @@ public class Main{
 
         }else{
             System.out.println("Qué grupo de piezas quieres seleccionar?");
+            System.out.println("0. Volver");
             if (peonesNDisponibles.size() != 0){
                 System.out.println("1. Peones negros disponibles: ");
                 peonesNDisponibles.sort(new ComparadorNumeroPieza());
@@ -414,6 +463,11 @@ public class Main{
             while(true){
                 int decision = Main.comprobarScanner(sc);
 
+
+                if (decision == 0){
+                    return  null;
+                }
+
                 if (decision == 1 && peonN){
 
                     ArrayList<Pieza> peones = new ArrayList<>();
@@ -422,11 +476,18 @@ public class Main{
                         peones.add(peonesNDisponibles.get(i));
                     }
                     int opcion;
+                    System.out.println("0. Volver");
                     System.out.println("Elige una opción entre 1 y " + peones.size());
                     opcion = Main.comprobarScanner(sc);
+                    if (opcion == 0){
+                        return mostrarPiezas();
+                    }
                     while(opcion < 1 || opcion > peones.size()){
                         System.out.println("Opción inválida.");
                         opcion = Main.comprobarScanner(sc);
+                        if (opcion == 0) {
+                            return mostrarPiezas();
+                        }
                     }
                     return (peones.get(opcion-1));
                 }else if (decision == 2 && torreN){
@@ -437,11 +498,18 @@ public class Main{
                         torres.add(torresNDisponibles.get(i));
                     }
                     int opcion;
+                    System.out.println("0. Volver");
                     System.out.println("Elige una opción entre 1 y " + torres.size());
                     opcion = Main.comprobarScanner(sc);
+                    if (opcion == 0){
+                        return mostrarPiezas();
+                    }
                     while(opcion < 1 || opcion > torres.size()){
                         System.out.println("Opción inválida.");
                         opcion = Main.comprobarScanner(sc);
+                        if (opcion == 0){
+                            return mostrarPiezas();
+                        }
                     }
                     return (torres.get(opcion-1));
                 }else if (decision == 3 && caballoN){
@@ -452,11 +520,18 @@ public class Main{
                         caballos.add(caballosNDisponibles.get(i));
                     }
                     int opcion;
+                    System.out.println("0. Volver");
                     System.out.println("Elige una opción entre 1 y " + caballos.size());
                     opcion = Main.comprobarScanner(sc);
+                    if (opcion == 0){
+                        return mostrarPiezas();
+                    }
                     while(opcion < 1 || opcion > caballos.size()){
                         System.out.println("Opción inválida.");
                         opcion = Main.comprobarScanner(sc);
+                        if (opcion == 0){
+                            return mostrarPiezas();
+                        }
                     }
                     return (caballos.get(opcion-1));
                 }else if (decision == 4 && alfilN){
@@ -467,11 +542,18 @@ public class Main{
                         alfiles.add(alfilesNDisponibles.get(i));
                     }
                     int opcion;
+                    System.out.println("0. Volver");
                     System.out.println("Elige una opción entre 1 y " + alfiles.size());
                     opcion = Main.comprobarScanner(sc);
+                    if (opcion == 0){
+                        return mostrarPiezas();
+                    }
                     while(opcion < 1 || opcion > alfiles.size()){
                         System.out.println("Opción inválida.");
                         opcion = Main.comprobarScanner(sc);
+                        if (opcion == 0){
+                            return mostrarPiezas();
+                        }
                     }
                     return (alfiles.get(opcion-1));
                 }else if (decision == 5 && damaN){
@@ -482,11 +564,18 @@ public class Main{
                         dama.add(damasNDisponibles.get(i));
                     }
                     int opcion;
+                    System.out.println("0. Volver");
                     System.out.println("Elige una opción entre 1 y " + dama.size());
                     opcion = Main.comprobarScanner(sc);
+                    if (opcion == 0){
+                        return mostrarPiezas();
+                    }
                     while(opcion < 1 || opcion > dama.size()){
                         System.out.println("Opción inválida.");
                         opcion = Main.comprobarScanner(sc);
+                        if (opcion == 0){
+                            return mostrarPiezas();
+                        }
                     }
                     return (dama.get(opcion-1));
                 }else if (decision == 6 && reyN){
@@ -497,15 +586,23 @@ public class Main{
                         rey.add(reyNDisponible.get(i));
                     }
                     int opcion;
+                    System.out.println("0. Volver");
                     System.out.println("Elige una opción entre 1 y " + rey.size());
                     opcion = Main.comprobarScanner(sc);
+                    if (opcion == 0){
+                        return mostrarPiezas();
+                    }
                     while(opcion < 1 || opcion > rey.size()){
                         System.out.println("Opción inválida.");
                         opcion = Main.comprobarScanner(sc);
+                        if (opcion == 0){
+                            return mostrarPiezas();
+                        }
                     }
                     return (rey.get(opcion-1));
+                }else{
+                    System.out.println("Grupo inválido");
                 }
-                return null;
             }
 
         }
@@ -683,6 +780,11 @@ public class Main{
             mostrarTablero();
 
             Main.piezaAMover = mostrarPiezas();
+
+            if (Main.piezaAMover == null) {
+                System.out.println("Selección cancelada.");
+                continue;
+            }
             piezaAMover.posiblesMovimientos(piezaAMover);
         }
 

@@ -96,6 +96,7 @@ public class Torre extends Pieza{
 
         while (true){
             System.out.println("Hacia donde quieres moverte:");
+            System.out.println("0. Cancelar");
 
             if (ARRIBA){
                 System.out.println("1. Arriba");
@@ -115,6 +116,10 @@ public class Torre extends Pieza{
 
             decision = Main.comprobarScanner(sc);
 
+            if (decision == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
             if (decision == 1 && ARRIBA) {
                 break;
             } else if (decision == 2 && DERECHA) {
@@ -130,6 +135,7 @@ public class Torre extends Pieza{
 
         if (decision == 1 && ARRIBA){
             System.out.println("Cuantas hacia arriba?" );
+            System.out.println("0. Cancelar");
             int capeada = (p.getI());
 
 
@@ -138,13 +144,13 @@ public class Torre extends Pieza{
                 if (Main.tablero[p.getI()-z][p.getJ()] != null){
 
                     if (!(Main.tablero[p.getI()-z][p.getJ()].getColor().equals(p.getColor()))){
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
 
                         maximo = z;
                     }
                     break;
                 }else{
-                    System.out.println(z + "casillas");
+                    System.out.println(z + " casillas");
                     maximo = z;
                 }
 
@@ -152,9 +158,17 @@ public class Torre extends Pieza{
 
             int movARRIBA = Main.comprobarScanner(sc);
 
+            if (movARRIBA == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
             while (movARRIBA < 1 || movARRIBA > maximo ){
                 System.out.println("Te sales del rango de movs permitidos, repite.");
                 movARRIBA = Main.comprobarScanner(sc);
+                if (movARRIBA == 0){
+                    System.out.println("Movimiento cancelado");
+                    return;
+                }
             }
 
             int iOriginal = p.getI();
@@ -187,12 +201,12 @@ public class Torre extends Pieza{
             }else{
                 if (piezaComida != null){
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
-                    p.primerMovimiento2OEnroque = true;
+                    p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }else{
                     System.out.println("Pieza movida.");
-                    p.primerMovimiento2OEnroque = true;
+                    p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }
@@ -201,6 +215,7 @@ public class Torre extends Pieza{
 
         if (decision == 2 && DERECHA){
             System.out.println("Cuantas hacia la derecha?" );
+            System.out.println("0. Cancelar");
             int capeada = (7-p.getJ() );
 
             int maximo = 0;
@@ -208,22 +223,30 @@ public class Torre extends Pieza{
                 if (Main.tablero[p.getI()][p.getJ()+ z] != null){
 
                     if (!(Main.tablero[p.getI()][p.getJ()+z].getColor().equals(p.getColor()))){
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
 
                     }
                     break;
                 }else{
-                    System.out.println(z + "casillas");
+                    System.out.println(z + " casillas");
                     maximo = z;
                 }
 
             }
             int movDERECHA = Main.comprobarScanner(sc);
 
+            if (movDERECHA == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
             while (movDERECHA < 1 || movDERECHA > maximo){
                 System.out.println("Te sales del rango de movs permitidos, repite.");
                 movDERECHA = Main.comprobarScanner(sc);
+                if (movDERECHA == 0){
+                    System.out.println("Movimiento cancelado");
+                    return;
+                }
             }
             int iOriginal = p.getI();
             int jOriginal = p.getJ();
@@ -255,12 +278,12 @@ public class Torre extends Pieza{
             }else{
                 if (piezaComida != null){
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
-                    p.primerMovimiento2OEnroque = true;
+                    p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }else{
                     System.out.println("Pieza movida.");
-                    p.primerMovimiento2OEnroque = true;
+                    p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }
@@ -269,6 +292,7 @@ public class Torre extends Pieza{
 
         if (decision == 3 && ABAJO){
             System.out.println("Cuantas hacia abajo?" );
+            System.out.println("0. Cancelar");
             int capeada = (7-p.getI());
 
             int maximo = 0;
@@ -276,22 +300,31 @@ public class Torre extends Pieza{
                 if (Main.tablero[p.getI()+ z][p.getJ()] != null){
 
                     if (!(Main.tablero[p.getI()+z][p.getJ()].getColor().equals(p.getColor()))){
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
 
                     }
                     break;
                 }else{
-                    System.out.println(z + "casillas");
+                    System.out.println(z + " casillas");
                     maximo = z;
                 }
 
             }
             int movABAJO = Main.comprobarScanner(sc);
 
+            if (movABAJO == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
+
             while (movABAJO < 1 || movABAJO > maximo){
                 System.out.println("Te sales del rango de movs permitidos, repite.");
                 movABAJO = Main.comprobarScanner(sc);
+                if (movABAJO == 0){
+                    System.out.println("Movimiento cancelado");
+                    return;
+                }
             }
             int iOriginal = p.getI();
             int jOriginal = p.getJ();
@@ -323,12 +356,12 @@ public class Torre extends Pieza{
             }else{
                 if (piezaComida != null){
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
-                    p.primerMovimiento2OEnroque = true;
+                    p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }else{
                     System.out.println("Pieza movida.");
-                    p.primerMovimiento2OEnroque = true;
+                    p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }
@@ -337,6 +370,7 @@ public class Torre extends Pieza{
 
         if (decision == 4 && IZQUIERDA){
             System.out.println("Cuantas hacia la izquierda?" );
+            System.out.println("0. Cancelar");
             int capeada = (p.getJ());
 
             int maximo = 0;
@@ -344,22 +378,31 @@ public class Torre extends Pieza{
                 if (Main.tablero[p.getI()][p.getJ()-z] != null){
 
                     if (!(Main.tablero[p.getI()][p.getJ()-z].getColor().equals(p.getColor()))){
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
 
                     }
                     break;
                 }else{
-                    System.out.println(z + "casillas");
+                    System.out.println(z + " casillas");
                     maximo = z;
                 }
 
             }
             int movIZQUIERDA = Main.comprobarScanner(sc);
 
+            if (movIZQUIERDA == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
             while (movIZQUIERDA < 1  || movIZQUIERDA > maximo){
                 System.out.println("Te sales del rango de movs permitidos, repite.");
                 movIZQUIERDA = Main.comprobarScanner(sc);
+
+                if (movIZQUIERDA == 0){
+                    System.out.println("Movimiento cancelado");
+                    return;
+                }
             }
             int iOriginal = p.getI();
             int jOriginal = p.getJ();
@@ -391,12 +434,12 @@ public class Torre extends Pieza{
             }else{
                 if (piezaComida != null){
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
-                    p.primerMovimiento2OEnroque = true;
+                    p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }else{
                     System.out.println("Pieza movida.");
-                    p.primerMovimiento2OEnroque = true;
+                    p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 }

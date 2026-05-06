@@ -295,6 +295,7 @@ public class Dama extends Pieza{
 
         while (true) {
             System.out.println("Hacia donde quieres moverte:");
+            System.out.println("0. Cancelar");
 
             if (ARRIBA) {
                 System.out.println("1. Arriba");
@@ -332,6 +333,11 @@ public class Dama extends Pieza{
 
             decision = Main.comprobarScanner(sc);
 
+            if (decision == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
+
             if (decision == 1 && ARRIBA) {
                 break;
             } else if (decision == 2 && ARRIBADERECHA) {
@@ -355,6 +361,7 @@ public class Dama extends Pieza{
 
         if (decision == 1 && ARRIBA) {
             System.out.println("Cuantas hacia arriba?");
+            System.out.println("0. Cancelar");
             int capeada = p.getI();
 
             int maximo = 0;
@@ -363,22 +370,29 @@ public class Dama extends Pieza{
                 if (Main.tablero[p.getI() - z][p.getJ()] != null) {
 
                     if (!(Main.tablero[p.getI() - z][p.getJ()].getColor().equals(p.getColor()))) {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
 
                     break;
                 } else {
-                    System.out.println(z + "casillas");
+                    System.out.println(z + " casillas");
                     maximo = z;
                 }
             }
 
             int movARRIBA = Main.comprobarScanner(sc);
-
+            if (movARRIBA == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
             while (movARRIBA < 1 || movARRIBA > maximo) {
                 System.out.println("Te sales del rango de movs permitidos, repite.");
                 movARRIBA = Main.comprobarScanner(sc);
+                if (movARRIBA == 0){
+                    System.out.println("Movimiento cancelado");
+                    return;
+                }
             }
 
             int iOriginal = p.getI();
@@ -423,6 +437,7 @@ public class Dama extends Pieza{
 
         if (decision == 2 && ARRIBADERECHA) {
             System.out.println("Cuantas casillas quieres moverte");
+            System.out.println("0. Cancelar");
 
             capeadoVertical = p.getI();
             capeadoHorizontal = 7 - p.getJ();
@@ -433,12 +448,12 @@ public class Dama extends Pieza{
                 for (int z = 1; z <= capeadoHorizontal; z++) {
                     if (Main.tablero[p.getI() - z][p.getJ() + z] != null) {
                         if (!(Main.tablero[p.getI() - z][p.getJ() + z].getColor().equals(p.getColor()))) {
-                            System.out.println(z + "casillas");
+                            System.out.println(z + " casillas");
                             maximo = z;
                         }
                         break;
                     } else {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
                 }
@@ -446,12 +461,12 @@ public class Dama extends Pieza{
                 for (int z = 1; z <= capeadoVertical; z++) {
                     if (Main.tablero[p.getI() - z][p.getJ() + z] != null) {
                         if (!(Main.tablero[p.getI() - z][p.getJ() + z].getColor().equals(p.getColor()))) {
-                            System.out.println(z + "casillas");
+                            System.out.println(z + " casillas");
                             maximo = z;
                         }
                         break;
                     } else {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
                 }
@@ -459,22 +474,29 @@ public class Dama extends Pieza{
                 for (int z = 1; z <= capeadoHorizontal; z++) {
                     if (Main.tablero[p.getI() - z][p.getJ() + z] != null) {
                         if (!(Main.tablero[p.getI() - z][p.getJ() + z].getColor().equals(p.getColor()))) {
-                            System.out.println(z + "casillas");
+                            System.out.println(z + " casillas");
                             maximo = z;
                         }
                         break;
                     } else {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
                 }
             }
 
             int movDiagonal = Main.comprobarScanner(sc);
-
+            if (movDiagonal == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
             while (movDiagonal < 1 || movDiagonal > maximo) {
                 System.out.println("Te sales del rango de movs permitidos, repite.");
                 movDiagonal = Main.comprobarScanner(sc);
+                if (movDiagonal == 0){
+                    System.out.println("Movimiento cancelado");
+                    return;
+                }
             }
 
             int iOriginal = p.getI();
@@ -519,6 +541,7 @@ public class Dama extends Pieza{
 
         if (decision == 3 && DERECHA) {
             System.out.println("Cuantas hacia la derecha?");
+            System.out.println("0. Cancelar");
             int capeada = 7 - p.getJ();
 
             int maximo = 0;
@@ -527,22 +550,29 @@ public class Dama extends Pieza{
                 if (Main.tablero[p.getI()][p.getJ() + z] != null) {
 
                     if (!(Main.tablero[p.getI()][p.getJ() + z].getColor().equals(p.getColor()))) {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
 
                     break;
                 } else {
-                    System.out.println(z + "casillas");
+                    System.out.println(z + " casillas");
                     maximo = z;
                 }
             }
 
             int movDERECHA = Main.comprobarScanner(sc);
-
+            if (movDERECHA == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
             while (movDERECHA < 1 || movDERECHA > maximo) {
                 System.out.println("Te sales del rango de movs permitidos, repite.");
                 movDERECHA = Main.comprobarScanner(sc);
+                if (movDERECHA == 0){
+                    System.out.println("Movimiento cancelado");
+                    return;
+                }
             }
 
             int iOriginal = p.getI();
@@ -587,6 +617,7 @@ public class Dama extends Pieza{
 
         if (decision == 4 && ABAJODERECHA) {
             System.out.println("Cuantas casillas quieres moverte");
+            System.out.println("0. Cancelar");
 
             capeadoVertical = 7 - p.getI();
             capeadoHorizontal = 7 - p.getJ();
@@ -597,12 +628,12 @@ public class Dama extends Pieza{
                 for (int z = 1; z <= capeadoHorizontal; z++) {
                     if (Main.tablero[p.getI() + z][p.getJ() + z] != null) {
                         if (!(Main.tablero[p.getI() + z][p.getJ() + z].getColor().equals(p.getColor()))) {
-                            System.out.println(z + "casillas");
+                            System.out.println(z + " casillas");
                             maximo = z;
                         }
                         break;
                     } else {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
                 }
@@ -610,12 +641,12 @@ public class Dama extends Pieza{
                 for (int z = 1; z <= capeadoVertical; z++) {
                     if (Main.tablero[p.getI() + z][p.getJ() + z] != null) {
                         if (!(Main.tablero[p.getI() + z][p.getJ() + z].getColor().equals(p.getColor()))) {
-                            System.out.println(z + "casillas");
+                            System.out.println(z + " casillas");
                             maximo = z;
                         }
                         break;
                     } else {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
                 }
@@ -623,22 +654,30 @@ public class Dama extends Pieza{
                 for (int z = 1; z <= capeadoHorizontal; z++) {
                     if (Main.tablero[p.getI() + z][p.getJ() + z] != null) {
                         if (!(Main.tablero[p.getI() + z][p.getJ() + z].getColor().equals(p.getColor()))) {
-                            System.out.println(z + "casillas");
+                            System.out.println(z + " casillas");
                             maximo = z;
                         }
                         break;
                     } else {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
                 }
             }
 
             int movDiagonal = Main.comprobarScanner(sc);
+            if (movDiagonal == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
 
             while (movDiagonal < 1 || movDiagonal > maximo) {
                 System.out.println("Te sales del rango de movs permitidos, repite.");
                 movDiagonal = Main.comprobarScanner(sc);
+                if (movDiagonal == 0){
+                    System.out.println("Movimiento cancelado");
+                    return;
+                }
             }
 
             int iOriginal = p.getI();
@@ -683,6 +722,7 @@ public class Dama extends Pieza{
 
         if (decision == 5 && ABAJO) {
             System.out.println("Cuantas hacia abajo?");
+            System.out.println("0. Cancelar");
             int capeada = 7 - p.getI();
 
             int maximo = 0;
@@ -691,22 +731,29 @@ public class Dama extends Pieza{
                 if (Main.tablero[p.getI() + z][p.getJ()] != null) {
 
                     if (!(Main.tablero[p.getI() + z][p.getJ()].getColor().equals(p.getColor()))) {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
 
                     break;
                 } else {
-                    System.out.println(z + "casillas");
+                    System.out.println(z + " casillas");
                     maximo = z;
                 }
             }
 
             int movABAJO = Main.comprobarScanner(sc);
-
+            if (movABAJO == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
             while (movABAJO < 1 || movABAJO > maximo) {
                 System.out.println("Te sales del rango de movs permitidos, repite.");
                 movABAJO = Main.comprobarScanner(sc);
+                if (movABAJO == 0){
+                    System.out.println("Movimiento cancelado");
+                    return;
+                }
             }
 
             int iOriginal = p.getI();
@@ -751,6 +798,7 @@ public class Dama extends Pieza{
 
         if (decision == 6 && ABAJOIZQUIERDA) {
             System.out.println("Cuantas casillas quieres moverte");
+            System.out.println("0. Cancelar");
 
             capeadoVertical = 7 - p.getI();
             capeadoHorizontal = p.getJ();
@@ -761,12 +809,12 @@ public class Dama extends Pieza{
                 for (int z = 1; z <= capeadoHorizontal; z++) {
                     if (Main.tablero[p.getI() + z][p.getJ() - z] != null) {
                         if (!(Main.tablero[p.getI() + z][p.getJ() - z].getColor().equals(p.getColor()))) {
-                            System.out.println(z + "casillas");
+                            System.out.println(z + " casillas");
                             maximo = z;
                         }
                         break;
                     } else {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
                 }
@@ -774,12 +822,12 @@ public class Dama extends Pieza{
                 for (int z = 1; z <= capeadoVertical; z++) {
                     if (Main.tablero[p.getI() + z][p.getJ() - z] != null) {
                         if (!(Main.tablero[p.getI() + z][p.getJ() - z].getColor().equals(p.getColor()))) {
-                            System.out.println(z + "casillas");
+                            System.out.println(z + " casillas");
                             maximo = z;
                         }
                         break;
                     } else {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
                 }
@@ -787,22 +835,29 @@ public class Dama extends Pieza{
                 for (int z = 1; z <= capeadoHorizontal; z++) {
                     if (Main.tablero[p.getI() + z][p.getJ() - z] != null) {
                         if (!(Main.tablero[p.getI() + z][p.getJ() - z].getColor().equals(p.getColor()))) {
-                            System.out.println(z + "casillas");
+                            System.out.println(z + " casillas");
                             maximo = z;
                         }
                         break;
                     } else {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
                 }
             }
 
             int movDiagonal = Main.comprobarScanner(sc);
-
+            if (movDiagonal == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
             while (movDiagonal < 1 || movDiagonal > maximo) {
                 System.out.println("Te sales del rango de movs permitidos, repite.");
                 movDiagonal = Main.comprobarScanner(sc);
+                if (movDiagonal == 0){
+                    System.out.println("Movimiento cancelado");
+                    return;
+                }
             }
 
             int iOriginal = p.getI();
@@ -847,6 +902,7 @@ public class Dama extends Pieza{
 
         if (decision == 7 && IZQUIERDA) {
             System.out.println("Cuantas hacia la izquierda?");
+            System.out.println("0. Cancelar");
             int capeada = p.getJ();
 
             int maximo = 0;
@@ -855,22 +911,29 @@ public class Dama extends Pieza{
                 if (Main.tablero[p.getI()][p.getJ() - z] != null) {
 
                     if (!(Main.tablero[p.getI()][p.getJ() - z].getColor().equals(p.getColor()))) {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
 
                     break;
                 } else {
-                    System.out.println(z + "casillas");
+                    System.out.println(z + " casillas");
                     maximo = z;
                 }
             }
 
             int movIZQUIERDA = Main.comprobarScanner(sc);
-
+            if (movIZQUIERDA == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
             while (movIZQUIERDA < 1 || movIZQUIERDA > maximo) {
                 System.out.println("Te sales del rango de movs permitidos, repite.");
                 movIZQUIERDA = Main.comprobarScanner(sc);
+                if (movIZQUIERDA == 0){
+                    System.out.println("Movimiento cancelado");
+                    return;
+                }
             }
 
             int iOriginal = p.getI();
@@ -915,6 +978,7 @@ public class Dama extends Pieza{
 
         if (decision == 8 && ARRIBAIZQUIERDA) {
             System.out.println("Cuantas casillas quieres moverte");
+            System.out.println("0. Cancelar");
 
             capeadoVertical = p.getI();
             capeadoHorizontal = p.getJ();
@@ -925,12 +989,12 @@ public class Dama extends Pieza{
                 for (int z = 1; z <= capeadoHorizontal; z++) {
                     if (Main.tablero[p.getI() - z][p.getJ() - z] != null) {
                         if (!(Main.tablero[p.getI() - z][p.getJ() - z].getColor().equals(p.getColor()))) {
-                            System.out.println(z + "casillas");
+                            System.out.println(z + " casillas");
                             maximo = z;
                         }
                         break;
                     } else {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
                 }
@@ -938,12 +1002,12 @@ public class Dama extends Pieza{
                 for (int z = 1; z <= capeadoVertical; z++) {
                     if (Main.tablero[p.getI() - z][p.getJ() - z] != null) {
                         if (!(Main.tablero[p.getI() - z][p.getJ() - z].getColor().equals(p.getColor()))) {
-                            System.out.println(z + "casillas");
+                            System.out.println(z + " casillas");
                             maximo = z;
                         }
                         break;
                     } else {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
                 }
@@ -951,12 +1015,12 @@ public class Dama extends Pieza{
                 for (int z = 1; z <= capeadoHorizontal; z++) {
                     if (Main.tablero[p.getI() - z][p.getJ() - z] != null) {
                         if (!(Main.tablero[p.getI() - z][p.getJ() - z].getColor().equals(p.getColor()))) {
-                            System.out.println(z + "casillas");
+                            System.out.println(z + " casillas");
                             maximo = z;
                         }
                         break;
                     } else {
-                        System.out.println(z + "casillas");
+                        System.out.println(z + " casillas");
                         maximo = z;
                     }
                 }
@@ -964,9 +1028,17 @@ public class Dama extends Pieza{
 
             int movDiagonal = Main.comprobarScanner(sc);
 
+            if (movDiagonal == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
             while (movDiagonal < 1 || movDiagonal > maximo) {
                 System.out.println("Te sales del rango de movs permitidos, repite.");
                 movDiagonal = Main.comprobarScanner(sc);
+                if (movDiagonal == 0){
+                    System.out.println("Movimiento cancelado");
+                    return;
+                }
             }
 
             int iOriginal = p.getI();

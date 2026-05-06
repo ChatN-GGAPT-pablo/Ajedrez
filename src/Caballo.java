@@ -110,6 +110,7 @@ public class Caballo extends Pieza{
         while (true){
             System.out.println("Hacia donde quieres moverte:");
 
+            System.out.println("0. Cancelar");
             if ( ARRIBADERECHA){
                 System.out.println("1. Arriba-Derecha");
             }
@@ -145,6 +146,10 @@ public class Caballo extends Pieza{
 
             decision = Main.comprobarScanner(sc);
 
+            if (decision == 0){
+                System.out.println("Movimiento cancelado");
+                return;
+            }
             if (decision == 1 && ARRIBADERECHA) {
                 break;
             } else if (decision == 2 && DERECHAARRIBA) {
