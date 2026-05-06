@@ -53,7 +53,9 @@ public class Peon extends Pieza{
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
                 if (casilla != null) {
                     if (!(casilla.getColor() == p.getColor())) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
+                        if (casilla.getPrimerMovimiento2OEnroque()
+                                && Main.getUltimaPiezaMovida() == casilla
+                                && casilla.getTipoPieza() == TipoPieza.PEON) {
                             enPassantBlancoDerecha = true;
                         }
 
@@ -67,7 +69,9 @@ public class Peon extends Pieza{
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
                 if (casilla != null) {
                     if (!(casilla.getColor() == p.getColor())) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
+                        if (casilla.getPrimerMovimiento2OEnroque()
+                                && Main.getUltimaPiezaMovida() == casilla
+                                && casilla.getTipoPieza() == TipoPieza.PEON) {
                             enPassantBlancoIzquierda = true;
                         }
 
@@ -550,7 +554,9 @@ public class Peon extends Pieza{
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
                 if (casilla != null) {
                     if (!(casilla.getColor() == p.getColor())) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
+                        if (casilla.getPrimerMovimiento2OEnroque()
+                                && Main.getUltimaPiezaMovida() == casilla
+                                && casilla.getTipoPieza() == TipoPieza.PEON) {
                             enPassantNegroDerecha = true;
                         }
 
@@ -564,7 +570,9 @@ public class Peon extends Pieza{
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
                 if (casilla != null) {
                     if (!(casilla.getColor() == p.getColor())) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
+                        if (casilla.getPrimerMovimiento2OEnroque()
+                                && Main.getUltimaPiezaMovida() == casilla
+                                && casilla.getTipoPieza() == TipoPieza.PEON) {
                             enPassantNegroIzquierda = true;
                         }
 
@@ -1047,7 +1055,9 @@ public class Peon extends Pieza{
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
                 if (casilla != null) {
                     if (!(casilla.getColor() == p.getColor())) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
+                        if (casilla.getPrimerMovimiento2OEnroque()
+                                && Main.getUltimaPiezaMovida() == casilla
+                                && casilla.getTipoPieza() == TipoPieza.PEON) {
                             enPassantBlancoDerecha = true;
                         }
 
@@ -1056,12 +1066,15 @@ public class Peon extends Pieza{
             }
 
 
+
             //En peassant izquierda
             if (p.getI() == 3 && p.getColor() == Color.BLANCO && p.getJ() - 1 >= 0) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
                 if (casilla != null) {
                     if (!(casilla.getColor() == p.getColor())) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
+                        if (casilla.getPrimerMovimiento2OEnroque()
+                                && Main.getUltimaPiezaMovida() == casilla
+                                && casilla.getTipoPieza() == TipoPieza.PEON) {
                             enPassantBlancoIzquierda = true;
                         }
 
@@ -1135,7 +1148,9 @@ public class Peon extends Pieza{
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
                 if (casilla != null) {
                     if (!(casilla.getColor() == p.getColor())) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
+                        if (casilla.getPrimerMovimiento2OEnroque()
+                                && Main.getUltimaPiezaMovida() == casilla
+                                && casilla.getTipoPieza() == TipoPieza.PEON) {
                             enPassantNegroDerecha = true;
                         }
 
@@ -1149,7 +1164,9 @@ public class Peon extends Pieza{
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
                 if (casilla != null) {
                     if (!(casilla.getColor() == p.getColor())) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
+                        if (casilla.getPrimerMovimiento2OEnroque()
+                                && Main.getUltimaPiezaMovida() == casilla
+                                && casilla.getTipoPieza() == TipoPieza.PEON) {
                             enPassantNegroIzquierda = true;
                         }
 

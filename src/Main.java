@@ -12,6 +12,17 @@ public class Main{
     }
 
 
+    static Pieza ultimaPiezaMovida = null;
+
+    public static Pieza getUltimaPiezaMovida(){
+        return ultimaPiezaMovida;
+    }
+    public static Pieza ultimaPieza(Pieza p){
+        ultimaPiezaMovida = p;
+        return ultimaPiezaMovida;
+    }
+
+
     public static int comprobarScanner(Scanner sc) {
         while (true) {
             try {
@@ -561,9 +572,7 @@ public class Main{
 
 
 
-    public static Pieza ultimaPieza(Pieza p){
-        return p;
-    }
+
 
 
     public static void main(String[] args) {
