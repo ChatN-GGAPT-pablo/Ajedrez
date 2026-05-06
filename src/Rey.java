@@ -3,14 +3,14 @@ import java.util.Scanner;
 public class Rey extends Pieza {
     Scanner sc = new Scanner(System.in);
 
-    public Rey(String nombrePieza, String color, int i, int j, boolean inmovil) {
-        super(nombrePieza, color, i, j, inmovil);
+    public Rey(Color color, int i, int j, boolean inmovil) {
+        super(TipoPieza.REY, color, i, j, inmovil);
     }
 
 
     @Override
     public String toString() {
-        return "R" + this.getColor();
+        return "R" + this.getColor().getSimbolo();
     }
 
 
@@ -33,71 +33,71 @@ public class Rey extends Pieza {
 
         if (p.getI() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ()];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 ARRIBA = true;
             }
         }
 
         if (p.getI() - 1 >= 0 && p.getJ() + 1 < 8) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() + 1];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 ARRIBADERECHA = true;
             }
         }
 
         if (p.getJ() + 1 < 8) {
             Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 DERECHA = true;
             }
         }
 
         if (p.getI() + 1 < 8 && p.getJ() + 1 < 8) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() + 1];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 ABAJODERECHA = true;
             }
         }
 
         if (p.getI() + 1 < 8) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ()];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 ABAJO = true;
             }
         }
 
         if (p.getI() + 1 < 8 && p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() - 1];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 ABAJOIZQUIERDA = true;
             }
         }
 
         if (p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 IZQUIERDA = true;
             }
         }
 
         if (p.getI() - 1 >= 0 && p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() - 1];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 ARRIBAIZQUIERDA = true;
             }
         }
 
 
 //Enroque blanco
-        if (p.getColor().equals("B") && !p.primerMovimiento2OEnroque && !rey.hayJaque()) {
+        if (p.getColor() == Color.BLANCO && !p.primerMovimiento2OEnroque && !rey.hayJaque()) {
 
             // Enroque corto blanco: rey en [7][4], torre en [7][7]
             if (p.getI() == 7 && p.getJ() == 4) {
                 Pieza torreCorta = Main.tablero[7][7];
 
                 if (torreCorta != null &&
-                        torreCorta.getNombrePieza().equals("Torre") &&
-                        torreCorta.getColor().equals("B") &&
+                        torreCorta.getTipoPieza() == TipoPieza.TORRE &&
+                        torreCorta.getColor() == Color.BLANCO &&
                         !torreCorta.primerMovimiento2OEnroque &&
                         Main.tablero[7][5] == null &&
                         Main.tablero[7][6] == null) {
@@ -131,8 +131,8 @@ public class Rey extends Pieza {
                 Pieza torreLarga = Main.tablero[7][0];
 
                 if (torreLarga != null &&
-                        torreLarga.getNombrePieza().equals("Torre") &&
-                        torreLarga.getColor().equals("B") &&
+                        torreLarga.getTipoPieza() == TipoPieza.TORRE &&
+                        torreLarga.getColor() == Color.BLANCO &&
                         !torreLarga.primerMovimiento2OEnroque &&
                         Main.tablero[7][1] == null &&
                         Main.tablero[7][2] == null &&
@@ -166,15 +166,15 @@ public class Rey extends Pieza {
             }
         }
 //Enroque negro
-        if (p.getColor().equals("N") && !p.primerMovimiento2OEnroque && !rey.hayJaque()) {
+        if (p.getColor() == Color.NEGRO && !p.primerMovimiento2OEnroque && !rey.hayJaque()) {
 
             // Enroque corto negro: rey en [0][4], torre en [0][7]
             if (p.getI() == 0 && p.getJ() == 4) {
                 Pieza torreCorta = Main.tablero[0][7];
 
                 if (torreCorta != null &&
-                        torreCorta.getNombrePieza().equals("Torre") &&
-                        torreCorta.getColor().equals("N") &&
+                        torreCorta.getTipoPieza() == TipoPieza.TORRE &&
+                        torreCorta.getColor() == Color.NEGRO &&
                         !torreCorta.primerMovimiento2OEnroque &&
                         Main.tablero[0][5] == null &&
                         Main.tablero[0][6] == null) {
@@ -208,8 +208,8 @@ public class Rey extends Pieza {
                 Pieza torreLarga = Main.tablero[0][0];
 
                 if (torreLarga != null &&
-                        torreLarga.getNombrePieza().equals("Torre") &&
-                        torreLarga.getColor().equals("N") &&
+                        torreLarga.getTipoPieza() == TipoPieza.TORRE &&
+                        torreLarga.getColor() == Color.NEGRO &&
                         !torreLarga.primerMovimiento2OEnroque &&
                         Main.tablero[0][1] == null &&
                         Main.tablero[0][2] == null &&
@@ -519,7 +519,7 @@ public class Rey extends Pieza {
             System.out.println("Movimiento ilegal");
         } else {
             if (piezaComida != null) {
-                System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                 p.primerMovimiento2OEnroque = true;
                 Main.ultimaPieza(p);
                 Main.cambiarTurno();
@@ -548,69 +548,69 @@ public class Rey extends Pieza {
 
         if (p.getI() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ()];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 ARRIBA = true;
             }
         }
 
         if (p.getI() - 1 >= 0 && p.getJ() + 1 < 8) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() + 1];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 ARRIBADERECHA = true;
             }
         }
 
         if (p.getJ() + 1 < 8) {
             Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 DERECHA = true;
             }
         }
 
         if (p.getI() + 1 < 8 && p.getJ() + 1 < 8) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() + 1];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 ABAJODERECHA = true;
             }
         }
 
         if (p.getI() + 1 < 8) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ()];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 ABAJO = true;
             }
         }
 
         if (p.getI() + 1 < 8 && p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() - 1];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 ABAJOIZQUIERDA = true;
             }
         }
 
         if (p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 IZQUIERDA = true;
             }
         }
 
         if (p.getI() - 1 >= 0 && p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() - 1];
-            if (casilla == null || !casilla.getColor().equals(p.getColor())) {
+            if (casilla == null || casilla.getColor() != p.getColor()) {
                 ARRIBAIZQUIERDA = true;
             }
         }
 
 // Enroque blanco
-        if (p.getColor().equals("B") && !p.primerMovimiento2OEnroque && !p.hayJaque()) {
+        if (p.getColor() == Color.BLANCO && !p.primerMovimiento2OEnroque && !p.hayJaque()) {
 
             if (p.getI() == 7 && p.getJ() == 4) {
                 Pieza torreCorta = Main.tablero[7][7];
 
                 if (torreCorta != null &&
-                        torreCorta.getNombrePieza().equals("Torre") &&
-                        torreCorta.getColor().equals("B") &&
+                        torreCorta.getTipoPieza() == TipoPieza.TORRE &&
+                        torreCorta.getColor() == Color.BLANCO &&
                         !torreCorta.primerMovimiento2OEnroque &&
                         Main.tablero[7][5] == null &&
                         Main.tablero[7][6] == null) {
@@ -641,8 +641,8 @@ public class Rey extends Pieza {
                 Pieza torreLarga = Main.tablero[7][0];
 
                 if (torreLarga != null &&
-                        torreLarga.getNombrePieza().equals("Torre") &&
-                        torreLarga.getColor().equals("B") &&
+                        torreLarga.getTipoPieza() == TipoPieza.TORRE &&
+                        torreLarga.getColor() == Color.BLANCO &&
                         !torreLarga.primerMovimiento2OEnroque &&
                         Main.tablero[7][1] == null &&
                         Main.tablero[7][2] == null &&
@@ -674,14 +674,14 @@ public class Rey extends Pieza {
         }
 
 // Enroque negro
-        if (p.getColor().equals("N") && !p.primerMovimiento2OEnroque && !p.hayJaque()) {
+        if (p.getColor() == Color.NEGRO && !p.primerMovimiento2OEnroque && !p.hayJaque()) {
 
             if (p.getI() == 0 && p.getJ() == 4) {
                 Pieza torreCorta = Main.tablero[0][7];
 
                 if (torreCorta != null &&
-                        torreCorta.getNombrePieza().equals("Torre") &&
-                        torreCorta.getColor().equals("N") &&
+                        torreCorta.getTipoPieza() == TipoPieza.TORRE &&
+                        torreCorta.getColor() == Color.NEGRO &&
                         !torreCorta.primerMovimiento2OEnroque &&
                         Main.tablero[0][5] == null &&
                         Main.tablero[0][6] == null) {
@@ -712,8 +712,8 @@ public class Rey extends Pieza {
                 Pieza torreLarga = Main.tablero[0][0];
 
                 if (torreLarga != null &&
-                        torreLarga.getNombrePieza().equals("Torre") &&
-                        torreLarga.getColor().equals("N") &&
+                        torreLarga.getTipoPieza() == TipoPieza.TORRE &&
+                        torreLarga.getColor() == Color.NEGRO &&
                         !torreLarga.primerMovimiento2OEnroque &&
                         Main.tablero[0][1] == null &&
                         Main.tablero[0][2] == null &&

@@ -1,7 +1,7 @@
 public abstract class Pieza implements Movible {
 
-    private String nombrePieza;
-    private String color;
+    private TipoPieza tipoPieza;
+    private Color color;
     private int numeroPieza;
     int i;
     int j;
@@ -12,11 +12,11 @@ public abstract class Pieza implements Movible {
     /**
      * Constructor para rey y reina pq solo hay uno de cada y no necesitan "numero"
      *
-     * @param nombrePieza
+     * @param tipoPieza
      * @param color
      */
-    public Pieza(String nombrePieza, String color, int i, int j, boolean inmovil) {
-        this.nombrePieza = nombrePieza;
+    public Pieza(TipoPieza tipoPieza, Color color, int i, int j, boolean inmovil) {
+        this.tipoPieza = tipoPieza;
         this.color = color;
         this.i = i;
         this.j = j;
@@ -26,12 +26,12 @@ public abstract class Pieza implements Movible {
     /**
      * Constructor para el resto de piezas
      *
-     * @param nombrePieza
+     * @param tipoPieza
      * @param color
      * @param numeroPieza
      */
-    public Pieza(String nombrePieza, String color, int numeroPieza, int i, int j, boolean inmovil) {
-        this.nombrePieza = nombrePieza;
+    public Pieza(TipoPieza tipoPieza, Color color, int numeroPieza, int i, int j, boolean inmovil) {
+        this.tipoPieza = tipoPieza;
         this.color = color;
         this.numeroPieza = numeroPieza;
         this.i = i;
@@ -40,8 +40,8 @@ public abstract class Pieza implements Movible {
     }
 
     //Constructor Peon
-    public Pieza(String nombrePieza, String color, int numeroPieza, int i, int j, boolean primerMovimiento2OEnroque, boolean inmovil) {
-        this.nombrePieza = nombrePieza;
+    public Pieza(TipoPieza tipoPieza, Color color, int numeroPieza, int i, int j, boolean primerMovimiento2OEnroque, boolean inmovil) {
+        this.tipoPieza = tipoPieza;
         this.color = color;
         this.numeroPieza = numeroPieza;
         this.i = i;
@@ -54,26 +54,23 @@ public abstract class Pieza implements Movible {
     //Constructor Torres
 
 
-    public String getNombrePieza() {
-        return nombrePieza;
+    public TipoPieza getTipoPieza() {
+        return tipoPieza;
+    }
+    public void setTipoPieza(TipoPieza tipoPieza) {
+        this.tipoPieza = tipoPieza;
     }
 
-    public void setNombrePieza(String nombrePieza) {
-        this.nombrePieza = nombrePieza;
-    }
-
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
-
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
     public int getNumeroPieza() {
         return numeroPieza;
     }
-
     public void setNumeroPieza(int numeroPieza) {
         this.numeroPieza = numeroPieza;
     }
@@ -81,7 +78,6 @@ public abstract class Pieza implements Movible {
     public int getI() {
         return i;
     }
-
     public void setI(int i) {
         this.i = i;
     }
@@ -89,7 +85,6 @@ public abstract class Pieza implements Movible {
     public int getJ() {
         return j;
     }
-
     public void setJ(int j) {
         this.j = j;
     }
@@ -97,15 +92,13 @@ public abstract class Pieza implements Movible {
     public boolean getPrimerMovimiento2OEnroque() {
         return primerMovimiento2OEnroque;
     }
-
-    public void setPrimerMovimiento2OEnroque(boolean primerMovimiento) {
+    public void setPrimerMovimiento2OEnroque(boolean primerMovimiento2OEnroque) {
         this.primerMovimiento2OEnroque = primerMovimiento2OEnroque;
     }
 
     public boolean getInmovil() {
         return inmovil;
     }
-
     public void setInmovil(boolean inmovil) {
         this.inmovil = inmovil;
     }
@@ -122,7 +115,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Torre")) {
+                    if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.TORRE) {
                         return true;
                     }
                 }
@@ -146,7 +139,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Alfil")) {
+                    if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.ALFIL) {
                         return true;
                     }
                 }
@@ -171,7 +164,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Torre")) {
+                    if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.TORRE) {
                         return true;
                     }
                 }
@@ -195,7 +188,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Alfil")) {
+                    if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.ALFIL) {
                         return true;
                     }
                 }
@@ -220,7 +213,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Torre")) {
+                    if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.TORRE) {
                         return true;
                     }
                 }
@@ -244,7 +237,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Alfil")) {
+                    if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.ALFIL) {
                         return true;
                     }
                 }
@@ -269,7 +262,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Torre")) {
+                    if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.TORRE) {
                         return true;
                     }
                 }
@@ -293,7 +286,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Dama") || casilla.getNombrePieza().equals("Alfil")) {
+                    if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.ALFIL) {
                         return true;
                     }
                 }
@@ -317,7 +310,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Caballo")) {
+                    if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
                 }
@@ -337,7 +330,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Caballo")) {
+                    if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
                 }
@@ -357,7 +350,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Caballo")) {
+                    if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
                 }
@@ -377,7 +370,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Caballo")) {
+                    if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
                 }
@@ -397,7 +390,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Caballo")) {
+                    if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
                 }
@@ -417,7 +410,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Caballo")) {
+                    if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
                 }
@@ -437,7 +430,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Caballo")) {
+                    if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
                 }
@@ -457,7 +450,7 @@ public abstract class Pieza implements Movible {
 
             if (casilla != null) {
                 if (!(casilla.getColor().equals(this.getColor()))) {
-                    if (casilla.getNombrePieza().equals("Caballo")) {
+                    if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
                 }
@@ -469,7 +462,7 @@ public abstract class Pieza implements Movible {
 
     public boolean hayJaquePeones() {
 
-        if (this.getColor().equals("B")) {
+        if (this.getColor() == Color.BLANCO) {
 
             int iPieza = this.getI() - 1;
             int jPieza = this.getJ() - 1;
@@ -479,7 +472,7 @@ public abstract class Pieza implements Movible {
 
                 if (casilla != null) {
                     if (!(casilla.getColor().equals(this.getColor()))) {
-                        if (casilla.getNombrePieza().equals("Peón")) {
+                        if (casilla.getTipoPieza() == TipoPieza.PEON) {
                             return true;
                         }
                     }
@@ -494,7 +487,7 @@ public abstract class Pieza implements Movible {
 
                 if (casilla2 != null) {
                     if (!(casilla2.getColor().equals(this.getColor()))) {
-                        if (casilla2.getNombrePieza().equals("Peón")) {
+                        if (casilla2.getTipoPieza() == TipoPieza.PEON) {
                             return true;
                         }
                     }
@@ -513,7 +506,7 @@ public abstract class Pieza implements Movible {
 
                 if (casilla != null) {
                     if (!(casilla.getColor().equals(this.getColor()))) {
-                        if (casilla.getNombrePieza().equals("Peón")) {
+                        if (casilla.getTipoPieza() == TipoPieza.PEON) {
                             return true;
                         }
                     }
@@ -528,7 +521,7 @@ public abstract class Pieza implements Movible {
 
                 if (casilla2 != null) {
                     if (!(casilla2.getColor().equals(this.getColor()))) {
-                        if (casilla2.getNombrePieza().equals("Peón")) {
+                        if (casilla2.getTipoPieza() == TipoPieza.PEON) {
                             return true;
                         }
                     }

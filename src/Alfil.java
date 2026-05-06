@@ -2,15 +2,15 @@ import java.util.Scanner;
 
 public class Alfil extends Pieza{
     Scanner sc = new Scanner(System.in);
-    public Alfil(String nombrePieza, String color, int numeroPieza, int i, int j, boolean inmovil) {
-        super(nombrePieza, color, numeroPieza, i, j, inmovil);
+    public Alfil(Color color, int numeroPieza, int i, int j, boolean inmovil) {
+        super(TipoPieza.ALFIL, color, numeroPieza, i, j, inmovil);
     }
 
 
 
     @Override
     public String toString() {
-        return "A" + this.getColor() + this.getNumeroPieza();
+        return "A" + this.getColor().getSimbolo() + this.getNumeroPieza();
     }
 
 
@@ -33,7 +33,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ARRIBADERECHA = true;
                     }
                     break;
@@ -47,7 +47,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ARRIBADERECHA = true;
                     }
                     break;
@@ -61,7 +61,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ARRIBADERECHA = true;
                     }
                     break;
@@ -80,7 +80,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ABAJODERECHA = true;
                     }
                     break;
@@ -94,7 +94,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ABAJODERECHA = true;
                     }
                     break;
@@ -108,7 +108,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ABAJODERECHA = true;
                     }
                     break;
@@ -127,7 +127,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ABAJOIZQUIERDA = true;
                     }
                     break;
@@ -141,7 +141,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ABAJOIZQUIERDA = true;
                     }
                     break;
@@ -155,7 +155,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ABAJOIZQUIERDA = true;
                     }
                     break;
@@ -174,7 +174,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ARRIBAIZQUIERDA = true;
                     }
                     break;
@@ -188,7 +188,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ARRIBAIZQUIERDA = true;
                     }
                     break;
@@ -202,7 +202,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ARRIBAIZQUIERDA = true;
                     }
                     break;
@@ -350,7 +350,7 @@ public class Alfil extends Pieza{
                 System.out.println("Movimiento ilegal");
             } else {
                 if (piezaComida != null) {
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 } else {
@@ -450,7 +450,7 @@ public class Alfil extends Pieza{
                 System.out.println("Movimiento ilegal");
             } else {
                 if (piezaComida != null) {
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 } else {
@@ -548,7 +548,7 @@ public class Alfil extends Pieza{
                 System.out.println("Movimiento ilegal");
             } else {
                 if (piezaComida != null) {
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 } else {
@@ -646,7 +646,7 @@ public class Alfil extends Pieza{
                 System.out.println("Movimiento ilegal");
             } else {
                 if (piezaComida != null) {
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 } else {
@@ -674,7 +674,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ARRIBADERECHA = true;
                     }
                     break;
@@ -688,7 +688,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ARRIBADERECHA = true;
                     }
                     break;
@@ -702,7 +702,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ARRIBADERECHA = true;
                     }
                     break;
@@ -721,7 +721,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ABAJODERECHA = true;
                     }
                     break;
@@ -735,7 +735,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ABAJODERECHA = true;
                     }
                     break;
@@ -749,7 +749,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ABAJODERECHA = true;
                     }
                     break;
@@ -768,7 +768,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ABAJOIZQUIERDA = true;
                     }
                     break;
@@ -782,7 +782,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ABAJOIZQUIERDA = true;
                     }
                     break;
@@ -796,7 +796,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ABAJOIZQUIERDA = true;
                     }
                     break;
@@ -815,7 +815,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ARRIBAIZQUIERDA = true;
                     }
                     break;
@@ -829,7 +829,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ARRIBAIZQUIERDA = true;
                     }
                     break;
@@ -843,7 +843,7 @@ public class Alfil extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!casilla.getColor().equals(p.getColor())) {
+                    if (casilla.getColor() != p.getColor()) {
                         ARRIBAIZQUIERDA = true;
                     }
                     break;

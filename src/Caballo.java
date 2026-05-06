@@ -2,15 +2,15 @@ import java.util.Scanner;
 
 public class Caballo extends Pieza{
     Scanner sc = new Scanner(System.in);
-    public Caballo(String nombrePieza, String color, int numeroPieza, int i, int j, boolean inmovil) {
-        super(nombrePieza, color, numeroPieza, i, j, inmovil);
+    public Caballo(Color color, int numeroPieza, int i, int j, boolean inmovil) {
+        super(TipoPieza.CABALLO, color, numeroPieza, i, j, inmovil);
     }
 
 
 
     @Override
     public String toString() {
-        return "C" + this.getColor() + this.getNumeroPieza();
+        return "C" + this.getColor().getSimbolo() + this.getNumeroPieza();
     }
 
     //if(!puedeMover()){
@@ -35,7 +35,7 @@ public class Caballo extends Pieza{
         if (p.getI() - 2 >= 0 && p.getJ() + 1 <= 7) {
             Pieza casilla = Main.tablero[p.getI() - 2][p.getJ() + 1];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 ARRIBADERECHA = true;
             }
         }
@@ -43,7 +43,7 @@ public class Caballo extends Pieza{
         if (p.getI() - 1 >= 0 && p.getJ() + 2 <= 7) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() + 2];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 DERECHAARRIBA = true;
             }
         }
@@ -51,7 +51,7 @@ public class Caballo extends Pieza{
         if (p.getI() + 1 <= 7 && p.getJ() + 2 <= 7) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() + 2];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 DERECHAABAJO = true;
             }
         }
@@ -59,7 +59,7 @@ public class Caballo extends Pieza{
         if (p.getI() + 2 <= 7 && p.getJ() + 1 <= 7) {
             Pieza casilla = Main.tablero[p.getI() + 2][p.getJ() + 1];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 ABAJODERECHA = true;
             }
         }
@@ -67,7 +67,7 @@ public class Caballo extends Pieza{
         if (p.getI() + 2 <= 7 && p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() + 2][p.getJ() - 1];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 ABAJOIZQUIERDA = true;
             }
         }
@@ -75,7 +75,7 @@ public class Caballo extends Pieza{
         if (p.getI() + 1 <= 7 && p.getJ() - 2 >= 0) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() - 2];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 IZQUIERDAABAJO = true;
             }
         }
@@ -83,7 +83,7 @@ public class Caballo extends Pieza{
         if (p.getI() - 1 >= 0 && p.getJ() - 2 >= 0) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() - 2];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 IZQUIERDAARRIBA = true;
             }
         }
@@ -91,7 +91,7 @@ public class Caballo extends Pieza{
         if (p.getI() - 2 >= 0 && p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() - 2][p.getJ() - 1];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 ARRIBAIZQUIERDA = true;
             }
         }
@@ -223,7 +223,7 @@ public class Caballo extends Pieza{
             System.out.println("Movimiento ilegal");
         }else{
             if (piezaComida != null){
-                System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                 Main.ultimaPieza(p);
                 Main.cambiarTurno();
             }else{
@@ -249,7 +249,7 @@ public class Caballo extends Pieza{
         if (p.getI() - 2 >= 0 && p.getJ() + 1 <= 7) {
             Pieza casilla = Main.tablero[p.getI() - 2][p.getJ() + 1];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 ARRIBADERECHA = true;
             }
         }
@@ -257,7 +257,7 @@ public class Caballo extends Pieza{
         if (p.getI() - 1 >= 0 && p.getJ() + 2 <= 7) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() + 2];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 DERECHAARRIBA = true;
             }
         }
@@ -265,7 +265,7 @@ public class Caballo extends Pieza{
         if (p.getI() + 1 <= 7 && p.getJ() + 2 <= 7) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() + 2];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 DERECHAABAJO = true;
             }
         }
@@ -273,7 +273,7 @@ public class Caballo extends Pieza{
         if (p.getI() + 2 <= 7 && p.getJ() + 1 <= 7) {
             Pieza casilla = Main.tablero[p.getI() + 2][p.getJ() + 1];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 ABAJODERECHA = true;
             }
         }
@@ -281,7 +281,7 @@ public class Caballo extends Pieza{
         if (p.getI() + 2 <= 7 && p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() + 2][p.getJ() - 1];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 ABAJOIZQUIERDA = true;
             }
         }
@@ -289,7 +289,7 @@ public class Caballo extends Pieza{
         if (p.getI() + 1 <= 7 && p.getJ() - 2 >= 0) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() - 2];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 IZQUIERDAABAJO = true;
             }
         }
@@ -297,7 +297,7 @@ public class Caballo extends Pieza{
         if (p.getI() - 1 >= 0 && p.getJ() - 2 >= 0) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() - 2];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 IZQUIERDAARRIBA = true;
             }
         }
@@ -305,7 +305,7 @@ public class Caballo extends Pieza{
         if (p.getI() - 2 >= 0 && p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() - 2][p.getJ() - 1];
 
-            if (casilla == null || !(casilla.getColor().equals(p.getColor()))) {
+            if (casilla == null || !(casilla.getColor() == p.getColor())) {
                 ARRIBAIZQUIERDA = true;
             }
         }

@@ -2,15 +2,15 @@ import java.util.Scanner;
 
 public class Dama extends Pieza{
     Scanner sc = new Scanner(System.in);
-    public Dama(String nombrePieza, String color, int numeroPieza, int i, int j, boolean inmovil) {
-        super(nombrePieza, color, numeroPieza, i, j, inmovil);
+    public Dama(Color color, int numeroPieza, int i, int j, boolean inmovil) {
+        super(TipoPieza.DAMA, color, numeroPieza, i, j, inmovil);
     }
 
 
 
     @Override
     public String toString() {
-        return "D" + this.getColor() + this.getNumeroPieza();
+        return "D" + this.getColor().getSimbolo() + this.getNumeroPieza();
     }
 
     @Override
@@ -32,7 +32,7 @@ public class Dama extends Pieza{
             Pieza casilla = Main.tablero[p.getI() - z][p.getJ()];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(p.getColor()))) {
+                if (!(casilla.getColor() == p.getColor())) {
                     ARRIBA = true;
                 }
                 break;
@@ -51,7 +51,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ARRIBADERECHA = true;
                     }
                     break;
@@ -65,7 +65,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ARRIBADERECHA = true;
                     }
                     break;
@@ -79,7 +79,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ARRIBADERECHA = true;
                     }
                     break;
@@ -95,7 +95,7 @@ public class Dama extends Pieza{
             Pieza casilla = Main.tablero[p.getI()][p.getJ() + z];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(p.getColor()))) {
+                if (!(casilla.getColor() == p.getColor())) {
                     DERECHA = true;
                 }
                 break;
@@ -114,7 +114,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ABAJODERECHA = true;
                     }
                     break;
@@ -128,7 +128,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ABAJODERECHA = true;
                     }
                     break;
@@ -142,7 +142,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ABAJODERECHA = true;
                     }
                     break;
@@ -158,7 +158,7 @@ public class Dama extends Pieza{
             Pieza casilla = Main.tablero[p.getI() + z][p.getJ()];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(p.getColor()))) {
+                if (!(casilla.getColor() == p.getColor())) {
                     ABAJO = true;
                 }
                 break;
@@ -177,7 +177,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ABAJOIZQUIERDA = true;
                     }
                     break;
@@ -191,7 +191,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ABAJOIZQUIERDA = true;
                     }
                     break;
@@ -205,7 +205,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ABAJOIZQUIERDA = true;
                     }
                     break;
@@ -221,7 +221,7 @@ public class Dama extends Pieza{
             Pieza casilla = Main.tablero[p.getI()][p.getJ() - z];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(p.getColor()))) {
+                if (!(casilla.getColor() == p.getColor())) {
                     IZQUIERDA = true;
                 }
                 break;
@@ -240,7 +240,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ARRIBAIZQUIERDA = true;
                     }
                     break;
@@ -254,7 +254,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ARRIBAIZQUIERDA = true;
                     }
                     break;
@@ -268,7 +268,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ARRIBAIZQUIERDA = true;
                     }
                     break;
@@ -410,7 +410,7 @@ public class Dama extends Pieza{
                 System.out.println("Movimiento ilegal");
             } else {
                 if (piezaComida != null) {
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 } else {
@@ -506,7 +506,7 @@ public class Dama extends Pieza{
                 System.out.println("Movimiento ilegal");
             } else {
                 if (piezaComida != null) {
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 } else {
@@ -574,7 +574,7 @@ public class Dama extends Pieza{
                 System.out.println("Movimiento ilegal");
             } else {
                 if (piezaComida != null) {
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 } else {
@@ -670,7 +670,7 @@ public class Dama extends Pieza{
                 System.out.println("Movimiento ilegal");
             } else {
                 if (piezaComida != null) {
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 } else {
@@ -738,7 +738,7 @@ public class Dama extends Pieza{
                 System.out.println("Movimiento ilegal");
             } else {
                 if (piezaComida != null) {
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 } else {
@@ -834,7 +834,7 @@ public class Dama extends Pieza{
                 System.out.println("Movimiento ilegal");
             } else {
                 if (piezaComida != null) {
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 } else {
@@ -902,7 +902,7 @@ public class Dama extends Pieza{
                 System.out.println("Movimiento ilegal");
             } else {
                 if (piezaComida != null) {
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 } else {
@@ -998,7 +998,7 @@ public class Dama extends Pieza{
                 System.out.println("Movimiento ilegal");
             } else {
                 if (piezaComida != null) {
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                 } else {
@@ -1028,7 +1028,7 @@ public class Dama extends Pieza{
             Pieza casilla = Main.tablero[p.getI() - z][p.getJ()];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(p.getColor()))) {
+                if (!(casilla.getColor() == p.getColor())) {
                     ARRIBA = true;
                 }
                 break;
@@ -1047,7 +1047,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ARRIBADERECHA = true;
                     }
                     break;
@@ -1061,7 +1061,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ARRIBADERECHA = true;
                     }
                     break;
@@ -1075,7 +1075,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ARRIBADERECHA = true;
                     }
                     break;
@@ -1091,7 +1091,7 @@ public class Dama extends Pieza{
             Pieza casilla = Main.tablero[p.getI()][p.getJ() + z];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(p.getColor()))) {
+                if (!(casilla.getColor() == p.getColor())) {
                     DERECHA = true;
                 }
                 break;
@@ -1110,7 +1110,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ABAJODERECHA = true;
                     }
                     break;
@@ -1124,7 +1124,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ABAJODERECHA = true;
                     }
                     break;
@@ -1138,7 +1138,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ABAJODERECHA = true;
                     }
                     break;
@@ -1154,7 +1154,7 @@ public class Dama extends Pieza{
             Pieza casilla = Main.tablero[p.getI() + z][p.getJ()];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(p.getColor()))) {
+                if (!(casilla.getColor() == p.getColor())) {
                     ABAJO = true;
                 }
                 break;
@@ -1173,7 +1173,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ABAJOIZQUIERDA = true;
                     }
                     break;
@@ -1187,7 +1187,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ABAJOIZQUIERDA = true;
                     }
                     break;
@@ -1201,7 +1201,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ABAJOIZQUIERDA = true;
                     }
                     break;
@@ -1217,7 +1217,7 @@ public class Dama extends Pieza{
             Pieza casilla = Main.tablero[p.getI()][p.getJ() - z];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(p.getColor()))) {
+                if (!(casilla.getColor() == p.getColor())) {
                     IZQUIERDA = true;
                 }
                 break;
@@ -1236,7 +1236,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ARRIBAIZQUIERDA = true;
                     }
                     break;
@@ -1250,7 +1250,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ARRIBAIZQUIERDA = true;
                     }
                     break;
@@ -1264,7 +1264,7 @@ public class Dama extends Pieza{
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         ARRIBAIZQUIERDA = true;
                     }
                     break;

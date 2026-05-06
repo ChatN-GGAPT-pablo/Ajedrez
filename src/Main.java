@@ -1,14 +1,14 @@
 import java.util.*;
 
 public class Main{
-    static String turno = "B";
+    static Color turno = Color.BLANCO;
 
-    public static String getTurno(){
+    public static Color getTurno(){
         return turno;
     }
 
-    public void setTurno(String turno) {
-        this.turno = turno;
+    public void setTurno(Color turno) {
+        Main.turno = turno;
     }
 
 
@@ -133,27 +133,27 @@ public class Main{
             for (int j = 0; j < tamanio; j++) {
                 if (!(tablero[i][j] == null)) {
                     Pieza p = tablero[i][j];
-                    if (tablero[i][j].getNombrePieza().equals("Peón") && tablero[i][j].getColor().equals("B")){
+                    if (tablero[i][j].getTipoPieza() == TipoPieza.PEON && tablero[i][j].getColor() == Color.BLANCO){
                         if(p.comprobarMovimientos(p)){
                             peonesBDisponibles.add(tablero[i][j]);
                         }
-                    } else if (tablero[i][j].getNombrePieza().equals("Alfil") && tablero[i][j].getColor().equals("B")){
+                    } else if (tablero[i][j].getTipoPieza() == TipoPieza.ALFIL && tablero[i][j].getColor() == Color.BLANCO){
                          if(p.comprobarMovimientos(p)) {
                              alfilesBDisponibles.add(tablero[i][j]);
                          }
-                    } else if (tablero[i][j].getNombrePieza().equals("Caballo") && tablero[i][j].getColor().equals("B")){
+                    } else if (tablero[i][j].getTipoPieza() == TipoPieza.CABALLO && tablero[i][j].getColor() == Color.BLANCO){
                          if(p.comprobarMovimientos(p)) {
                              caballosBDisponibles.add(tablero[i][j]);
                          }
-                    } else if (tablero[i][j].getNombrePieza().equals("Torre") && tablero[i][j].getColor().equals("B")){
+                    } else if (tablero[i][j].getTipoPieza() == TipoPieza.TORRE && tablero[i][j].getColor() == Color.BLANCO){
                          if(p.comprobarMovimientos(p)) {
                              torresBDisponibles.add(tablero[i][j]);
                          }
-                    } else if (tablero[i][j].getNombrePieza().equals("Dama") && tablero[i][j].getColor().equals("B")){
+                    } else if (tablero[i][j].getTipoPieza() == TipoPieza.DAMA && tablero[i][j].getColor() == Color.BLANCO){
                          if(p.comprobarMovimientos(p)) {
                              damasBDisponibles.add(tablero[i][j]);
                          }
-                    }else if (tablero[i][j].getNombrePieza().equals("Rey") && tablero[i][j].getColor().equals("B")){
+                    }else if (tablero[i][j].getTipoPieza() == TipoPieza.REY  && tablero[i][j].getColor() == Color.BLANCO){
                          if (p.comprobarMovimientos(p)) {
                              reyBDisponible.add(tablero[i][j]);
                         }
@@ -167,27 +167,27 @@ public class Main{
             for (int j = 0; j < tamanio; j++) {
                 if (!(tablero[i][j] == null)) {
                     Pieza p = tablero[i][j];
-                    if (tablero[i][j].getNombrePieza().equals("Peón") && tablero[i][j].getColor().equals("N")) {
+                    if (tablero[i][j].getTipoPieza() == TipoPieza.PEON && tablero[i][j].getColor() == Color.NEGRO) {
                         if (p.comprobarMovimientos(p)) {
                             peonesNDisponibles.add(tablero[i][j]);
                         }
-                    } else if (tablero[i][j].getNombrePieza().equals("Alfil") && tablero[i][j].getColor().equals("N")) {
+                    } else if (tablero[i][j].getTipoPieza() == TipoPieza.ALFIL && tablero[i][j].getColor() == Color.NEGRO) {
                         if (p.comprobarMovimientos(p)) {
                             alfilesNDisponibles.add(tablero[i][j]);
                         }
-                    } else if (tablero[i][j].getNombrePieza().equals("Caballo") && tablero[i][j].getColor().equals("N")) {
+                    } else if (tablero[i][j].getTipoPieza() == TipoPieza.CABALLO && tablero[i][j].getColor() == Color.NEGRO) {
                         if (p.comprobarMovimientos(p)) {
                             caballosNDisponibles.add(tablero[i][j]);
                         }
-                    } else if (tablero[i][j].getNombrePieza().equals("Torre") && tablero[i][j].getColor().equals("N")) {
+                    } else if (tablero[i][j].getTipoPieza() == TipoPieza.TORRE && tablero[i][j].getColor() == Color.NEGRO) {
                         if (p.comprobarMovimientos(p)) {
                             torresNDisponibles.add(tablero[i][j]);
                         }
-                    } else if (tablero[i][j].getNombrePieza().equals("Dama") && tablero[i][j].getColor().equals("N")) {
+                    } else if (tablero[i][j].getTipoPieza() == TipoPieza.DAMA && tablero[i][j].getColor() == Color.NEGRO) {
                         if (p.comprobarMovimientos(p)) {
                             damasNDisponibles.add(tablero[i][j]);
                         }
-                    }else if (tablero[i][j].getNombrePieza().equals("Rey") && tablero[i][j].getColor().equals("N")) {
+                    }else if (tablero[i][j].getTipoPieza() == TipoPieza.REY  && tablero[i][j].getColor() == Color.NEGRO) {
                         if (p.comprobarMovimientos(p)) {
                             reyNDisponible.add(tablero[i][j]);
                         }
@@ -195,7 +195,7 @@ public class Main{
                 }
             }
         }
-        if (getTurno().equals("B")){
+        if (getTurno() == Color.BLANCO){
             System.out.println("Qué grupo de piezas quieres seleccionar?");
 
             if (peonesBDisponibles.size() != 0){
@@ -511,15 +511,15 @@ public class Main{
         return piezaActual;
     }
     public static void cambiarTurno() {
-        if (turno.equals("B")) {
-            turno = "N";
+        if (turno == Color.BLANCO) {
+            turno = Color.NEGRO;
         } else {
-            turno = "B";
+            turno = Color.BLANCO;
         }
     }
 
 
-    static Pieza piezaAMover = new Peon("Peón", "B",  1, 6, 0,false, false);
+    static Pieza piezaAMover = new Peon(Color.BLANCO,  1, 6, 0,false, false);
 
     public static Pieza getPiezaAMover() {
         return piezaAMover;
@@ -529,14 +529,14 @@ public class Main{
         Main.piezaAMover = piezaAMover;
     }
 
-    public static Pieza buscarRey(String color){
+    public static Pieza buscarRey(Color color){
         for (int i = 0; i < Main.tamanio; i++){
             for (int j = 0; j < Main.tamanio; j++){
 
                 Pieza p = Main.tablero[i][j];
 
                 if (p != null){
-                    if (p.getNombrePieza().equals("Rey") && p.getColor().equals(color)){
+                    if (p.getTipoPieza() == TipoPieza.REY  && p.getColor() == color){
                         return p;
                     }
                 }
@@ -557,14 +557,14 @@ public class Main{
         {
             //peones blancos
 
-            Pieza PB1 = new Peon("Peón", "B",  1, 6, 0,false, false);
-            Pieza PB2 = new Peon("Peón", "B",  2, 6, 1,false, false);
-            Pieza PB3 = new Peon("Peón", "B",  3, 6, 2,false, false);
-            Pieza PB4 = new Peon("Peón", "B",  4, 6, 3,false, false);
-            Pieza PB5 = new Peon("Peón", "B",  5, 6, 4,false, false);
-            Pieza PB6 = new Peon("Peón", "B",  6, 6, 5,false, false);
-            Pieza PB7 = new Peon("Peón", "B",  7, 6, 6,false, false);
-            Pieza PB8 = new Peon("Peón", "B",  8, 6, 7,false, false);
+            Pieza PB1 = new Peon(Color.BLANCO,  1, 6, 0,false, false);
+            Pieza PB2 = new Peon(Color.BLANCO,  2, 6, 1,false, false);
+            Pieza PB3 = new Peon(Color.BLANCO,  3, 6, 2,false, false);
+            Pieza PB4 = new Peon(Color.BLANCO,  4, 6, 3,false, false);
+            Pieza PB5 = new Peon(Color.BLANCO,  5, 6, 4,false, false);
+            Pieza PB6 = new Peon(Color.BLANCO,  6, 6, 5,false, false);
+            Pieza PB7 = new Peon(Color.BLANCO,  7, 6, 6,false, false);
+            Pieza PB8 = new Peon(Color.BLANCO,  8, 6, 7,false, false);
 
             tablero[6][0] = PB1;
             tablero[6][1] = PB2;
@@ -577,14 +577,14 @@ public class Main{
 
 
             //peones negros
-            Pieza PN1 = new Peon("Peón", "N",  1, 1, 0,false, false);
-            Pieza PN2 = new Peon("Peón", "N",  2, 1, 1,false, false);
-            Pieza PN3 = new Peon("Peón", "N",  3, 1, 2,false, false);
-            Pieza PN4 = new Peon("Peón", "N",  4, 1, 3,false, false);
-            Pieza PN5 = new Peon("Peón", "N",  5, 1, 4,false, false);
-            Pieza PN6 = new Peon("Peón", "N",  6, 1, 5,false, false);
-            Pieza PN7 = new Peon("Peón", "N",  7, 1, 6,false, false);
-            Pieza PN8 = new Peon("Peón", "N",  8, 1, 7,false, false);
+            Pieza PN1 = new Peon(Color.NEGRO,  1, 1, 0,false, false);
+            Pieza PN2 = new Peon(Color.NEGRO,  2, 1, 1,false, false);
+            Pieza PN3 = new Peon(Color.NEGRO,  3, 1, 2,false, false);
+            Pieza PN4 = new Peon(Color.NEGRO,  4, 1, 3,false, false);
+            Pieza PN5 = new Peon(Color.NEGRO,  5, 1, 4,false, false);
+            Pieza PN6 = new Peon(Color.NEGRO,  6, 1, 5,false, false);
+            Pieza PN7 = new Peon(Color.NEGRO,  7, 1, 6,false, false);
+            Pieza PN8 = new Peon(Color.NEGRO,  8, 1, 7,false, false);
 
             tablero[1][0] = PN1;
             tablero[1][1] = PN2;
@@ -598,55 +598,55 @@ public class Main{
 
             //Torres blancas
 
-            Pieza TB1 = new Torre("Torre", "B", 1, 7,0, true);
-            Pieza TB2 = new Torre("Torre", "B", 2,7,7,true);
+            Pieza TB1 = new Torre(Color.BLANCO,1, 7,0, true);
+            Pieza TB2 = new Torre(Color.BLANCO,2,7,7,true);
             tablero[7][0] = TB1;
             tablero[7][7] = TB2;
             //Torres negras
 
-            Pieza TN1 = new Torre("Torre", "N", 1,0,0, true);
-            Pieza TN2 = new Torre("Torre", "N", 2,0,7, true);
+            Pieza TN1 = new Torre(Color.NEGRO, 1,0,0, true);
+            Pieza TN2 = new Torre(Color.NEGRO, 2,0,7, true);
             tablero[0][0] = TN1;
             tablero[0][7] = TN2;
 
             //Caballos blancos
-            Pieza CB1 = new Caballo("Caballo", "B", 1,7,1, false);
-            Pieza CB2 = new Caballo("Caballo", "B", 2,7,6, false);
+            Pieza CB1 = new Caballo(Color.BLANCO, 1,7,1, false);
+            Pieza CB2 = new Caballo(Color.BLANCO, 2,7,6, false);
             tablero[7][1] = CB1;
             tablero[7][6] = CB2;
 
             //Caballos negros
-            Pieza CN1 = new Caballo("Caballo", "N", 1,0,1, false);
-            Pieza CN2 = new Caballo("Caballo", "N", 2,0,6, false);
+            Pieza CN1 = new Caballo(Color.NEGRO, 1,0,1, false);
+            Pieza CN2 = new Caballo(Color.NEGRO, 2,0,6, false);
             tablero[0][1] = CN1;
             tablero[0][6] = CN2;
 
             //Alfiles blancos
-            Pieza AB1 = new Alfil("Alfil", "B", 1,7,2, true);
-            Pieza AB2 = new Alfil("Alfil", "B", 2,7,5, true);
+            Pieza AB1 = new Alfil(Color.BLANCO, 1,7,2, true);
+            Pieza AB2 = new Alfil(Color.BLANCO, 2,7,5, true);
             tablero[7][2] = AB1;
             tablero[7][5] = AB2;
 
             //Alfiles negros
-            Pieza AN1 = new Alfil("Alfil", "N", 1,0,2, true);
-            Pieza AN2 = new Alfil("Alfil", "N", 2,0,5, true);
+            Pieza AN1 = new Alfil(Color.NEGRO, 1,0,2, true);
+            Pieza AN2 = new Alfil(Color.NEGRO, 2,0,5, true);
             tablero[0][2] = AN1;
             tablero[0][5] =AN2;
 
             //Dama blanca
-            Pieza DB = new Dama("Dama", "B",1,7,3, true);
+            Pieza DB = new Dama(Color.BLANCO,1,7,3, true);
             tablero[7][3] = DB;
 
             //Dama blanca
-            Pieza DN = new Dama("Dama", "N",1,0,3, true);
+            Pieza DN = new Dama(Color.NEGRO,1,0,3, true);
             tablero[0][3] = DN;
 
             //Rey blanco
-            Pieza RB = new Rey("Rey", "B",7,4, true);
+            Pieza RB = new Rey(Color.BLANCO,7,4, true);
             tablero[7][4] = RB;
 
             //Rey blanco
-            Pieza RN = new Rey("Rey", "N",0,4, true);
+            Pieza RN = new Rey(Color.NEGRO,0,4, true);
             tablero[0][4] = RN;
         }
 

@@ -3,15 +3,15 @@ import java.util.Scanner;
 
 public class Torre extends Pieza{
     Scanner sc = new Scanner(System.in);
-    public Torre(String nombrePieza, String color, int numeroPieza, int i, int j, boolean Inmovil) {
-        super(nombrePieza, color, numeroPieza, i, j, Inmovil);
+    public Torre(Color color, int numeroPieza, int i, int j, boolean Inmovil) {
+        super(TipoPieza.TORRE, color, numeroPieza, i, j, Inmovil);
     }
 
 
 
     @Override
     public String toString() {
-        return "T" + this.getColor() + this.getNumeroPieza();
+        return "T" + this.getColor().getSimbolo() + this.getNumeroPieza();
     }
 
 
@@ -31,7 +31,7 @@ public class Torre extends Pieza{
             Pieza casilla = Main.tablero[p.getI() - z][p.getJ()];
 
             if (casilla != null) {
-                if (!casilla.getColor().equals(p.getColor())) {
+                if (casilla.getColor() != p.getColor()) {
                     ARRIBA = true;
                 }
                 break;
@@ -45,7 +45,7 @@ public class Torre extends Pieza{
             Pieza casilla = Main.tablero[p.getI()][p.getJ() + z];
 
             if (casilla != null) {
-                if (!casilla.getColor().equals(p.getColor())) {
+                if (casilla.getColor() != p.getColor()) {
                     DERECHA = true;
                 }
                 break;
@@ -59,7 +59,7 @@ public class Torre extends Pieza{
             Pieza casilla = Main.tablero[p.getI() + z][p.getJ()];
 
             if (casilla != null) {
-                if (!casilla.getColor().equals(p.getColor())) {
+                if (casilla.getColor() != p.getColor()) {
                     ABAJO = true;
                 }
                 break;
@@ -73,7 +73,7 @@ public class Torre extends Pieza{
             Pieza casilla = Main.tablero[p.getI()][p.getJ() - z];
 
             if (casilla != null) {
-                if (!casilla.getColor().equals(p.getColor())) {
+                if (casilla.getColor() != p.getColor()) {
                     IZQUIERDA = true;
                 }
                 break;
@@ -186,7 +186,7 @@ public class Torre extends Pieza{
                 System.out.println("Movimiento ilegal");
             }else{
                 if (piezaComida != null){
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     p.primerMovimiento2OEnroque = true;
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
@@ -254,7 +254,7 @@ public class Torre extends Pieza{
                 System.out.println("Movimiento ilegal");
             }else{
                 if (piezaComida != null){
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     p.primerMovimiento2OEnroque = true;
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
@@ -322,7 +322,7 @@ public class Torre extends Pieza{
                 System.out.println("Movimiento ilegal");
             }else{
                 if (piezaComida != null){
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     p.primerMovimiento2OEnroque = true;
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
@@ -390,7 +390,7 @@ public class Torre extends Pieza{
                 System.out.println("Movimiento ilegal");
             }else{
                 if (piezaComida != null){
-                    System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                    System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     p.primerMovimiento2OEnroque = true;
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
@@ -421,7 +421,7 @@ public class Torre extends Pieza{
             Pieza casilla = Main.tablero[p.getI() - z][p.getJ()];
 
             if (casilla != null) {
-                if (!casilla.getColor().equals(p.getColor())) {
+                if (casilla.getColor() != p.getColor()) {
                     ARRIBA = true;
                 }
                 break;
@@ -435,7 +435,7 @@ public class Torre extends Pieza{
             Pieza casilla = Main.tablero[p.getI()][p.getJ() + z];
 
             if (casilla != null) {
-                if (!casilla.getColor().equals(p.getColor())) {
+                if (casilla.getColor() != p.getColor()) {
                     DERECHA = true;
                 }
                 break;
@@ -449,7 +449,7 @@ public class Torre extends Pieza{
             Pieza casilla = Main.tablero[p.getI() + z][p.getJ()];
 
             if (casilla != null) {
-                if (!casilla.getColor().equals(p.getColor())) {
+                if (casilla.getColor() != p.getColor()) {
                     ABAJO = true;
                 }
                 break;
@@ -463,7 +463,7 @@ public class Torre extends Pieza{
             Pieza casilla = Main.tablero[p.getI()][p.getJ() - z];
 
             if (casilla != null) {
-                if (!casilla.getColor().equals(p.getColor())) {
+                if (casilla.getColor() != p.getColor()) {
                     IZQUIERDA = true;
                 }
                 break;

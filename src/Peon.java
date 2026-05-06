@@ -3,13 +3,13 @@ import java.util.Scanner;
 public class Peon extends Pieza{
 
     Scanner sc = new Scanner(System.in);
-    public Peon(String nombrePieza, String color, int numeroPieza, int i, int j, boolean primerMovimiento22, boolean inmovil) {
-        super(nombrePieza, color, numeroPieza, i, j, primerMovimiento22, inmovil);
+    public Peon(Color color, int numeroPieza, int i, int j, boolean primerMovimiento22, boolean inmovil) {
+        super(TipoPieza.PEON, color, numeroPieza, i, j, primerMovimiento22, inmovil);
     }
 
     @Override
     public String toString() {
-        return "P" + this.getColor() + this.getNumeroPieza() ;
+        return "P" + this.getColor().getSimbolo() + this.getNumeroPieza() ;
     }
 
 
@@ -17,7 +17,7 @@ public class Peon extends Pieza{
     public void posiblesMovimientos(Pieza p) {
         Pieza rey = Main.buscarRey(p.getColor());
         //BLANCOS
-        if (Main.getTurno().equals("B")) {
+        if (Main.getTurno() == Color.BLANCO) {
             boolean moverprimera1 = false;
             boolean moverprimera2 = false;
 
@@ -32,7 +32,7 @@ public class Peon extends Pieza{
             if (p.getI() - 1 >= 0 && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() + 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         arribaDerecha = true;
                     }
                 }
@@ -41,7 +41,7 @@ public class Peon extends Pieza{
             if (p.getI() - 1 >= 0 && p.getJ() - 1 >= 0) {
                 Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() - 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         arribaIzquierda = true;
                     }
                 }
@@ -49,11 +49,11 @@ public class Peon extends Pieza{
 
 
             //En peassant derecha
-            if (p.getI() == 3 && p.getColor().equals("B") && p.getJ() + 1 < 8) {
+            if (p.getI() == 3 && p.getColor() == Color.BLANCO && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                    if (!(casilla.getColor() == p.getColor())) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
                             enPassantBlancoDerecha = true;
                         }
 
@@ -63,11 +63,11 @@ public class Peon extends Pieza{
 
 
             //En peassant izquierda
-            if (p.getI() == 3 && p.getColor().equals("B") && p.getJ() - 1 >= 0) {
+            if (p.getI() == 3 && p.getColor() == Color.BLANCO && p.getJ() - 1 >= 0) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                    if (!(casilla.getColor() == p.getColor())) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
                             enPassantBlancoIzquierda = true;
                         }
 
@@ -171,7 +171,7 @@ public class Peon extends Pieza{
                     System.out.println("Movimiento ilegal");
                 } else {
                     if (piezaComida != null) {
-                        System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                        System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     } else {
@@ -291,7 +291,7 @@ public class Peon extends Pieza{
                     System.out.println("Movimiento ilegal");
                 } else {
                     if (piezaComida != null) {
-                        System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                        System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     } else {
                         System.out.println("Pieza movida");
                     }
@@ -372,7 +372,7 @@ public class Peon extends Pieza{
                     System.out.println("Movimiento ilegal");
                 } else {
                     if (piezaComida != null) {
-                        System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                        System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                         System.out.println("Promoción de peón");
                         System.out.println("A qué quieres promocionar?");
 
@@ -386,13 +386,13 @@ public class Peon extends Pieza{
                         Pieza piezaPromocionada = null;
 
                         if (promocion == 1) {
-                            piezaPromocionada = new Dama("Dama", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
+                            piezaPromocionada = new Dama( p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         } else if (promocion == 2) {
-                            piezaPromocionada = new Torre("Torre", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
+                            piezaPromocionada = new Torre(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         } else if (promocion == 3) {
-                            piezaPromocionada = new Caballo("Caballo", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
+                            piezaPromocionada = new Caballo(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         } else if (promocion == 4) {
-                            piezaPromocionada = new Alfil("Alfil", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
+                            piezaPromocionada = new Alfil(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         }
 
                         Main.tablero[p.getI()][p.getJ()] = piezaPromocionada;
@@ -413,13 +413,13 @@ public class Peon extends Pieza{
                         Pieza piezaPromocionada = null;
 
                         if (promocion == 1) {
-                            piezaPromocionada = new Dama("Dama", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
+                            piezaPromocionada = new Dama(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         } else if (promocion == 2) {
-                            piezaPromocionada = new Torre("Torre", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
+                            piezaPromocionada = new Torre(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         } else if (promocion == 3) {
-                            piezaPromocionada = new Caballo("Caballo", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
+                            piezaPromocionada = new Caballo(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         } else if (promocion == 4) {
-                            piezaPromocionada = new Alfil("Alfil", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
+                            piezaPromocionada = new Alfil(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), getInmovil());
                         }
 
                         Main.tablero[p.getI()][p.getJ()] = piezaPromocionada;
@@ -499,7 +499,7 @@ public class Peon extends Pieza{
                     System.out.println("Movimiento ilegal");
                 } else {
                     if (piezaComida != null) {
-                        System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                        System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     } else {
@@ -529,7 +529,7 @@ public class Peon extends Pieza{
             if (p.getI() + 1 < 8 && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() + 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         abajoDerecha = true;
                     }
                 }
@@ -538,7 +538,7 @@ public class Peon extends Pieza{
             if (p.getI() + 1 < 8 && p.getJ() - 1 >= 0) {
                 Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() - 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         abajoIzquierda = true;
                     }
                 }
@@ -546,11 +546,11 @@ public class Peon extends Pieza{
 
 
             //En peassant derecha negro
-            if (p.getI() == 4 && p.getColor().equals("N") && p.getJ() + 1 < 8) {
+            if (p.getI() == 4 && p.getColor() == Color.NEGRO && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                    if (!(casilla.getColor() == p.getColor())) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
                             enPassantNegroDerecha = true;
                         }
 
@@ -560,11 +560,11 @@ public class Peon extends Pieza{
 
 
             //En peassant izquierda negro
-            if (p.getI() == 4 && p.getColor().equals("N") && p.getJ() - 1 >= 0) {
+            if (p.getI() == 4 && p.getColor() == Color.NEGRO && p.getJ() - 1 >= 0) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                    if (!(casilla.getColor() == p.getColor())) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
                             enPassantNegroIzquierda = true;
                         }
 
@@ -669,7 +669,7 @@ public class Peon extends Pieza{
                     System.out.println("Movimiento ilegal");
                 } else {
                     if (piezaComida != null) {
-                        System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                        System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     } else {
@@ -787,7 +787,7 @@ public class Peon extends Pieza{
                     System.out.println("Movimiento ilegal");
                 } else {
                     if (piezaComida != null) {
-                        System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                        System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     } else {
                         System.out.println("Pieza movida");
                     }
@@ -868,7 +868,7 @@ public class Peon extends Pieza{
                     System.out.println("Movimiento ilegal");
                 } else {
                     if (piezaComida != null) {
-                        System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                        System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                         System.out.println("Promoción de peón");
                         System.out.println("A qué quieres promocionar?");
 
@@ -881,13 +881,13 @@ public class Peon extends Pieza{
 
                         Pieza piezaPromocionada = null;
                         if (promocion == 1) {
-                            piezaPromocionada = new Dama("Dama", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
+                            piezaPromocionada = new Dama(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         } else if (promocion == 2) {
-                            piezaPromocionada = new Torre("Torre", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(),false);
+                            piezaPromocionada = new Torre(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(),false);
                         } else if (promocion == 3) {
-                            piezaPromocionada = new Caballo("Caballo", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
+                            piezaPromocionada = new Caballo(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         } else if (promocion == 4) {
-                            piezaPromocionada = new Alfil("Alfil", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
+                            piezaPromocionada = new Alfil(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         }
 
                         Main.tablero[p.getI()][p.getJ()] = piezaPromocionada;
@@ -906,13 +906,13 @@ public class Peon extends Pieza{
 
                         Pieza piezaPromocionada = null;
                         if (promocion == 1) {
-                            piezaPromocionada = new Dama("Dama", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
+                            piezaPromocionada = new Dama(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         } else if (promocion == 2) {
-                            piezaPromocionada = new Torre("Torre", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
+                            piezaPromocionada = new Torre(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         } else if (promocion == 3) {
-                            piezaPromocionada = new Caballo("Caballo", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
+                            piezaPromocionada = new Caballo(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         } else if (promocion == 4) {
-                            piezaPromocionada = new Alfil("Alfil", p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
+                            piezaPromocionada = new Alfil(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
                         }
 
                         Main.tablero[p.getI()][p.getJ()] = piezaPromocionada;
@@ -995,7 +995,7 @@ public class Peon extends Pieza{
                     System.out.println("Movimiento ilegal");
                 } else {
                     if (piezaComida != null) {
-                        System.out.println("Pieza: " + piezaComida.getNombrePieza() + " comida.");
+                        System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
                     } else {
@@ -1011,7 +1011,7 @@ public class Peon extends Pieza{
 
     @Override
     public boolean comprobarMovimientos(Pieza p) {
-        if (Main.getTurno().equals("B")) {
+        if (Main.getTurno() == Color.BLANCO) {
             boolean moverprimera1 = false;
             boolean moverprimera2 = false;
 
@@ -1026,7 +1026,7 @@ public class Peon extends Pieza{
             if (p.getI() - 1 >= 0 && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() + 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         arribaDerecha = true;
                     }
                 }
@@ -1035,7 +1035,7 @@ public class Peon extends Pieza{
             if (p.getI() - 1 >= 0 && p.getJ() - 1 >= 0) {
                 Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() - 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         arribaIzquierda = true;
                     }
                 }
@@ -1043,11 +1043,11 @@ public class Peon extends Pieza{
 
 
             //En peassant derecha
-            if (p.getI() == 3 && p.getColor().equals("B") && p.getJ() + 1 < 8) {
+            if (p.getI() == 3 && p.getColor() == Color.BLANCO && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                    if (!(casilla.getColor() == p.getColor())) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
                             enPassantBlancoDerecha = true;
                         }
 
@@ -1057,11 +1057,11 @@ public class Peon extends Pieza{
 
 
             //En peassant izquierda
-            if (p.getI() == 3 && p.getColor().equals("B") && p.getJ() - 1 >= 0) {
+            if (p.getI() == 3 && p.getColor() == Color.BLANCO && p.getJ() - 1 >= 0) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                    if (!(casilla.getColor() == p.getColor())) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
                             enPassantBlancoIzquierda = true;
                         }
 
@@ -1114,7 +1114,7 @@ public class Peon extends Pieza{
             if (p.getI() + 1 < 8 && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() + 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         abajoDerecha = true;
                     }
                 }
@@ -1123,7 +1123,7 @@ public class Peon extends Pieza{
             if (p.getI() + 1 < 8 && p.getJ() - 1 >= 0) {
                 Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() - 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
+                    if (!(casilla.getColor() == p.getColor())) {
                         abajoIzquierda = true;
                     }
                 }
@@ -1131,11 +1131,11 @@ public class Peon extends Pieza{
 
 
             //En peassant derecha negro
-            if (p.getI() == 4 && p.getColor().equals("N") && p.getJ() + 1 < 8) {
+            if (p.getI() == 4 && p.getColor() == Color.NEGRO && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                    if (!(casilla.getColor() == p.getColor())) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
                             enPassantNegroDerecha = true;
                         }
 
@@ -1145,11 +1145,11 @@ public class Peon extends Pieza{
 
 
             //En peassant izquierda negro
-            if (p.getI() == 4 && p.getColor().equals("N") && p.getJ() - 1 >= 0) {
+            if (p.getI() == 4 && p.getColor() == Color.NEGRO && p.getJ() - 1 >= 0) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(p.getColor()))) {
-                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getNombrePieza().equals("Peón")) {
+                    if (!(casilla.getColor() == p.getColor())) {
+                        if (casilla.primerMovimiento2OEnroque == true && Main.ultimaPieza(casilla).getTipoPieza() == TipoPieza.PEON) {
                             enPassantNegroIzquierda = true;
                         }
 
