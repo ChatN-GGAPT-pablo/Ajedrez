@@ -291,7 +291,7 @@ public class Rey extends Pieza {
                 System.out.println("10. Enroque largo");
             }
 
-            decision = sc.nextInt();
+            decision = Main.comprobarScanner(sc);
 
             if (decision == 1 && ARRIBA) {
                 break;

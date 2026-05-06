@@ -242,7 +242,7 @@ public class Alfil extends Pieza{
                 System.out.println("4. Arriba izquierda");
             }
 
-            decision = sc.nextInt();
+            decision = Main.comprobarScanner(sc);
             if (decision == 1 && ARRIBADERECHA) {
                 break;
             } else if (decision == 2 && ABAJODERECHA) {
@@ -314,11 +314,11 @@ public class Alfil extends Pieza{
             }
 
 
-            int movDiagonal = sc.nextInt();
+            int movDiagonal = Main.comprobarScanner(sc);
 
             while (movDiagonal < 1 || movDiagonal > maximo){
                 System.out.println("Te sales del rango de movs permitidos, repite.");
-                movDiagonal = sc.nextInt();
+                movDiagonal = Main.comprobarScanner(sc);
             }
 
             int iOriginal = p.getI();
@@ -414,11 +414,11 @@ public class Alfil extends Pieza{
                     }
                 }
             }
-            int movDiagonal = sc.nextInt();
+            int movDiagonal = Main.comprobarScanner(sc);
 
             while (movDiagonal < 1 || movDiagonal > maximo){
                 System.out.println("Te sales del rango de movs permitidos, repite.");
-                movDiagonal = sc.nextInt();
+                movDiagonal = Main.comprobarScanner(sc);
             }
 
             int iOriginal = p.getI();
@@ -512,11 +512,11 @@ public class Alfil extends Pieza{
                 }
             }
 
-            int movDiagonal = sc.nextInt();
+            int movDiagonal = Main.comprobarScanner(sc);
 
             while (movDiagonal < 1 || movDiagonal > maximo){
                 System.out.println("Te sales del rango de movs permitidos, repite.");
-                movDiagonal = sc.nextInt();
+                movDiagonal = Main.comprobarScanner(sc);
             }
 
             int iOriginal = p.getI();
@@ -610,11 +610,11 @@ public class Alfil extends Pieza{
                 }
             }
 
-            int movDiagonal = sc.nextInt();
+            int movDiagonal = Main.comprobarScanner(sc);
 
             while (movDiagonal < 1 || movDiagonal > maximo){
                 System.out.println("Te sales del rango de movs permitidos, repite.");
-                movDiagonal = sc.nextInt();
+                movDiagonal = Main.comprobarScanner(sc);
             }
 
             int iOriginal = p.getI();

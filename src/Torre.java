@@ -113,7 +113,7 @@ public class Torre extends Pieza{
                 System.out.println("4. Izquierda");
             }
 
-            decision = sc.nextInt();
+            decision = Main.comprobarScanner(sc);
 
             if (decision == 1 && ARRIBA) {
                 break;
@@ -150,11 +150,11 @@ public class Torre extends Pieza{
 
             }
 
-            int movARRIBA = sc.nextInt();
+            int movARRIBA = Main.comprobarScanner(sc);
 
             while (movARRIBA < 1 || movARRIBA > maximo ){
                 System.out.println("Te sales del rango de movs permitidos, repite.");
-                movARRIBA = sc.nextInt();
+                movARRIBA = Main.comprobarScanner(sc);
             }
 
             int iOriginal = p.getI();
@@ -219,11 +219,11 @@ public class Torre extends Pieza{
                 }
 
             }
-            int movDERECHA = sc.nextInt();
+            int movDERECHA = Main.comprobarScanner(sc);
 
             while (movDERECHA < 1 || movDERECHA > maximo){
                 System.out.println("Te sales del rango de movs permitidos, repite.");
-                movDERECHA = sc.nextInt();
+                movDERECHA = Main.comprobarScanner(sc);
             }
             int iOriginal = p.getI();
             int jOriginal = p.getJ();
@@ -287,11 +287,11 @@ public class Torre extends Pieza{
                 }
 
             }
-            int movABAJO = sc.nextInt();
+            int movABAJO = Main.comprobarScanner(sc);
 
             while (movABAJO < 1 || movABAJO > maximo){
                 System.out.println("Te sales del rango de movs permitidos, repite.");
-                movABAJO = sc.nextInt();
+                movABAJO = Main.comprobarScanner(sc);
             }
             int iOriginal = p.getI();
             int jOriginal = p.getJ();
@@ -355,11 +355,11 @@ public class Torre extends Pieza{
                 }
 
             }
-            int movIZQUIERDA = sc.nextInt();
+            int movIZQUIERDA = Main.comprobarScanner(sc);
 
             while (movIZQUIERDA < 1  || movIZQUIERDA > maximo){
                 System.out.println("Te sales del rango de movs permitidos, repite.");
-                movIZQUIERDA = sc.nextInt();
+                movIZQUIERDA = Main.comprobarScanner(sc);
             }
             int iOriginal = p.getI();
             int jOriginal = p.getJ();

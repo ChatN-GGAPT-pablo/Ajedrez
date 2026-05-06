@@ -12,6 +12,17 @@ public class Main{
     }
 
 
+    public static int comprobarScanner(Scanner sc) {
+        while (true) {
+            try {
+                return sc.nextInt();
+            } catch (Exception e) {
+                System.out.println("Eso no es un número válido. Inténtalo otra vez.");
+                sc.nextLine();
+            }
+        }
+    }
+
     public static int iActual = 0;
     public static int jActual = 0;
 
@@ -239,104 +250,107 @@ public class Main{
                 System.out.println(reyBDisponible);
                 reyB = true;
             }
-            int decision = sc.nextInt();
 
-            if (decision == 1 && peonB){
 
-                ArrayList<Pieza> peones = new ArrayList<>();
-                for (int i = 0; i < peonesBDisponibles.size(); i++ ){
-                    System.out.println(i+1 + ". " + peonesBDisponibles.get(i));
-                    peones.add(peonesBDisponibles.get(i));
+            while (true){
+                int decision = Main.comprobarScanner(sc);
+
+                if (decision == 1 && peonB){
+
+                    ArrayList<Pieza> peones = new ArrayList<>();
+                    for (int i = 0; i < peonesBDisponibles.size(); i++ ){
+                        System.out.println(i+1 + ". " + peonesBDisponibles.get(i));
+                        peones.add(peonesBDisponibles.get(i));
+                    }
+                    int opcion;
+                    System.out.println("Elige una opción entre 1 y " + peones.size());
+                    opcion = Main.comprobarScanner(sc);
+                    while(opcion < 1 || opcion > peones.size()){
+                        System.out.println("Opción inválida.");
+                        opcion = Main.comprobarScanner(sc);
+                    }
+                    System.out.println(peones.get(opcion-1));
+                    return (peones.get(opcion-1));
+                }else if (decision == 2 && torreB){
+
+                    ArrayList<Pieza> torres = new ArrayList<>();
+                    for (int i = 0; i < torresBDisponibles.size(); i++ ){
+                        System.out.println(i+1 + ". " + torresBDisponibles.get(i));
+                        torres.add(torresBDisponibles.get(i));
+                    }
+                    int opcion;
+                    System.out.println("Elige una opción entre 1 y " + torres.size());
+                    opcion = Main.comprobarScanner(sc);
+                    while(opcion < 1 || opcion > torres.size()){
+                        System.out.println("Opción inválida.");
+                        opcion = Main.comprobarScanner(sc);
+                    }
+                    return (torres.get(opcion-1));
+                }else if (decision == 3 && caballoB){
+
+                    ArrayList<Pieza> caballos = new ArrayList<>();
+                    for (int i = 0; i < caballosBDisponibles.size(); i++ ){
+                        System.out.println(i+1 + ". " + caballosBDisponibles.get(i));
+                        caballos.add(caballosBDisponibles.get(i));
+                    }
+                    int opcion;
+                    System.out.println("Elige una opción entre 1 y " + caballos.size());
+                    opcion = Main.comprobarScanner(sc);
+                    while(opcion < 1 || opcion > caballos.size()){
+                        System.out.println("Opción inválida.");
+                        opcion = Main.comprobarScanner(sc);
+                    }
+                    return (caballos.get(opcion-1));
+                }else if (decision == 4 && alfilB){
+
+                    ArrayList<Pieza> alfiles = new ArrayList<>();
+                    for (int i = 0; i < alfilesBDisponibles.size(); i++ ){
+                        System.out.println(i+1 + ". " + alfilesBDisponibles.get(i));
+                        alfiles.add(alfilesBDisponibles.get(i));
+                    }
+                    int opcion;
+                    System.out.println("Elige una opción entre 1 y " + alfiles.size());
+                    opcion = Main.comprobarScanner(sc);
+                    while(opcion < 1 || opcion > alfiles.size()){
+                        System.out.println("Opción inválida.");
+                        opcion = Main.comprobarScanner(sc);
+                    }
+                    return (alfiles.get(opcion-1));
+                }else if (decision == 5 && damaB){
+
+                    ArrayList<Pieza> dama = new ArrayList<>();
+                    for (int i = 0; i < damasBDisponibles.size(); i++ ){
+                        System.out.println(i+1 + ". " + damasBDisponibles.get(i));
+                        dama.add(damasBDisponibles.get(i));
+                    }
+                    int opcion;
+                    System.out.println("Elige una opción entre 1 y " + dama.size());
+                    opcion = Main.comprobarScanner(sc);
+                    while(opcion < 1 || opcion > dama.size()){
+                        System.out.println("Opción inválida.");
+                        opcion = Main.comprobarScanner(sc);
+                    }
+                    return (dama.get(opcion-1));
+                }else if (decision == 6 && reyB){
+
+                    ArrayList<Pieza> rey = new ArrayList<>();
+                    for (int i = 0; i < reyBDisponible.size(); i++ ){
+                        System.out.println(i+1 + ". " + reyBDisponible.get(i));
+                        rey.add(reyBDisponible.get(i));
+                    }
+                    int opcion;
+                    System.out.println("Elige una opción entre 1 y " + rey.size());
+                    opcion = Main.comprobarScanner(sc);
+                    while(opcion < 1 || opcion > rey.size()){
+                        System.out.println("Opción inválida.");
+                        opcion = Main.comprobarScanner(sc);
+                    }
+                    return (rey.get(opcion-1));
+                }else{
+                    System.out.println("Ese grupo no está disponible. Elige uno de los que aparecen en pantalla.");
                 }
-                int opcion;
-                System.out.println("Elige una opción entre 1 y " + peones.size());
-                opcion = sc.nextInt();
-                while(opcion < 1 || opcion > peones.size()){
-                    System.out.println("Opción inválida.");
-                }
-                System.out.println(peones.get(opcion-1));
-                return (peones.get(opcion-1));
             }
 
-            if (decision == 2 && torreB){
-
-                ArrayList<Pieza> torres = new ArrayList<>();
-                for (int i = 0; i < torresBDisponibles.size(); i++ ){
-                    System.out.println(i+1 + ". " + torresBDisponibles.get(i));
-                    torres.add(torresBDisponibles.get(i));
-                }
-                int opcion;
-                System.out.println("Elige una opción entre 1 y " + torres.size());
-                opcion = sc.nextInt();
-                while(opcion < 1 || opcion > torres.size()){
-                    System.out.println("Opción inválida.");
-                }
-                return (torres.get(opcion-1));
-            }
-
-            if (decision == 3 && caballoB){
-
-                ArrayList<Pieza> caballos = new ArrayList<>();
-                for (int i = 0; i < caballosBDisponibles.size(); i++ ){
-                    System.out.println(i+1 + ". " + caballosBDisponibles.get(i));
-                    caballos.add(caballosBDisponibles.get(i));
-                }
-                int opcion;
-                System.out.println("Elige una opción entre 1 y " + caballos.size());
-                opcion = sc.nextInt();
-                while(opcion < 1 || opcion > caballos.size()){
-                    System.out.println("Opción inválida.");
-                }
-                return (caballos.get(opcion-1));
-            }
-
-            if (decision == 4 && alfilB){
-
-                ArrayList<Pieza> alfiles = new ArrayList<>();
-                for (int i = 0; i < alfilesBDisponibles.size(); i++ ){
-                    System.out.println(i+1 + ". " + alfilesBDisponibles.get(i));
-                    alfiles.add(alfilesBDisponibles.get(i));
-                }
-                int opcion;
-                System.out.println("Elige una opción entre 1 y " + alfiles.size());
-                opcion = sc.nextInt();
-                while(opcion < 1 || opcion > alfiles.size()){
-                    System.out.println("Opción inválida.");
-                }
-                return (alfiles.get(opcion-1));
-            }
-
-            if (decision == 5 && damaB){
-
-                ArrayList<Pieza> dama = new ArrayList<>();
-                for (int i = 0; i < damasBDisponibles.size(); i++ ){
-                    System.out.println(i+1 + ". " + damasBDisponibles.get(i));
-                    dama.add(damasBDisponibles.get(i));
-                }
-                int opcion;
-                System.out.println("Elige una opción entre 1 y " + dama.size());
-                opcion = sc.nextInt();
-                while(opcion < 1 || opcion > dama.size()){
-                    System.out.println("Opción inválida.");
-                }
-                return (dama.get(opcion-1));
-            }
-
-            if (decision == 6 && reyB){
-
-                ArrayList<Pieza> rey = new ArrayList<>();
-                for (int i = 0; i < reyBDisponible.size(); i++ ){
-                    System.out.println(i+1 + ". " + reyBDisponible.get(i));
-                    rey.add(reyBDisponible.get(i));
-                }
-                int opcion;
-                System.out.println("Elige una opción entre 1 y " + rey.size());
-                opcion = sc.nextInt();
-                while(opcion < 1 || opcion > rey.size()){
-                    System.out.println("Opción inválida.");
-                }
-                return (rey.get(opcion-1));
-            }
 
         }else{
             System.out.println("Qué grupo de piezas quieres seleccionar?");
@@ -386,105 +400,105 @@ public class Main{
 
 
 
-            int decision = sc.nextInt();
+            while(true){
+                int decision = Main.comprobarScanner(sc);
 
-            if (decision == 1 && peonN){
+                if (decision == 1 && peonN){
 
-                ArrayList<Pieza> peones = new ArrayList<>();
-                for (int i = 0; i < peonesNDisponibles.size(); i++ ){
-                    System.out.println(i+1 + ". " + peonesNDisponibles.get(i));
-                    peones.add(peonesNDisponibles.get(i));
+                    ArrayList<Pieza> peones = new ArrayList<>();
+                    for (int i = 0; i < peonesNDisponibles.size(); i++ ){
+                        System.out.println(i+1 + ". " + peonesNDisponibles.get(i));
+                        peones.add(peonesNDisponibles.get(i));
+                    }
+                    int opcion;
+                    System.out.println("Elige una opción entre 1 y " + peones.size());
+                    opcion = Main.comprobarScanner(sc);
+                    while(opcion < 1 || opcion > peones.size()){
+                        System.out.println("Opción inválida.");
+                        opcion = Main.comprobarScanner(sc);
+                    }
+                    return (peones.get(opcion-1));
+                }else if (decision == 2 && torreN){
+
+                    ArrayList<Pieza> torres = new ArrayList<>();
+                    for (int i = 0; i < torresNDisponibles.size(); i++ ){
+                        System.out.println(i+1 + ". " + torresNDisponibles.get(i));
+                        torres.add(torresNDisponibles.get(i));
+                    }
+                    int opcion;
+                    System.out.println("Elige una opción entre 1 y " + torres.size());
+                    opcion = Main.comprobarScanner(sc);
+                    while(opcion < 1 || opcion > torres.size()){
+                        System.out.println("Opción inválida.");
+                        opcion = Main.comprobarScanner(sc);
+                    }
+                    return (torres.get(opcion-1));
+                }else if (decision == 3 && caballoN){
+
+                    ArrayList<Pieza> caballos = new ArrayList<>();
+                    for (int i = 0; i < caballosNDisponibles.size(); i++ ){
+                        System.out.println(i+1 + ". " + caballosNDisponibles.get(i));
+                        caballos.add(caballosNDisponibles.get(i));
+                    }
+                    int opcion;
+                    System.out.println("Elige una opción entre 1 y " + caballos.size());
+                    opcion = Main.comprobarScanner(sc);
+                    while(opcion < 1 || opcion > caballos.size()){
+                        System.out.println("Opción inválida.");
+                        opcion = Main.comprobarScanner(sc);
+                    }
+                    return (caballos.get(opcion-1));
+                }else if (decision == 4 && alfilN){
+
+                    ArrayList<Pieza> alfiles = new ArrayList<>();
+                    for (int i = 0; i < alfilesNDisponibles.size(); i++ ){
+                        System.out.println(i+1 + ". " + alfilesNDisponibles.get(i));
+                        alfiles.add(alfilesNDisponibles.get(i));
+                    }
+                    int opcion;
+                    System.out.println("Elige una opción entre 1 y " + alfiles.size());
+                    opcion = Main.comprobarScanner(sc);
+                    while(opcion < 1 || opcion > alfiles.size()){
+                        System.out.println("Opción inválida.");
+                        opcion = Main.comprobarScanner(sc);
+                    }
+                    return (alfiles.get(opcion-1));
+                }else if (decision == 5 && damaN){
+
+                    ArrayList<Pieza> dama = new ArrayList<>();
+                    for (int i = 0; i < damasNDisponibles.size(); i++ ){
+                        System.out.println(i+1 + ". " + damasNDisponibles.get(i));
+                        dama.add(damasNDisponibles.get(i));
+                    }
+                    int opcion;
+                    System.out.println("Elige una opción entre 1 y " + dama.size());
+                    opcion = Main.comprobarScanner(sc);
+                    while(opcion < 1 || opcion > dama.size()){
+                        System.out.println("Opción inválida.");
+                        opcion = Main.comprobarScanner(sc);
+                    }
+                    return (dama.get(opcion-1));
+                }else if (decision == 6 && reyN){
+
+                    ArrayList<Pieza> rey = new ArrayList<>();
+                    for (int i = 0; i < reyNDisponible.size(); i++ ){
+                        System.out.println(i+1 + ". " + reyNDisponible.get(i));
+                        rey.add(reyNDisponible.get(i));
+                    }
+                    int opcion;
+                    System.out.println("Elige una opción entre 1 y " + rey.size());
+                    opcion = Main.comprobarScanner(sc);
+                    while(opcion < 1 || opcion > rey.size()){
+                        System.out.println("Opción inválida.");
+                        opcion = Main.comprobarScanner(sc);
+                    }
+                    return (rey.get(opcion-1));
                 }
-                int opcion;
-                System.out.println("Elige una opción entre 1 y " + peones.size());
-                opcion = sc.nextInt();
-                while(opcion < 1 || opcion > peones.size()){
-                    System.out.println("Opción inválida.");
-                }
-                return (peones.get(opcion-1));
+                return null;
             }
 
-            if (decision == 2 && torreN){
-
-                ArrayList<Pieza> torres = new ArrayList<>();
-                for (int i = 0; i < torresNDisponibles.size(); i++ ){
-                    System.out.println(i+1 + ". " + torresNDisponibles.get(i));
-                    torres.add(torresNDisponibles.get(i));
-                }
-                int opcion;
-                System.out.println("Elige una opción entre 1 y " + torres.size());
-                opcion = sc.nextInt();
-                while(opcion < 1 || opcion > torres.size()){
-                    System.out.println("Opción inválida.");
-                }
-                return (torres.get(opcion-1));
-            }
-
-            if (decision == 3 && caballoN){
-
-                ArrayList<Pieza> caballos = new ArrayList<>();
-                for (int i = 0; i < caballosNDisponibles.size(); i++ ){
-                    System.out.println(i+1 + ". " + caballosNDisponibles.get(i));
-                    caballos.add(caballosNDisponibles.get(i));
-                }
-                int opcion;
-                System.out.println("Elige una opción entre 1 y " + caballos.size());
-                opcion = sc.nextInt();
-                while(opcion < 1 || opcion > caballos.size()){
-                    System.out.println("Opción inválida.");
-                }
-                return (caballos.get(opcion-1));
-            }
-
-            if (decision == 4 && alfilN){
-
-                ArrayList<Pieza> alfiles = new ArrayList<>();
-                for (int i = 0; i < alfilesNDisponibles.size(); i++ ){
-                    System.out.println(i+1 + ". " + alfilesNDisponibles.get(i));
-                    alfiles.add(alfilesNDisponibles.get(i));
-                }
-                int opcion;
-                System.out.println("Elige una opción entre 1 y " + alfiles.size());
-                opcion = sc.nextInt();
-                while(opcion < 1 || opcion > alfiles.size()){
-                    System.out.println("Opción inválida.");
-                }
-                return (alfiles.get(opcion-1));
-            }
-
-            if (decision == 5 && damaN){
-
-                ArrayList<Pieza> dama = new ArrayList<>();
-                for (int i = 0; i < damasNDisponibles.size(); i++ ){
-                    System.out.println(i+1 + ". " + damasNDisponibles.get(i));
-                    dama.add(damasNDisponibles.get(i));
-                }
-                int opcion;
-                System.out.println("Elige una opción entre 1 y " + dama.size());
-                opcion = sc.nextInt();
-                while(opcion < 1 || opcion > dama.size()){
-                    System.out.println("Opción inválida.");
-                }
-                return (dama.get(opcion-1));
-            }
-
-            if (decision == 6 && reyN){
-
-                ArrayList<Pieza> rey = new ArrayList<>();
-                for (int i = 0; i < reyNDisponible.size(); i++ ){
-                    System.out.println(i+1 + ". " + reyNDisponible.get(i));
-                    rey.add(reyNDisponible.get(i));
-                }
-                int opcion;
-                System.out.println("Elige una opción entre 1 y " + rey.size());
-                opcion = sc.nextInt();
-                while(opcion < 1 || opcion > rey.size()){
-                    System.out.println("Opción inválida.");
-                }
-                return (rey.get(opcion-1));
-            }
         }
-        return null;
+
     }
 
     public static String piezaSeleccionada(){

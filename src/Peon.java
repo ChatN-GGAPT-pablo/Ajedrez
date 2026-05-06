@@ -114,7 +114,7 @@ public class Peon extends Pieza{
                         System.out.println("4. comer izquierda");
                     }
 
-                    decision = sc.nextInt();
+                    decision = Main.comprobarScanner(sc);
 
                     if (decision == 1 && moverprimera1) {
                         break;
@@ -208,7 +208,7 @@ public class Peon extends Pieza{
                     if (enPassantBlancoIzquierda) {
                         System.out.println("5. En Passant Izquierda");
                     }
-                    decision = sc.nextInt();
+                    decision = Main.comprobarScanner(sc);
 
                     if (decision == 1 && mover) {
                         break;
@@ -321,7 +321,7 @@ public class Peon extends Pieza{
                     if (arribaIzquierda) {
                         System.out.println("3. comer izquierda");
                     }
-                    decision = sc.nextInt();
+                    decision = Main.comprobarScanner(sc);
 
                     if (decision == 1 && mover) {
                         break;
@@ -380,7 +380,7 @@ public class Peon extends Pieza{
                         System.out.println("2. Torre");
                         System.out.println("3. Caballo");
                         System.out.println("4. Alfil");
-                        int promocion = sc.nextInt();
+                        int promocion = Main.comprobarScanner(sc);
 
 
                         Pieza piezaPromocionada = null;
@@ -407,7 +407,7 @@ public class Peon extends Pieza{
                         System.out.println("2. Torre");
                         System.out.println("3. Caballo");
                         System.out.println("4. Alfil");
-                        int promocion = sc.nextInt();
+                        int promocion = Main.comprobarScanner(sc);
 
 
                         Pieza piezaPromocionada = null;
@@ -448,7 +448,7 @@ public class Peon extends Pieza{
                     if (arribaIzquierda) {
                         System.out.println("3. comer izquierda");
                     }
-                    decision = sc.nextInt();
+                    decision = Main.comprobarScanner(sc);
 
                     if (decision == 1 && mover) {
                         break;
@@ -612,7 +612,7 @@ public class Peon extends Pieza{
                         System.out.println("4. comer izquierda");
                     }
 
-                    decision = sc.nextInt();
+                    decision = Main.comprobarScanner(sc);
 
                     if (decision == 1 && moverprimera1) {
                         break;
@@ -704,7 +704,7 @@ public class Peon extends Pieza{
                     if (enPassantNegroIzquierda) {
                         System.out.println("5. En Passant Izquierda");
                     }
-                    decision = sc.nextInt();
+                    decision = Main.comprobarScanner(sc);
 
                     if (decision == 1 && mover) {
                         break;
@@ -817,7 +817,7 @@ public class Peon extends Pieza{
                     if (abajoIzquierda) {
                         System.out.println("3. comer izquierda");
                     }
-                    decision = sc.nextInt();
+                    decision = Main.comprobarScanner(sc);
 
                     if (decision == 1 && mover) {
                         break;
@@ -876,7 +876,7 @@ public class Peon extends Pieza{
                         System.out.println("2. Torre");
                         System.out.println("3. Caballo");
                         System.out.println("4. Alfil");
-                        int promocion = sc.nextInt();
+                        int promocion = Main.comprobarScanner(sc);
 
 
                         Pieza piezaPromocionada = null;
@@ -902,7 +902,7 @@ public class Peon extends Pieza{
                         System.out.println("2. Torre");
                         System.out.println("3. Caballo");
                         System.out.println("4. Alfil");
-                        int promocion = sc.nextInt();
+                        int promocion = Main.comprobarScanner(sc);
 
                         Pieza piezaPromocionada = null;
                         if (promocion == 1) {
@@ -943,7 +943,7 @@ public class Peon extends Pieza{
                     if (abajoIzquierda) {
                         System.out.println("3. comer izquierda");
                     }
-                    decision = sc.nextInt();
+                    decision = Main.comprobarScanner(sc);
 
                     if (decision == 1 && mover) {
                         break;

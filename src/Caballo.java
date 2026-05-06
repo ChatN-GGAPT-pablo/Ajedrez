@@ -143,7 +143,7 @@ public class Caballo extends Pieza{
             }
 
 
-            decision = sc.nextInt();
+            decision = Main.comprobarScanner(sc);
 
             if (decision == 1 && ARRIBADERECHA) {
                 break;
