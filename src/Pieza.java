@@ -114,7 +114,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.TORRE) {
                         return true;
                     }
@@ -138,7 +138,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.ALFIL) {
                         return true;
                     }
@@ -163,7 +163,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.TORRE) {
                         return true;
                     }
@@ -187,7 +187,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.ALFIL) {
                         return true;
                     }
@@ -212,7 +212,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.TORRE) {
                         return true;
                     }
@@ -236,7 +236,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.ALFIL) {
                         return true;
                     }
@@ -261,7 +261,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.TORRE) {
                         return true;
                     }
@@ -285,7 +285,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.DAMA || casilla.getTipoPieza() == TipoPieza.ALFIL) {
                         return true;
                     }
@@ -309,7 +309,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
@@ -329,7 +329,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
@@ -349,7 +349,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
@@ -369,7 +369,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
@@ -389,7 +389,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
@@ -409,7 +409,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
@@ -429,7 +429,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
@@ -449,7 +449,7 @@ public abstract class Pieza implements Movible {
             Pieza casilla = Main.tablero[iPieza][jPieza];
 
             if (casilla != null) {
-                if (!(casilla.getColor().equals(this.getColor()))) {
+                if (!(casilla.getColor() == this.getColor())) {
                     if (casilla.getTipoPieza() == TipoPieza.CABALLO) {
                         return true;
                     }
@@ -471,7 +471,7 @@ public abstract class Pieza implements Movible {
                 Pieza casilla = Main.tablero[iPieza][jPieza];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(this.getColor()))) {
+                    if (!(casilla.getColor() == this.getColor())) {
                         if (casilla.getTipoPieza() == TipoPieza.PEON) {
                             return true;
                         }
@@ -505,7 +505,7 @@ public abstract class Pieza implements Movible {
                 Pieza casilla = Main.tablero[iPieza][jPieza];
 
                 if (casilla != null) {
-                    if (!(casilla.getColor().equals(this.getColor()))) {
+                    if (!(casilla.getColor() == this.getColor())) {
                         if (casilla.getTipoPieza() == TipoPieza.PEON) {
                             return true;
                         }
