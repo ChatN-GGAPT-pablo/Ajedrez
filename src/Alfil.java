@@ -18,8 +18,6 @@ public class Alfil extends Pieza{
     public void posiblesMovimientos(Pieza p) {
         Pieza rey = Main.buscarRey(p.getColor());
 
-
-
         boolean ARRIBADERECHA = false;
         boolean ABAJODERECHA = false;
         boolean ABAJOIZQUIERDA = false;
@@ -368,10 +366,20 @@ public class Alfil extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -478,10 +486,20 @@ public class Alfil extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -587,10 +605,20 @@ public class Alfil extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -697,10 +725,20 @@ public class Alfil extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -709,6 +747,8 @@ public class Alfil extends Pieza{
 
     @Override
     public boolean comprobarMovimientos(Pieza p) {
+        Pieza rey = Main.buscarRey(p.getColor());
+
         boolean ARRIBADERECHA = false;
         boolean ABAJODERECHA = false;
         boolean ABAJOIZQUIERDA = false;
@@ -717,17 +757,40 @@ public class Alfil extends Pieza{
         int capeadoVertical = p.getI();
         int capeadoHorizontal = 7 - p.getJ();
 
+        // ARRIBA DERECHA
         if (capeadoVertical > capeadoHorizontal) {
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
-                if (casilla != null) {
-                    if (casilla.getColor() != p.getColor()) {
-                        ARRIBADERECHA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - z;
+                int jProvisional = p.getJ() + z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ARRIBADERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -735,13 +798,35 @@ public class Alfil extends Pieza{
             for (int z = 1; z <= capeadoVertical; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
-                if (casilla != null) {
-                    if (casilla.getColor() != p.getColor()) {
-                        ARRIBADERECHA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - z;
+                int jProvisional = p.getJ() + z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ARRIBADERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -749,18 +834,41 @@ public class Alfil extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
-                if (casilla != null) {
-                    if (casilla.getColor() != p.getColor()) {
-                        ARRIBADERECHA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - z;
+                int jProvisional = p.getJ() + z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ARRIBADERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
         }
 
+        // ABAJO DERECHA
         capeadoVertical = 7 - p.getI();
         capeadoHorizontal = 7 - p.getJ();
 
@@ -768,13 +876,35 @@ public class Alfil extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
-                if (casilla != null) {
-                    if (casilla.getColor() != p.getColor()) {
-                        ABAJODERECHA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + z;
+                int jProvisional = p.getJ() + z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ABAJODERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -782,13 +912,35 @@ public class Alfil extends Pieza{
             for (int z = 1; z <= capeadoVertical; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
-                if (casilla != null) {
-                    if (casilla.getColor() != p.getColor()) {
-                        ABAJODERECHA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + z;
+                int jProvisional = p.getJ() + z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ABAJODERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -796,18 +948,41 @@ public class Alfil extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
-                if (casilla != null) {
-                    if (casilla.getColor() != p.getColor()) {
-                        ABAJODERECHA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + z;
+                int jProvisional = p.getJ() + z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ABAJODERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
         }
 
+        // ABAJO IZQUIERDA
         capeadoVertical = 7 - p.getI();
         capeadoHorizontal = p.getJ();
 
@@ -815,13 +990,35 @@ public class Alfil extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
-                if (casilla != null) {
-                    if (casilla.getColor() != p.getColor()) {
-                        ABAJOIZQUIERDA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + z;
+                int jProvisional = p.getJ() - z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ABAJOIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -829,13 +1026,35 @@ public class Alfil extends Pieza{
             for (int z = 1; z <= capeadoVertical; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
-                if (casilla != null) {
-                    if (casilla.getColor() != p.getColor()) {
-                        ABAJOIZQUIERDA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + z;
+                int jProvisional = p.getJ() - z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ABAJOIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -843,18 +1062,41 @@ public class Alfil extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
-                if (casilla != null) {
-                    if (casilla.getColor() != p.getColor()) {
-                        ABAJOIZQUIERDA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + z;
+                int jProvisional = p.getJ() - z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ABAJOIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
         }
 
+        // ARRIBA IZQUIERDA
         capeadoVertical = p.getI();
         capeadoHorizontal = p.getJ();
 
@@ -862,13 +1104,35 @@ public class Alfil extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
-                if (casilla != null) {
-                    if (casilla.getColor() != p.getColor()) {
-                        ARRIBAIZQUIERDA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - z;
+                int jProvisional = p.getJ() - z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ARRIBAIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -876,13 +1140,35 @@ public class Alfil extends Pieza{
             for (int z = 1; z <= capeadoVertical; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
-                if (casilla != null) {
-                    if (casilla.getColor() != p.getColor()) {
-                        ARRIBAIZQUIERDA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - z;
+                int jProvisional = p.getJ() - z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ARRIBAIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -890,13 +1176,35 @@ public class Alfil extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
-                if (casilla != null) {
-                    if (casilla.getColor() != p.getColor()) {
-                        ARRIBAIZQUIERDA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - z;
+                int jProvisional = p.getJ() - z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ARRIBAIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }

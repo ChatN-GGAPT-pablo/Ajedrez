@@ -204,11 +204,21 @@ public class Torre extends Pieza{
                     p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }else{
                     System.out.println("Pieza movida.");
                     p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -281,11 +291,21 @@ public class Torre extends Pieza{
                     p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }else{
                     System.out.println("Pieza movida.");
                     p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -359,11 +379,21 @@ public class Torre extends Pieza{
                     p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }else{
                     System.out.println("Pieza movida.");
                     p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -437,11 +467,21 @@ public class Torre extends Pieza{
                     p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }else{
                     System.out.println("Pieza movida.");
                     p.setPrimerMovimiento2OEnroque(true);
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
 
@@ -455,6 +495,8 @@ public class Torre extends Pieza{
 
     @Override
     public boolean comprobarMovimientos(Pieza p) {
+        Pieza rey = Main.buscarRey(p.getColor());
+
         boolean ARRIBA = false;
         boolean DERECHA = false;
         boolean ABAJO = false;
@@ -464,12 +506,36 @@ public class Torre extends Pieza{
             Pieza casilla = Main.tablero[p.getI() - z][p.getJ()];
 
             if (casilla != null) {
-                if (casilla.getColor() != p.getColor()) {
-                    ARRIBA = true;
+                if (casilla.getColor() == p.getColor()) {
+                    break;
                 }
-                break;
-            } else {
+            }
+
+            int iOriginal = p.getI();
+            int jOriginal = p.getJ();
+
+            int iProvisional = p.getI() - z;
+            int jProvisional = p.getJ();
+
+            Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+            Main.tablero[iOriginal][jOriginal] = null;
+            Main.tablero[iProvisional][jProvisional] = p;
+
+            p.setI(iProvisional);
+            p.setJ(jProvisional);
+
+            if (!rey.hayJaque()) {
                 ARRIBA = true;
+            }
+
+            Main.tablero[iOriginal][jOriginal] = p;
+            Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+            p.setI(iOriginal);
+            p.setJ(jOriginal);
+
+            if (casilla != null) {
                 break;
             }
         }
@@ -478,12 +544,37 @@ public class Torre extends Pieza{
             Pieza casilla = Main.tablero[p.getI()][p.getJ() + z];
 
             if (casilla != null) {
-                if (casilla.getColor() != p.getColor()) {
-                    DERECHA = true;
+                if (casilla.getColor() == p.getColor()) {
+                    break;
                 }
-                break;
-            } else {
+
+            }
+
+            int iOriginal = p.getI();
+            int jOriginal = p.getJ();
+
+            int iProvisional = p.getI();
+            int jProvisional = p.getJ() + z;
+
+            Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+            Main.tablero[iOriginal][jOriginal] = null;
+            Main.tablero[iProvisional][jProvisional] = p;
+
+            p.setI(iProvisional);
+            p.setJ(jProvisional);
+
+            if (!rey.hayJaque()) {
                 DERECHA = true;
+            }
+
+            Main.tablero[iOriginal][jOriginal] = p;
+            Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+            p.setI(iOriginal);
+            p.setJ(jOriginal);
+
+            if (casilla != null) {
                 break;
             }
         }
@@ -492,12 +583,36 @@ public class Torre extends Pieza{
             Pieza casilla = Main.tablero[p.getI() + z][p.getJ()];
 
             if (casilla != null) {
-                if (casilla.getColor() != p.getColor()) {
-                    ABAJO = true;
+                if (casilla.getColor() == p.getColor()) {
+                    break;
                 }
-                break;
-            } else {
+            }
+
+            int iOriginal = p.getI();
+            int jOriginal = p.getJ();
+
+            int iProvisional = p.getI() + z;
+            int jProvisional = p.getJ();
+
+            Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+            Main.tablero[iOriginal][jOriginal] = null;
+            Main.tablero[iProvisional][jProvisional] = p;
+
+            p.setI(iProvisional);
+            p.setJ(jProvisional);
+
+            if (!rey.hayJaque()) {
                 ABAJO = true;
+            }
+
+            Main.tablero[iOriginal][jOriginal] = p;
+            Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+            p.setI(iOriginal);
+            p.setJ(jOriginal);
+
+            if (casilla != null) {
                 break;
             }
         }
@@ -506,12 +621,35 @@ public class Torre extends Pieza{
             Pieza casilla = Main.tablero[p.getI()][p.getJ() - z];
 
             if (casilla != null) {
-                if (casilla.getColor() != p.getColor()) {
-                    IZQUIERDA = true;
+                if (casilla.getColor() == p.getColor()) {
+                    break;
                 }
-                break;
-            } else {
+            }
+            int iOriginal = p.getI();
+            int jOriginal = p.getJ();
+
+            int iProvisional = p.getI();
+            int jProvisional = p.getJ() - z;
+
+            Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+            Main.tablero[iOriginal][jOriginal] = null;
+            Main.tablero[iProvisional][jProvisional] = p;
+
+            p.setI(iProvisional);
+            p.setJ(jProvisional);
+
+            if (!rey.hayJaque()) {
                 IZQUIERDA = true;
+            }
+
+            Main.tablero[iOriginal][jOriginal] = p;
+            Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+            p.setI(iOriginal);
+            p.setJ(jOriginal);
+
+            if (casilla != null) {
                 break;
             }
         }

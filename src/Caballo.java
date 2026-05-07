@@ -7,13 +7,10 @@ public class Caballo extends Pieza{
     }
 
 
-
     @Override
     public String toString() {
         return "C" + this.getColor().getSimbolo() + this.getNumeroPieza();
     }
-
-    //if(!puedeMover()){
 
 
     @Override
@@ -231,17 +228,30 @@ public class Caballo extends Pieza{
                 System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                 Main.ultimaPieza(p);
                 Main.cambiarTurno();
+                Main.hayJaqueMate(Main.getTurno());
+                Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
             }else{
                 System.out.println("Pieza movida.");
                 Main.ultimaPieza(p);
                 Main.cambiarTurno();
+                Main.hayJaqueMate(Main.getTurno());
+                Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
             }
         }
 
     }
 
+
     @Override
     public boolean comprobarMovimientos(Pieza p) {
+        Pieza rey = Main.buscarRey(p.getColor());
+
         boolean ARRIBADERECHA = false;
         boolean DERECHAARRIBA = false;
         boolean DERECHAABAJO = false;
@@ -251,76 +261,259 @@ public class Caballo extends Pieza{
         boolean IZQUIERDAARRIBA = false;
         boolean ARRIBAIZQUIERDA = false;
 
+        // ARRIBA DERECHA
         if (p.getI() - 2 >= 0 && p.getJ() + 1 <= 7) {
             Pieza casilla = Main.tablero[p.getI() - 2][p.getJ() + 1];
 
-            if (casilla == null || !(casilla.getColor() == p.getColor())) {
-                ARRIBADERECHA = true;
+            if (casilla == null || casilla.getColor() != p.getColor()) {
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - 2;
+                int jProvisional = p.getJ() + 1;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
+                    ARRIBADERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
+        // DERECHA ARRIBA
         if (p.getI() - 1 >= 0 && p.getJ() + 2 <= 7) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() + 2];
 
-            if (casilla == null || !(casilla.getColor() == p.getColor())) {
-                DERECHAARRIBA = true;
+            if (casilla == null || casilla.getColor() != p.getColor()) {
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - 1;
+                int jProvisional = p.getJ() + 2;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
+                    DERECHAARRIBA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
+        // DERECHA ABAJO
         if (p.getI() + 1 <= 7 && p.getJ() + 2 <= 7) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() + 2];
 
-            if (casilla == null || !(casilla.getColor() == p.getColor())) {
-                DERECHAABAJO = true;
+            if (casilla == null || casilla.getColor() != p.getColor()) {
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + 1;
+                int jProvisional = p.getJ() + 2;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
+                    DERECHAABAJO = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
+        // ABAJO DERECHA
         if (p.getI() + 2 <= 7 && p.getJ() + 1 <= 7) {
             Pieza casilla = Main.tablero[p.getI() + 2][p.getJ() + 1];
 
-            if (casilla == null || !(casilla.getColor() == p.getColor())) {
-                ABAJODERECHA = true;
+            if (casilla == null || casilla.getColor() != p.getColor()) {
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + 2;
+                int jProvisional = p.getJ() + 1;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
+                    ABAJODERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
+        // ABAJO IZQUIERDA
         if (p.getI() + 2 <= 7 && p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() + 2][p.getJ() - 1];
 
-            if (casilla == null || !(casilla.getColor() == p.getColor())) {
-                ABAJOIZQUIERDA = true;
+            if (casilla == null || casilla.getColor() != p.getColor()) {
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + 2;
+                int jProvisional = p.getJ() - 1;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
+                    ABAJOIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
+        // IZQUIERDA ABAJO
         if (p.getI() + 1 <= 7 && p.getJ() - 2 >= 0) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() - 2];
 
-            if (casilla == null || !(casilla.getColor() == p.getColor())) {
-                IZQUIERDAABAJO = true;
+            if (casilla == null || casilla.getColor() != p.getColor()) {
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + 1;
+                int jProvisional = p.getJ() - 2;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
+                    IZQUIERDAABAJO = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
+        // IZQUIERDA ARRIBA
         if (p.getI() - 1 >= 0 && p.getJ() - 2 >= 0) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() - 2];
 
-            if (casilla == null || !(casilla.getColor() == p.getColor())) {
-                IZQUIERDAARRIBA = true;
+            if (casilla == null || casilla.getColor() != p.getColor()) {
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - 1;
+                int jProvisional = p.getJ() - 2;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
+                    IZQUIERDAARRIBA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
+        // ARRIBA IZQUIERDA
         if (p.getI() - 2 >= 0 && p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() - 2][p.getJ() - 1];
 
-            if (casilla == null || !(casilla.getColor() == p.getColor())) {
-                ARRIBAIZQUIERDA = true;
+            if (casilla == null || casilla.getColor() != p.getColor()) {
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - 2;
+                int jProvisional = p.getJ() - 1;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
+                    ARRIBAIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
-
         if (!ARRIBADERECHA && !DERECHAARRIBA && !DERECHAABAJO && !ABAJODERECHA &&
                 !ABAJOIZQUIERDA && !IZQUIERDAABAJO && !IZQUIERDAARRIBA && !ARRIBAIZQUIERDA) {
-
             return false;
         }
+
         return true;
     }
 }

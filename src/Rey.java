@@ -433,6 +433,11 @@ public class Rey extends Pieza {
                 System.out.println("Enroque corto realizado.");
                 Main.ultimaPieza(p);
                 Main.cambiarTurno();
+                Main.hayJaqueMate(Main.getTurno());
+                Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()){
+                    System.out.println("Jaque");
+                }
             }
 
             return;
@@ -498,6 +503,11 @@ public class Rey extends Pieza {
                 System.out.println("Enroque largo realizado.");
                 Main.ultimaPieza(p);
                 Main.cambiarTurno();
+                Main.hayJaqueMate(Main.getTurno());
+                Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()){
+                    System.out.println("Jaque");
+                }
             }
 
             return;
@@ -530,11 +540,21 @@ public class Rey extends Pieza {
                 p.primerMovimiento2OEnroque = true;
                 Main.ultimaPieza(p);
                 Main.cambiarTurno();
+                Main.hayJaqueMate(Main.getTurno());
+                Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
             } else {
-                System.out.println("Pieza movida.");
-                Main.ultimaPieza(p);
-                p.primerMovimiento2OEnroque = true;
-                Main.cambiarTurno();
+                    System.out.println("Pieza movida.");
+                    Main.ultimaPieza(p);
+                    p.primerMovimiento2OEnroque = true;
+                    Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                    if (reyTurno.hayJaque()){
+                        System.out.println("Jaque");
+                    }
+
             }
         }
 
@@ -555,57 +575,241 @@ public class Rey extends Pieza {
 
         if (p.getI() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ()];
+
             if (casilla == null || casilla.getColor() != p.getColor()) {
-                ARRIBA = true;
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - 1;
+                int jProvisional = p.getJ();
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!p.hayJaque()) {
+                    ARRIBA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
         if (p.getI() - 1 >= 0 && p.getJ() + 1 < 8) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() + 1];
+
             if (casilla == null || casilla.getColor() != p.getColor()) {
-                ARRIBADERECHA = true;
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - 1;
+                int jProvisional = p.getJ() + 1;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!p.hayJaque()) {
+                    ARRIBADERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
         if (p.getJ() + 1 < 8) {
             Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
+
             if (casilla == null || casilla.getColor() != p.getColor()) {
-                DERECHA = true;
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI();
+                int jProvisional = p.getJ() + 1;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!p.hayJaque()) {
+                    DERECHA= true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
         if (p.getI() + 1 < 8 && p.getJ() + 1 < 8) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() + 1];
+
             if (casilla == null || casilla.getColor() != p.getColor()) {
-                ABAJODERECHA = true;
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + 1;
+                int jProvisional = p.getJ() + 1;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!p.hayJaque()) {
+                    ABAJODERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
         if (p.getI() + 1 < 8) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ()];
+
             if (casilla == null || casilla.getColor() != p.getColor()) {
-                ABAJO = true;
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + 1;
+                int jProvisional = p.getJ();
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!p.hayJaque()) {
+                    ABAJO = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
         if (p.getI() + 1 < 8 && p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() - 1];
+
             if (casilla == null || casilla.getColor() != p.getColor()) {
-                ABAJOIZQUIERDA = true;
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + 1;
+                int jProvisional = p.getJ() - 1;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!p.hayJaque()) {
+                    ABAJOIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
         if (p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
+
             if (casilla == null || casilla.getColor() != p.getColor()) {
-                IZQUIERDA = true;
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI();
+                int jProvisional = p.getJ() - 1;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!p.hayJaque()) {
+                    IZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 
         if (p.getI() - 1 >= 0 && p.getJ() - 1 >= 0) {
             Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() - 1];
+
             if (casilla == null || casilla.getColor() != p.getColor()) {
-                ARRIBAIZQUIERDA = true;
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - 1;
+                int jProvisional = p.getJ() - 1;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!p.hayJaque()) {
+                    ARRIBAIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
             }
         }
 

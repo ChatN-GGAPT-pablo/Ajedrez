@@ -7,11 +7,11 @@ public class Dama extends Pieza{
     }
 
 
-
     @Override
     public String toString() {
         return "D" + this.getColor().getSimbolo() + this.getNumeroPieza();
     }
+
 
     @Override
     public void posiblesMovimientos(Pieza p) {
@@ -427,10 +427,20 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -531,10 +541,20 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -607,10 +627,20 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -712,10 +742,20 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -788,10 +828,20 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -892,10 +942,20 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -968,10 +1028,20 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -1073,10 +1143,20 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
+                    Main.hayJaqueMate(Main.getTurno());
+                    Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
                 }
             }
         }
@@ -1084,8 +1164,11 @@ public class Dama extends Pieza{
 
     }
 
+
     @Override
     public boolean comprobarMovimientos(Pieza p) {
+        Pieza rey = Main.buscarRey(p.getColor());
+
         boolean ARRIBA = false;
         boolean ARRIBADERECHA = false;
         boolean DERECHA = false;
@@ -1095,22 +1178,44 @@ public class Dama extends Pieza{
         boolean IZQUIERDA = false;
         boolean ARRIBAIZQUIERDA = false;
 
-        //COMPROBACIÓN ARRIBA
+        // ARRIBA
         for (int z = 1; z <= p.getI(); z++) {
             Pieza casilla = Main.tablero[p.getI() - z][p.getJ()];
 
-            if (casilla != null) {
-                if (!(casilla.getColor() == p.getColor())) {
-                    ARRIBA = true;
-                }
+            if (casilla != null && casilla.getColor() == p.getColor()) {
                 break;
-            } else {
+            }
+
+            int iOriginal = p.getI();
+            int jOriginal = p.getJ();
+
+            int iProvisional = p.getI() - z;
+            int jProvisional = p.getJ();
+
+            Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+            Main.tablero[iOriginal][jOriginal] = null;
+            Main.tablero[iProvisional][jProvisional] = p;
+
+            p.setI(iProvisional);
+            p.setJ(jProvisional);
+
+            if (!rey.hayJaque()) {
                 ARRIBA = true;
+            }
+
+            Main.tablero[iOriginal][jOriginal] = p;
+            Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+            p.setI(iOriginal);
+            p.setJ(jOriginal);
+
+            if (casilla != null) {
                 break;
             }
         }
 
-        //COMPROBACIÓN ARRIBADERECHA
+        // ARRIBA DERECHA
         int capeadoVertical = p.getI();
         int capeadoHorizontal = 7 - p.getJ();
 
@@ -1118,13 +1223,35 @@ public class Dama extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
-                if (casilla != null) {
-                    if (!(casilla.getColor() == p.getColor())) {
-                        ARRIBADERECHA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - z;
+                int jProvisional = p.getJ() + z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ARRIBADERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -1132,13 +1259,35 @@ public class Dama extends Pieza{
             for (int z = 1; z <= capeadoVertical; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
-                if (casilla != null) {
-                    if (!(casilla.getColor() == p.getColor())) {
-                        ARRIBADERECHA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - z;
+                int jProvisional = p.getJ() + z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ARRIBADERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -1146,34 +1295,78 @@ public class Dama extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
 
-                if (casilla != null) {
-                    if (!(casilla.getColor() == p.getColor())) {
-                        ARRIBADERECHA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - z;
+                int jProvisional = p.getJ() + z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ARRIBADERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
         }
 
-        //COMPROBACIÓN DERECHA
+        // DERECHA
         for (int z = 1; z <= 7 - p.getJ(); z++) {
             Pieza casilla = Main.tablero[p.getI()][p.getJ() + z];
 
-            if (casilla != null) {
-                if (!(casilla.getColor() == p.getColor())) {
-                    DERECHA = true;
-                }
+            if (casilla != null && casilla.getColor() == p.getColor()) {
                 break;
-            } else {
+            }
+
+            int iOriginal = p.getI();
+            int jOriginal = p.getJ();
+
+            int iProvisional = p.getI();
+            int jProvisional = p.getJ() + z;
+
+            Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+            Main.tablero[iOriginal][jOriginal] = null;
+            Main.tablero[iProvisional][jProvisional] = p;
+
+            p.setI(iProvisional);
+            p.setJ(jProvisional);
+
+            if (!rey.hayJaque()) {
                 DERECHA = true;
+            }
+
+            Main.tablero[iOriginal][jOriginal] = p;
+            Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+            p.setI(iOriginal);
+            p.setJ(jOriginal);
+
+            if (casilla != null) {
                 break;
             }
         }
 
-        //COMPROBACIÓN ABAJODERECHA
+        // ABAJO DERECHA
         capeadoVertical = 7 - p.getI();
         capeadoHorizontal = 7 - p.getJ();
 
@@ -1181,13 +1374,35 @@ public class Dama extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
-                if (casilla != null) {
-                    if (!(casilla.getColor() == p.getColor())) {
-                        ABAJODERECHA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + z;
+                int jProvisional = p.getJ() + z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ABAJODERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -1195,13 +1410,35 @@ public class Dama extends Pieza{
             for (int z = 1; z <= capeadoVertical; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
-                if (casilla != null) {
-                    if (!(casilla.getColor() == p.getColor())) {
-                        ABAJODERECHA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + z;
+                int jProvisional = p.getJ() + z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ABAJODERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -1209,34 +1446,78 @@ public class Dama extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
 
-                if (casilla != null) {
-                    if (!(casilla.getColor() == p.getColor())) {
-                        ABAJODERECHA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + z;
+                int jProvisional = p.getJ() + z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ABAJODERECHA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
         }
 
-        //COMPROBACIÓN ABAJO
+        // ABAJO
         for (int z = 1; z <= 7 - p.getI(); z++) {
             Pieza casilla = Main.tablero[p.getI() + z][p.getJ()];
 
-            if (casilla != null) {
-                if (!(casilla.getColor() == p.getColor())) {
-                    ABAJO = true;
-                }
+            if (casilla != null && casilla.getColor() == p.getColor()) {
                 break;
-            } else {
+            }
+
+            int iOriginal = p.getI();
+            int jOriginal = p.getJ();
+
+            int iProvisional = p.getI() + z;
+            int jProvisional = p.getJ();
+
+            Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+            Main.tablero[iOriginal][jOriginal] = null;
+            Main.tablero[iProvisional][jProvisional] = p;
+
+            p.setI(iProvisional);
+            p.setJ(jProvisional);
+
+            if (!rey.hayJaque()) {
                 ABAJO = true;
+            }
+
+            Main.tablero[iOriginal][jOriginal] = p;
+            Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+            p.setI(iOriginal);
+            p.setJ(jOriginal);
+
+            if (casilla != null) {
                 break;
             }
         }
-        //COMPROBACIÓN ABAJOIZQUIERDA
 
+        // ABAJO IZQUIERDA
         capeadoVertical = 7 - p.getI();
         capeadoHorizontal = p.getJ();
 
@@ -1244,13 +1525,35 @@ public class Dama extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
-                if (casilla != null) {
-                    if (!(casilla.getColor() == p.getColor())) {
-                        ABAJOIZQUIERDA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + z;
+                int jProvisional = p.getJ() - z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ABAJOIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -1258,13 +1561,35 @@ public class Dama extends Pieza{
             for (int z = 1; z <= capeadoVertical; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
-                if (casilla != null) {
-                    if (!(casilla.getColor() == p.getColor())) {
-                        ABAJOIZQUIERDA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + z;
+                int jProvisional = p.getJ() - z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ABAJOIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -1272,34 +1597,78 @@ public class Dama extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
 
-                if (casilla != null) {
-                    if (!(casilla.getColor() == p.getColor())) {
-                        ABAJOIZQUIERDA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() + z;
+                int jProvisional = p.getJ() - z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ABAJOIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
         }
 
-        //COMPROBACIÓN IZQUIERDA
+        // IZQUIERDA
         for (int z = 1; z <= p.getJ(); z++) {
             Pieza casilla = Main.tablero[p.getI()][p.getJ() - z];
 
-            if (casilla != null) {
-                if (!(casilla.getColor() == p.getColor())) {
-                    IZQUIERDA = true;
-                }
+            if (casilla != null && casilla.getColor() == p.getColor()) {
                 break;
-            } else {
+            }
+
+            int iOriginal = p.getI();
+            int jOriginal = p.getJ();
+
+            int iProvisional = p.getI();
+            int jProvisional = p.getJ() - z;
+
+            Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+            Main.tablero[iOriginal][jOriginal] = null;
+            Main.tablero[iProvisional][jProvisional] = p;
+
+            p.setI(iProvisional);
+            p.setJ(jProvisional);
+
+            if (!rey.hayJaque()) {
                 IZQUIERDA = true;
+            }
+
+            Main.tablero[iOriginal][jOriginal] = p;
+            Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+            p.setI(iOriginal);
+            p.setJ(jOriginal);
+
+            if (casilla != null) {
                 break;
             }
         }
 
-        //COMPROBACIÓN ARRIBAIZQUIERDA
+        // ARRIBA IZQUIERDA
         capeadoVertical = p.getI();
         capeadoHorizontal = p.getJ();
 
@@ -1307,13 +1676,35 @@ public class Dama extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
-                if (casilla != null) {
-                    if (!(casilla.getColor() == p.getColor())) {
-                        ARRIBAIZQUIERDA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - z;
+                int jProvisional = p.getJ() - z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ARRIBAIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -1321,13 +1712,35 @@ public class Dama extends Pieza{
             for (int z = 1; z <= capeadoVertical; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
-                if (casilla != null) {
-                    if (!(casilla.getColor() == p.getColor())) {
-                        ARRIBAIZQUIERDA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - z;
+                int jProvisional = p.getJ() - z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ARRIBAIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
@@ -1335,24 +1748,46 @@ public class Dama extends Pieza{
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
 
-                if (casilla != null) {
-                    if (!(casilla.getColor() == p.getColor())) {
-                        ARRIBAIZQUIERDA = true;
-                    }
+                if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
-                } else {
+                }
+
+                int iOriginal = p.getI();
+                int jOriginal = p.getJ();
+
+                int iProvisional = p.getI() - z;
+                int jProvisional = p.getJ() - z;
+
+                Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
+
+                Main.tablero[iOriginal][jOriginal] = null;
+                Main.tablero[iProvisional][jProvisional] = p;
+
+                p.setI(iProvisional);
+                p.setJ(jProvisional);
+
+                if (!rey.hayJaque()) {
                     ARRIBAIZQUIERDA = true;
+                }
+
+                Main.tablero[iOriginal][jOriginal] = p;
+                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                p.setI(iOriginal);
+                p.setJ(jOriginal);
+
+                if (casilla != null) {
                     break;
                 }
             }
         }
 
-
         if (!ARRIBA && !ARRIBADERECHA && !DERECHA && !ABAJODERECHA &&
                 !ABAJO && !ABAJOIZQUIERDA && !IZQUIERDA && !ARRIBAIZQUIERDA) {
             return false;
         }
-        return  true;
+
+        return true;
     }
 }
 

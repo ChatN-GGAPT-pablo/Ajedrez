@@ -1,6 +1,8 @@
 import java.util.*;
 
 public class Main{
+
+    static boolean FIN = false;
     static Color turno = Color.BLANCO;
 
     public static Color getTurno(){
@@ -670,6 +672,34 @@ public class Main{
 
 
 
+    public static boolean hayJaqueMate(Color color) {
+        Pieza rey = buscarRey(color);
+
+        if (!rey.hayJaque()) {
+            return false;
+        }
+
+        for (int i = 0; i < tamanio; i++) {
+            for (int j = 0; j < tamanio; j++) {
+                Pieza p = tablero[i][j];
+                    // Si todas las piezas NO pueden tener movimientos
+                    // Entonces hay Jaque Mate
+                if (p != null && p.getColor() == color) {
+                    if (p.comprobarMovimientos(p)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        if (color == Color.BLANCO) {
+            System.out.println("Jaque mate. Ganan las negras");
+        } else {
+            System.out.println("Jaque mate. Ganan las blancas");
+        }
+
+        FIN = true;
+        return true;
+    }
 
 
     public static void main(String[] args) {
@@ -776,7 +806,7 @@ public class Main{
 
 
 
-        while (true){
+        while (!FIN){
             mostrarTablero();
 
             Main.piezaAMover = mostrarPiezas();
