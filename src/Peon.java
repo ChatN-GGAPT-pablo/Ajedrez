@@ -1583,6 +1583,7 @@ public class Peon extends Pieza{
      * @param p
      * @return
      */
+
     @Override
     public boolean comprobarMovimientos(Pieza p) {
         Pieza rey = Main.buscarRey(p.getColor());
