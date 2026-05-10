@@ -39,7 +39,16 @@ public abstract class Pieza implements Movible {
         this.inmovil = inmovil;
     }
 
-    //Constructor Peon
+    /**
+     * Constructor Peón
+      * @param tipoPieza
+     * @param color
+     * @param numeroPieza
+     * @param i
+     * @param j
+     * @param primerMovimiento2OEnroque
+     * @param inmovil
+     */
     public Pieza(TipoPieza tipoPieza, Color color, int numeroPieza, int i, int j, boolean primerMovimiento2OEnroque, boolean inmovil) {
         this.tipoPieza = tipoPieza;
         this.color = color;
@@ -50,29 +59,17 @@ public abstract class Pieza implements Movible {
         this.inmovil = inmovil;
     }
 
-
-    //Constructor Torres
-
-
+    //Getters + Setters
     public TipoPieza getTipoPieza() {
         return tipoPieza;
-    }
-    public void setTipoPieza(TipoPieza tipoPieza) {
-        this.tipoPieza = tipoPieza;
     }
 
     public Color getColor() {
         return color;
     }
-    public void setColor(Color color) {
-        this.color = color;
-    }
 
     public int getNumeroPieza() {
         return numeroPieza;
-    }
-    public void setNumeroPieza(int numeroPieza) {
-        this.numeroPieza = numeroPieza;
     }
 
     public int getI() {
@@ -103,7 +100,7 @@ public abstract class Pieza implements Movible {
         this.inmovil = inmovil;
     }
 
-
+    //Comprobaciones de Jaque
     public boolean hayJaqueARRIBA() {
 
         int iPieza = this.getI() - 1;
@@ -531,7 +528,6 @@ public abstract class Pieza implements Movible {
             return false;
         }
     }
-
 
     public boolean hayJaqueRey() {
         for (int fila = this.getI() - 1; fila <= this.getI() + 1; fila++) {

@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.Comparator;
+import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main{
 
@@ -24,7 +26,6 @@ public class Main{
         return ultimaPiezaMovida;
     }
 
-
     public static int comprobarScanner(Scanner sc) {
         while (true) {
             try {
@@ -36,16 +37,8 @@ public class Main{
         }
     }
 
-    public static int iActual = 0;
-    public static int jActual = 0;
-
     static Pieza[][] tablero = new Pieza[8][8];
     static final int tamanio = tablero.length;
-
-
-
-
-
 
     //Listas piezas blancas para mostrar
     static ArrayList<Pieza> peonesBDisponibles = new ArrayList<>();
@@ -54,7 +47,6 @@ public class Main{
     static ArrayList<Pieza> torresBDisponibles = new ArrayList<>();
     static ArrayList<Pieza> damasBDisponibles = new ArrayList<>();
     static ArrayList<Pieza> reyBDisponible = new ArrayList<>();
-
 
     //Listas piezas negras para mostrar
     static ArrayList<Pieza> peonesNDisponibles = new ArrayList<>();
@@ -71,12 +63,11 @@ public class Main{
         public int compare(Pieza p1, Pieza p2){
             return (p1.getNumeroPieza() - p2.getNumeroPieza());
         }
-
     }
 
-    public static void a(Pieza p){
-        System.out.println(p.getI()+p.getJ());
-    }
+    /**
+     * Muestra el tablero
+     */
     public static void mostrarTablero(){
         System.out.println();
         System.out.println();
@@ -116,6 +107,11 @@ public class Main{
         System.out.println("________________________________________________________________________________________________");
 
         }
+
+    /**
+     * Muestra en cada turno, las piezas disponibles que puedan llegar a moverse
+      * @return
+     */
     public static Pieza mostrarPiezas(){
         Scanner sc = new Scanner(System.in);
 
@@ -127,16 +123,12 @@ public class Main{
         damasBDisponibles.clear();
         reyBDisponible.clear();
 
-
-
-
         boolean peonB = false;
         boolean alfilB = false;
         boolean caballoB = false;
         boolean torreB = false;
         boolean damaB = false;
         boolean reyB = false;
-
 
         //Listas piezas negras para mostrar
         peonesNDisponibles.clear();
@@ -264,7 +256,6 @@ public class Main{
                 System.out.println(reyBDisponible);
                 reyB = true;
             }
-
 
             while (true){
                 int decision = Main.comprobarScanner(sc);
@@ -412,7 +403,6 @@ public class Main{
                 }
             }
 
-
         }else{
             System.out.println("Qué grupo de piezas quieres seleccionar?");
             System.out.println("0. Volver");
@@ -457,10 +447,6 @@ public class Main{
                 System.out.println(reyNDisponible);
                 reyN = true;
             }
-
-
-
-
 
             while(true){
                 int decision = Main.comprobarScanner(sc);
@@ -611,29 +597,9 @@ public class Main{
 
     }
 
-    public static String piezaSeleccionada(){
-
-        System.out.println("Qué pieza quieres seleccionar?");
-        Scanner sc = new Scanner(System.in);
-        String piezaActual = sc.nextLine();
-
-        for (int i = 0; i < tamanio; i++) {
-            for (int j = 0; j < tamanio; j++) {
-
-                if (!(tablero[i][j] == null)){
-                    if (tablero[i][j].toString().equals(piezaActual)){
-                        System.out.println("Tu pieza está en la casilla: ");
-                        System.out.println(i);
-                        System.out.println(j);
-                        iActual = i;
-                        jActual = j;
-                        break;
-                    }
-                }
-            }
-        }
-        return piezaActual;
-    }
+    /**
+     * Cambia el truno tras una jugada
+     */
     public static void cambiarTurno() {
         if (turno == Color.BLANCO) {
             turno = Color.NEGRO;
@@ -642,17 +608,11 @@ public class Main{
         }
     }
 
-
-    static Pieza piezaAMover = new Peon(Color.BLANCO,  1, 6, 0,false, false);
-
-    public static Pieza getPiezaAMover() {
-        return piezaAMover;
-    }
-
-    public static void setPiezaAMover(Pieza piezaAMover) {
-        Main.piezaAMover = piezaAMover;
-    }
-
+    /**
+     * Busca el rey para hacer comprobacioens de Jaque
+     * @param color
+     * @return
+     */
     public static Pieza buscarRey(Color color){
         for (int i = 0; i < Main.tamanio; i++){
             for (int j = 0; j < Main.tamanio; j++){
@@ -669,9 +629,11 @@ public class Main{
         return null;
     }
 
-
-
-
+    /**
+     * Comprueba si hay Jaque mate
+     * @param color
+     * @return
+     */
     public static boolean hayJaqueMate(Color color) {
         Pieza rey = buscarRey(color);
 
@@ -701,114 +663,111 @@ public class Main{
         return true;
     }
 
+    static Pieza piezaAMover = new Peon(Color.BLANCO,  1, 6, 0,false, false);
 
+    /**
+     * El Main donde se ejecuta toda la partida
+     * @param args
+     */
     public static void main(String[] args) {
         //COnstructor piezas
-        {
             //peones blancos
 
-            Pieza PB1 = new Peon(Color.BLANCO,  1, 6, 0,false, false);
-            Pieza PB2 = new Peon(Color.BLANCO,  2, 6, 1,false, false);
-            Pieza PB3 = new Peon(Color.BLANCO,  3, 6, 2,false, false);
-            Pieza PB4 = new Peon(Color.BLANCO,  4, 6, 3,false, false);
-            Pieza PB5 = new Peon(Color.BLANCO,  5, 6, 4,false, false);
-            Pieza PB6 = new Peon(Color.BLANCO,  6, 6, 5,false, false);
-            Pieza PB7 = new Peon(Color.BLANCO,  7, 6, 6,false, false);
-            Pieza PB8 = new Peon(Color.BLANCO,  8, 6, 7,false, false);
+        Pieza PB1 = new Peon(Color.BLANCO,  1, 6, 0,false, false);
+        Pieza PB2 = new Peon(Color.BLANCO,  2, 6, 1,false, false);
+        Pieza PB3 = new Peon(Color.BLANCO,  3, 6, 2,false, false);
+        Pieza PB4 = new Peon(Color.BLANCO,  4, 6, 3,false, false);
+        Pieza PB5 = new Peon(Color.BLANCO,  5, 6, 4,false, false);
+        Pieza PB6 = new Peon(Color.BLANCO,  6, 6, 5,false, false);
+        Pieza PB7 = new Peon(Color.BLANCO,  7, 6, 6,false, false);
+        Pieza PB8 = new Peon(Color.BLANCO,  8, 6, 7,false, false);
 
-            tablero[6][0] = PB1;
-            tablero[6][1] = PB2;
-            tablero[6][2] = PB3;
-            tablero[6][3] = PB4;
-            tablero[6][4] = PB5;
-            tablero[6][5] = PB6;
-            tablero[6][6] = PB7;
-            tablero[6][7] = PB8;
+        tablero[6][0] = PB1;
+        tablero[6][1] = PB2;
+        tablero[6][2] = PB3;
+        tablero[6][3] = PB4;
+        tablero[6][4] = PB5;
+        tablero[6][5] = PB6;
+        tablero[6][6] = PB7;
+        tablero[6][7] = PB8;
 
+        //peones negros
+        Pieza PN1 = new Peon(Color.NEGRO,  1, 1, 0,false, false);
+        Pieza PN2 = new Peon(Color.NEGRO,  2, 1, 1,false, false);
+        Pieza PN3 = new Peon(Color.NEGRO,  3, 1, 2,false, false);
+        Pieza PN4 = new Peon(Color.NEGRO,  4, 1, 3,false, false);
+        Pieza PN5 = new Peon(Color.NEGRO,  5, 1, 4,false, false);
+        Pieza PN6 = new Peon(Color.NEGRO,  6, 1, 5,false, false);
+        Pieza PN7 = new Peon(Color.NEGRO,  7, 1, 6,false, false);
+        Pieza PN8 = new Peon(Color.NEGRO,  8, 1, 7,false, false);
 
-            //peones negros
-            Pieza PN1 = new Peon(Color.NEGRO,  1, 1, 0,false, false);
-            Pieza PN2 = new Peon(Color.NEGRO,  2, 1, 1,false, false);
-            Pieza PN3 = new Peon(Color.NEGRO,  3, 1, 2,false, false);
-            Pieza PN4 = new Peon(Color.NEGRO,  4, 1, 3,false, false);
-            Pieza PN5 = new Peon(Color.NEGRO,  5, 1, 4,false, false);
-            Pieza PN6 = new Peon(Color.NEGRO,  6, 1, 5,false, false);
-            Pieza PN7 = new Peon(Color.NEGRO,  7, 1, 6,false, false);
-            Pieza PN8 = new Peon(Color.NEGRO,  8, 1, 7,false, false);
+        tablero[1][0] = PN1;
+        tablero[1][1] = PN2;
+        tablero[1][2] = PN3;
+        tablero[1][3] = PN4;
+        tablero[1][4] = PN5;
+        tablero[1][5] = PN6;
+        tablero[1][6] = PN7;
+        tablero[1][7] = PN8;
 
-            tablero[1][0] = PN1;
-            tablero[1][1] = PN2;
-            tablero[1][2] = PN3;
-            tablero[1][3] = PN4;
-            tablero[1][4] = PN5;
-            tablero[1][5] = PN6;
-            tablero[1][6] = PN7;
-            tablero[1][7] = PN8;
+        //Torres blancas
+        Pieza TB1 = new Torre(Color.BLANCO,1, 7,0, true);
+        Pieza TB2 = new Torre(Color.BLANCO,2,7,7,true);
+        tablero[7][0] = TB1;
+        tablero[7][7] = TB2;
 
+        //Torres negras
+        Pieza TN1 = new Torre(Color.NEGRO, 1,0,0, true);
+        Pieza TN2 = new Torre(Color.NEGRO, 2,0,7, true);
+        tablero[0][0] = TN1;
+        tablero[0][7] = TN2;
 
-            //Torres blancas
+        //Caballos blancos
+        Pieza CB1 = new Caballo(Color.BLANCO, 1,7,1, false);
+        Pieza CB2 = new Caballo(Color.BLANCO, 2,7,6, false);
+        tablero[7][1] = CB1;
+        tablero[7][6] = CB2;
 
-            Pieza TB1 = new Torre(Color.BLANCO,1, 7,0, true);
-            Pieza TB2 = new Torre(Color.BLANCO,2,7,7,true);
-            tablero[7][0] = TB1;
-            tablero[7][7] = TB2;
-            //Torres negras
+        //Caballos negros
+        Pieza CN1 = new Caballo(Color.NEGRO, 1,0,1, false);
+        Pieza CN2 = new Caballo(Color.NEGRO, 2,0,6, false);
+        tablero[0][1] = CN1;
+        tablero[0][6] = CN2;
 
-            Pieza TN1 = new Torre(Color.NEGRO, 1,0,0, true);
-            Pieza TN2 = new Torre(Color.NEGRO, 2,0,7, true);
-            tablero[0][0] = TN1;
-            tablero[0][7] = TN2;
+        //Alfiles blancos
+        Pieza AB1 = new Alfil(Color.BLANCO, 1,7,2, true);
+        Pieza AB2 = new Alfil(Color.BLANCO, 2,7,5, true);
+        tablero[7][2] = AB1;
+        tablero[7][5] = AB2;
 
-            //Caballos blancos
-            Pieza CB1 = new Caballo(Color.BLANCO, 1,7,1, false);
-            Pieza CB2 = new Caballo(Color.BLANCO, 2,7,6, false);
-            tablero[7][1] = CB1;
-            tablero[7][6] = CB2;
+        //Alfiles negros
+        Pieza AN1 = new Alfil(Color.NEGRO, 1,0,2, true);
+        Pieza AN2 = new Alfil(Color.NEGRO, 2,0,5, true);
+        tablero[0][2] = AN1;
+        tablero[0][5] =AN2;
 
-            //Caballos negros
-            Pieza CN1 = new Caballo(Color.NEGRO, 1,0,1, false);
-            Pieza CN2 = new Caballo(Color.NEGRO, 2,0,6, false);
-            tablero[0][1] = CN1;
-            tablero[0][6] = CN2;
+        //Dama blanca
+        Pieza DB = new Dama(Color.BLANCO,1,7,3, true);
+        tablero[7][3] = DB;
 
-            //Alfiles blancos
-            Pieza AB1 = new Alfil(Color.BLANCO, 1,7,2, true);
-            Pieza AB2 = new Alfil(Color.BLANCO, 2,7,5, true);
-            tablero[7][2] = AB1;
-            tablero[7][5] = AB2;
+        //Dama blanca
+        Pieza DN = new Dama(Color.NEGRO,1,0,3, true);
+        tablero[0][3] = DN;
 
-            //Alfiles negros
-            Pieza AN1 = new Alfil(Color.NEGRO, 1,0,2, true);
-            Pieza AN2 = new Alfil(Color.NEGRO, 2,0,5, true);
-            tablero[0][2] = AN1;
-            tablero[0][5] =AN2;
+        //Rey blanco
+        Pieza RB = new Rey(Color.BLANCO,7,4, true);
+        tablero[7][4] = RB;
 
-            //Dama blanca
-            Pieza DB = new Dama(Color.BLANCO,1,7,3, true);
-            tablero[7][3] = DB;
+        //Rey blanco
+        Pieza RN = new Rey(Color.NEGRO,0,4, true);
+        tablero[0][4] = RN;
 
-            //Dama blanca
-            Pieza DN = new Dama(Color.NEGRO,1,0,3, true);
-            tablero[0][3] = DN;
-
-            //Rey blanco
-            Pieza RB = new Rey(Color.BLANCO,7,4, true);
-            tablero[7][4] = RB;
-
-            //Rey blanco
-            Pieza RN = new Rey(Color.NEGRO,0,4, true);
-            tablero[0][4] = RN;
-        }
-
-
-        //Hacer un tablero más bonito
-        System.out.println(tablero[0][0]);
-
-
-
+        /**
+         * Mientras que no haya jaque mate, reitera la partida por turnos,
+         */
         while (!FIN){
-            mostrarTablero();
 
+            mostrarTablero();
             Main.piezaAMover = mostrarPiezas();
 
             if (Main.piezaAMover == null) {
@@ -817,20 +776,6 @@ public class Main{
             }
             piezaAMover.posiblesMovimientos(piezaAMover);
         }
-
-
-
-
-
-
-
-
-
-
-        //AÑADIR QUE QUIZAS UNA VARIABLE EN CADA PIEZA Y A LA HORA DE MOSTRAR LAS PIEZAS,
-        //LAS PIEZAS QUE SEAN INCAPACES DE MOVERSE, QUE NO SE ENSEÑEN
-
-
     }
 }
 

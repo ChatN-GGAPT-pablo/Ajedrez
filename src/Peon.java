@@ -7,6 +7,7 @@ public class Peon extends Pieza{
         super(TipoPieza.PEON, color, numeroPieza, i, j, primerMovimiento2OEnroque, inmovil);
     }
 
+
     @Override
     public String toString() {
         return "P" + this.getColor().getSimbolo() + this.getNumeroPieza() ;
@@ -29,6 +30,7 @@ public class Peon extends Pieza{
             boolean enPassantBlancoDerecha = false;
             boolean enPassantBlancoIzquierda = false;
 
+            //Arriba derecha
             if (p.getI() - 1 >= 0 && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() + 1];
                 if (casilla != null) {
@@ -61,6 +63,7 @@ public class Peon extends Pieza{
                 }
             }
 
+            //Arriba izquierda
             if (p.getI() - 1 >= 0 && p.getJ() - 1 >= 0) {
                 Pieza casilla = Main.tablero[p.getI() - 1][p.getJ() - 1];
                 if (casilla != null) {
@@ -93,8 +96,7 @@ public class Peon extends Pieza{
                 }
             }
 
-
-            //En peassant derecha
+            //En peassant blanco derecha
             if (p.getI() == 3 && p.getColor() == Color.BLANCO && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
                 if (casilla != null) {
@@ -131,8 +133,7 @@ public class Peon extends Pieza{
                 }
             }
 
-
-            //En peassant izquierda
+            //En peassant blanco izquierda
             if (p.getI() == 3 && p.getColor() == Color.BLANCO && p.getJ() - 1 >= 0) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
                 if (casilla != null) {
@@ -169,7 +170,7 @@ public class Peon extends Pieza{
                 }
             }
 
-
+            //Mover primera 2
             if (p.getI() == 6 && ((Main.tablero[p.getI() - 1][p.getJ()] == null))) {
                 int iOriginal = p.getI();
                 int jOriginal = p.getJ();
@@ -195,6 +196,8 @@ public class Peon extends Pieza{
                 p.setI(iOriginal);
                 p.setJ(jOriginal);
             }
+
+            //Mover primera 2
             if (p.getI() == 6 && ((Main.tablero[p.getI() - 2][p.getJ()] == null)) && moverprimera1) {
                 int iOriginal = p.getI();
                 int jOriginal = p.getJ();
@@ -221,6 +224,7 @@ public class Peon extends Pieza{
                 p.setJ(jOriginal);
             }
 
+            //Mover
             if (((p.getI() - 1) >= 0) && (Main.tablero[p.getI() - 1][p.getJ()] == null)) {
                 int iOriginal = p.getI();
                 int jOriginal = p.getJ();
@@ -247,7 +251,6 @@ public class Peon extends Pieza{
                 p.setJ(jOriginal);
             }
 
-
             if (p.getI() == 6) {
 
                 if (!moverprimera1 && !moverprimera2 && !arribaDerecha && !arribaIzquierda) {
@@ -256,7 +259,7 @@ public class Peon extends Pieza{
                     return;
                 }
 
-
+                //Decisión
                 int decision;
                 while (true) {
                     System.out.println("Qué quieres hacer?");
@@ -293,7 +296,6 @@ public class Peon extends Pieza{
                         System.out.println("Repite decisión");
                     }
                 }
-
 
                 int iOriginal = p.getI();
                 int jOriginal = p.getJ();
@@ -362,7 +364,6 @@ public class Peon extends Pieza{
                     }
                 }
 
-
                 //En Passant
             } else if (p.getI() == 3) {
                 if (!mover && !arribaDerecha && !arribaIzquierda && !enPassantBlancoIzquierda && !enPassantBlancoDerecha) {
@@ -417,7 +418,6 @@ public class Peon extends Pieza{
                 int iProvisional = p.getI();
                 int jProvisional = p.getJ();
 
-
                 Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
 
                 if (decision == 1 && mover) {
@@ -440,7 +440,6 @@ public class Peon extends Pieza{
                     jProvisional = (p.getJ() - 1);
                     piezaComida = Main.tablero[iOriginal][jOriginal - 1];
                 }
-
 
                 if (piezaComida != null && piezaComida.getColor().equals(p.getColor())) {
                     System.out.println("No te puedes comer una pieza de tu color");
@@ -493,7 +492,6 @@ public class Peon extends Pieza{
                         System.out.println("Jaque");
                     }
                 }
-
 
                 //Peón Promoción
             } else if (p.getI() == 1) {
@@ -581,7 +579,6 @@ public class Peon extends Pieza{
                         System.out.println("3. Caballo");
                         System.out.println("4. Alfil");
                         int promocion = Main.comprobarScanner(sc);
-
 
                         if (promocion == 0) {
                             Main.tablero[iOriginal][jOriginal] = p;
@@ -798,8 +795,6 @@ public class Peon extends Pieza{
                 }
             }
 
-
-            //NEGROS
             //NEGROS
         } else {
             boolean moverprimera1 = false;
@@ -813,7 +808,7 @@ public class Peon extends Pieza{
             boolean enPassantNegroDerecha = false;
             boolean enPassantNegroIzquierda = false;
 
-
+            //Abajo derecha
             if (p.getI() + 1 < 8 && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() + 1];
                 if (casilla != null) {
@@ -845,6 +840,7 @@ public class Peon extends Pieza{
                 }
             }
 
+            //Abajo Izquierda
             if (p.getI() + 1 < 8 && p.getJ() - 1 >= 0) {
                 Pieza casilla = Main.tablero[p.getI() + 1][p.getJ() - 1];
                 if (casilla != null) {
@@ -916,7 +912,6 @@ public class Peon extends Pieza{
                 }
             }
 
-
             //En peassant izquierda negro
             if (p.getI() == 4 && p.getColor() == Color.NEGRO && p.getJ() - 1 >= 0) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() - 1];
@@ -951,12 +946,11 @@ public class Peon extends Pieza{
                             p.setI(iOriginal);
                             p.setJ(jOriginal);
                         }
-
                     }
                 }
             }
 
-
+            //Mover primera 1
             if (p.getI() == 1 && ((Main.tablero[p.getI() + 1][p.getJ()] == null))) {
                 int iOriginal = p.getI();
                 int jOriginal = p.getJ();
@@ -982,6 +976,8 @@ public class Peon extends Pieza{
                 p.setI(iOriginal);
                 p.setJ(jOriginal);
             }
+
+            //Mover primera 2
             if (p.getI() == 1 && ((Main.tablero[p.getI() + 2][p.getJ()] == null)) && moverprimera1) {
                 int iOriginal = p.getI();
                 int jOriginal = p.getJ();
@@ -1008,6 +1004,7 @@ public class Peon extends Pieza{
                 p.setJ(jOriginal);
             }
 
+            //Mover
             if (((p.getI() + 1) < 8) && (Main.tablero[p.getI() + 1][p.getJ()] == null)) {
                 int iOriginal = p.getI();
                 int jOriginal = p.getJ();
@@ -1034,7 +1031,6 @@ public class Peon extends Pieza{
                 p.setJ(jOriginal);
             }
 
-
             if (p.getI() == 1) {
 
                 if (!moverprimera1 && !moverprimera2 && !abajoDerecha && !abajoIzquierda) {
@@ -1046,6 +1042,7 @@ public class Peon extends Pieza{
 
                 int decision;
 
+                //Decisión
                 while (true) {
                     System.out.println("Qué quieres hacer?");
                     System.out.println("0. Cancelar");
@@ -1065,7 +1062,7 @@ public class Peon extends Pieza{
 
                     decision = Main.comprobarScanner(sc);
 
-                    if (decision == 0){
+                    if (decision == 0) {
                         System.out.println("Movimiento cancelado");
                         return;
                     }
@@ -1082,7 +1079,6 @@ public class Peon extends Pieza{
                         System.out.println("Repite decisión");
                     }
                 }
-
 
                 int iOriginal = p.getI();
                 int jOriginal = p.getJ();
@@ -1128,7 +1124,7 @@ public class Peon extends Pieza{
                         System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
-                        if( Main.hayJaqueMate(Main.getTurno())){
+                        if (Main.hayJaqueMate(Main.getTurno())) {
                             Main.mostrarTablero();
                             return;
                         }
@@ -1140,7 +1136,7 @@ public class Peon extends Pieza{
                         System.out.println("Pieza movida.");
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
-                        if( Main.hayJaqueMate(Main.getTurno())){
+                        if (Main.hayJaqueMate(Main.getTurno())) {
                             Main.mostrarTablero();
                             return;
                         }
@@ -1179,7 +1175,7 @@ public class Peon extends Pieza{
                     }
                     decision = Main.comprobarScanner(sc);
 
-                    if (decision == 0){
+                    if (decision == 0) {
                         System.out.println("Movimiento cancelado");
                         return;
                     }
@@ -1205,7 +1201,6 @@ public class Peon extends Pieza{
                 int iProvisional = p.getI();
                 int jProvisional = p.getJ();
 
-
                 Pieza piezaComida = Main.tablero[iProvisional][jProvisional];
 
                 if (decision == 1 && mover) {
@@ -1228,7 +1223,6 @@ public class Peon extends Pieza{
                     jProvisional = (p.getJ() - 1);
                     piezaComida = Main.tablero[iOriginal][jOriginal - 1];
                 }
-
 
                 if (piezaComida != null && piezaComida.getColor().equals(p.getColor())) {
                     System.out.println("No te puedes comer una pieza de tu color");
@@ -1272,7 +1266,7 @@ public class Peon extends Pieza{
 
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    if( Main.hayJaqueMate(Main.getTurno())){
+                    if (Main.hayJaqueMate(Main.getTurno())) {
                         Main.mostrarTablero();
                         return;
                     }
@@ -1281,7 +1275,6 @@ public class Peon extends Pieza{
                         System.out.println("Jaque");
                     }
                 }
-
 
                 //Peon promocion
             } else if (p.getI() == 6) {
@@ -1306,7 +1299,7 @@ public class Peon extends Pieza{
                     }
                     decision = Main.comprobarScanner(sc);
 
-                    if (decision == 0){
+                    if (decision == 0) {
                         System.out.println("Movimiento cancelado");
                         return;
                     }
@@ -1383,66 +1376,7 @@ public class Peon extends Pieza{
                             return;
                         }
 
-                        while (promocion < 1 ||promocion > 4 ){
-                            System.out.println("Promoción inválida");
-                            promocion = Main.comprobarScanner(sc);
-                            if (promocion == 0) {
-                                Main.tablero[iOriginal][jOriginal] = p;
-                                Main.tablero[iProvisional][jProvisional] = piezaComida;
-
-                                p.setI(iOriginal);
-                                p.setJ(jOriginal);
-
-                                System.out.println("Promoción cancelada, Movimiento cancelado");
-                                return;
-                            }
-                        }
-                        Pieza piezaPromocionada = null;
-                        if (promocion == 1) {
-                            piezaPromocionada = new Dama(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
-                        } else if (promocion == 2) {
-                            piezaPromocionada = new Torre(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(),false);
-                        } else if (promocion == 3) {
-                            piezaPromocionada = new Caballo(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
-                        } else if (promocion == 4) {
-                            piezaPromocionada = new Alfil(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
-                        }
-
-                        Main.tablero[p.getI()][p.getJ()] = piezaPromocionada;
-                        Main.ultimaPieza(piezaPromocionada);
-                        Main.cambiarTurno();
-                        if( Main.hayJaqueMate(Main.getTurno())){
-                            Main.mostrarTablero();
-                            return;
-                        }
-                        Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                        if (reyTurno.hayJaque()) {
-                            System.out.println("Jaque");
-                        }
-                    } else {
-                        System.out.println("Pieza movida.");
-                        System.out.println("Promoción de peón");
-                        System.out.println("A qué quieres promocionar?");
-
-                        System.out.println("0. Cancelar");
-                        System.out.println("1. Dama");
-                        System.out.println("2. Torre");
-                        System.out.println("3. Caballo");
-                        System.out.println("4. Alfil");
-                        int promocion = Main.comprobarScanner(sc);
-
-                        if (promocion == 0) {
-                            Main.tablero[iOriginal][jOriginal] = p;
-                            Main.tablero[iProvisional][jProvisional] = piezaComida;
-
-                            p.setI(iOriginal);
-                            p.setJ(jOriginal);
-
-                            System.out.println("Promoción cancelada, Movimiento cancelado");
-                            return;
-                        }
-
-                        while (promocion < 1 ||promocion > 4 ){
+                        while (promocion < 1 || promocion > 4) {
                             System.out.println("Promoción inválida");
                             promocion = Main.comprobarScanner(sc);
                             if (promocion == 0) {
@@ -1470,20 +1404,77 @@ public class Peon extends Pieza{
                         Main.tablero[p.getI()][p.getJ()] = piezaPromocionada;
                         Main.ultimaPieza(piezaPromocionada);
                         Main.cambiarTurno();
-                        if( Main.hayJaqueMate(Main.getTurno())){
+                        if (Main.hayJaqueMate(Main.getTurno())) {
                             Main.mostrarTablero();
                             return;
                         }
                         Pieza reyTurno = Main.buscarRey(Main.getTurno());
                         if (reyTurno.hayJaque()) {
                             System.out.println("Jaque");
+                        }
+                    } else {
+                        System.out.println("Pieza movida.");
+                        System.out.println("Promoción de peón");
+                        System.out.println("A qué quieres promocionar?");
+
+                        System.out.println("0. Cancelar");
+                        System.out.println("1. Dama");
+                        System.out.println("2. Torre");
+                        System.out.println("3. Caballo");
+                        System.out.println("4. Alfil");
+                        int promocion = Main.comprobarScanner(sc);
+
+                        if (promocion == 0) {
+                            Main.tablero[iOriginal][jOriginal] = p;
+                            Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                            p.setI(iOriginal);
+                            p.setJ(jOriginal);
+
+                            System.out.println("Promoción cancelada, Movimiento cancelado");
+                            return;
+                        }
+
+                        while (promocion < 1 || promocion > 4) {
+                            System.out.println("Promoción inválida");
+                            promocion = Main.comprobarScanner(sc);
+                            if (promocion == 0) {
+                                Main.tablero[iOriginal][jOriginal] = p;
+                                Main.tablero[iProvisional][jProvisional] = piezaComida;
+
+                                p.setI(iOriginal);
+                                p.setJ(jOriginal);
+
+                                System.out.println("Promoción cancelada, Movimiento cancelado");
+                                return;
                             }
                         }
+                        Pieza piezaPromocionada = null;
+                        if (promocion == 1) {
+                            piezaPromocionada = new Dama(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
+                        } else if (promocion == 2) {
+                            piezaPromocionada = new Torre(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
+                        } else if (promocion == 3) {
+                            piezaPromocionada = new Caballo(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
+                        } else if (promocion == 4) {
+                            piezaPromocionada = new Alfil(p.getColor(), p.getNumeroPieza() + 10, p.getI(), p.getJ(), false);
+                        }
+
+                        Main.tablero[p.getI()][p.getJ()] = piezaPromocionada;
+                        Main.ultimaPieza(piezaPromocionada);
+                        Main.cambiarTurno();
+                        if (Main.hayJaqueMate(Main.getTurno())) {
+                            Main.mostrarTablero();
+                            return;
+                        }
+                        Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                        if (reyTurno.hayJaque()) {
+                            System.out.println("Jaque");
+                        }
+                    }
                 }
 
             } else {
-
-
                 if (!mover && !abajoDerecha && !abajoIzquierda) {
                     System.out.println("No hay movimientos disponibles");
                     p.setInmovil(true);
@@ -1506,7 +1497,7 @@ public class Peon extends Pieza{
                     }
                     decision = Main.comprobarScanner(sc);
 
-                    if (decision == 0){
+                    if (decision == 0) {
                         System.out.println("Movimiento cancelado");
                         return;
                     }
@@ -1564,7 +1555,7 @@ public class Peon extends Pieza{
                         System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
-                        if( Main.hayJaqueMate(Main.getTurno())){
+                        if (Main.hayJaqueMate(Main.getTurno())) {
                             Main.mostrarTablero();
                             return;
                         }
@@ -1577,7 +1568,7 @@ public class Peon extends Pieza{
 
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
-                        if( Main.hayJaqueMate(Main.getTurno())){
+                        if (Main.hayJaqueMate(Main.getTurno())) {
                             Main.mostrarTablero();
                             return;
                         }
@@ -1678,7 +1669,6 @@ public class Peon extends Pieza{
                 }
             }
 
-
             //En peassant derecha BLANCO
             if (p.getI() == 3 && p.getColor() == Color.BLANCO && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
@@ -1711,7 +1701,6 @@ public class Peon extends Pieza{
                             p.setI(iOriginal);
                             p.setJ(jOriginal);
                         }
-
                     }
                 }
             }
@@ -1754,7 +1743,6 @@ public class Peon extends Pieza{
                     }
                 }
             }
-
 
             //MOVERPRIMERA1 BLANCO
             if (p.getI() == 6 && ((Main.tablero[p.getI() - 1][p.getJ()] == null))) {
@@ -1837,7 +1825,6 @@ public class Peon extends Pieza{
                 p.setJ(jOriginal);
             }
 
-
             //COMPROBACIONES DE CADA POSIBLE MOVIMIENTO BLANCO
             if (p.getI() == 6) {
 
@@ -1868,7 +1855,6 @@ public class Peon extends Pieza{
 
             boolean enPassantNegroDerecha = false;
             boolean enPassantNegroIzquierda = false;
-
 
             //ABAJODERECHA NEGRO
             if (p.getI() + 1 < 8 && p.getJ() + 1 < 8) {
@@ -1934,7 +1920,6 @@ public class Peon extends Pieza{
                 }
             }
 
-
             //En peassant derecha NEGRO
             if (p.getI() == 4 && p.getColor() == Color.NEGRO && p.getJ() + 1 < 8) {
                 Pieza casilla = Main.tablero[p.getI()][p.getJ() + 1];
@@ -1969,11 +1954,9 @@ public class Peon extends Pieza{
                             p.setI(iOriginal);
                             p.setJ(jOriginal);
                         }
-
                     }
                 }
             }
-
 
             //En peassant izquierda NEGRO
             if (p.getI() == 4 && p.getColor() == Color.NEGRO && p.getJ() - 1 >= 0) {
@@ -2009,11 +1992,9 @@ public class Peon extends Pieza{
                             p.setI(iOriginal);
                             p.setJ(jOriginal);
                         }
-
                     }
                 }
             }
-
 
             //MOVERPRIMERA NEGRO
             if (p.getI() == 1 && ((Main.tablero[p.getI() + 1][p.getJ()] == null))) {
@@ -2094,7 +2075,6 @@ public class Peon extends Pieza{
                 p.setJ(jOriginal);
             }
 
-
             //COMPROBACIONES DE CADA POSIBLE MOVIMIENTO NEGRO
             if (p.getI() == 1) {
 
@@ -2110,7 +2090,6 @@ public class Peon extends Pieza{
                     return false;
                 }
             }
-
         }
         return true;
     }

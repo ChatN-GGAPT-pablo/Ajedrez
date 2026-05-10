@@ -7,7 +7,6 @@ public class Alfil extends Pieza{
     }
 
 
-
     @Override
     public String toString() {
         return "A" + this.getColor().getSimbolo() + this.getNumeroPieza();
@@ -219,12 +218,10 @@ public class Alfil extends Pieza{
             p.setInmovil(false);
         }
 
-
         int decision;
         while (true){
             System.out.println("Hacia dónde quieres mover?");
             System.out.println("0. Cancelar");
-
 
             if (ARRIBADERECHA) {
                 System.out.println("1. Arriba derecha");
@@ -259,13 +256,6 @@ public class Alfil extends Pieza{
                 System.out.println("Opción no válida, repite.");
             }
         }
-
-
-
-
-
-
-
 
         if (decision == 1 && ARRIBADERECHA) {
             System.out.println("Cuantas casillas quieres moverte");
@@ -317,7 +307,6 @@ public class Alfil extends Pieza{
                     }
                 }
             }
-
 
             int movDiagonal = Main.comprobarScanner(sc);
 
@@ -397,8 +386,6 @@ public class Alfil extends Pieza{
 
             capeadoVertical = 7 - p.getI();
             capeadoHorizontal = 7 - p.getJ();
-
-
 
             int maximo = 0;
 
@@ -766,7 +753,6 @@ public class Alfil extends Pieza{
                 }
             }
         }
-
     }
 
     @Override
@@ -785,7 +771,6 @@ public class Alfil extends Pieza{
         if (capeadoVertical > capeadoHorizontal) {
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() + z];
-
                 if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
                 }
@@ -899,7 +884,6 @@ public class Alfil extends Pieza{
         if (capeadoVertical > capeadoHorizontal) {
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() + z];
-
                 if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
                 }
@@ -1013,7 +997,6 @@ public class Alfil extends Pieza{
         if (capeadoVertical > capeadoHorizontal) {
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() + z][p.getJ() - z];
-
                 if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
                 }
@@ -1127,7 +1110,6 @@ public class Alfil extends Pieza{
         if (capeadoVertical > capeadoHorizontal) {
             for (int z = 1; z <= capeadoHorizontal; z++) {
                 Pieza casilla = Main.tablero[p.getI() - z][p.getJ() - z];
-
                 if (casilla != null && casilla.getColor() == p.getColor()) {
                     break;
                 }

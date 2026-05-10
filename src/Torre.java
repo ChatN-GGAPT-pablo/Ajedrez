@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class Torre extends Pieza{
     Scanner sc = new Scanner(System.in);
     public Torre(Color color, int numeroPieza, int i, int j, boolean Inmovil) {
@@ -8,13 +7,10 @@ public class Torre extends Pieza{
     }
 
 
-
     @Override
     public String toString() {
         return "T" + this.getColor().getSimbolo() + this.getNumeroPieza();
     }
-
-
 
 
     @Override
@@ -138,14 +134,12 @@ public class Torre extends Pieza{
             System.out.println("0. Cancelar");
             int capeada = (p.getI());
 
-
             int maximo = 0;
             for (int z = 1; z <= capeada ; z++){
                 if (Main.tablero[p.getI()-z][p.getJ()] != null){
 
                     if (!(Main.tablero[p.getI()-z][p.getJ()].getColor().equals(p.getColor()))){
                         System.out.println(z + " casillas");
-
                         maximo = z;
                     }
                     break;
@@ -153,7 +147,6 @@ public class Torre extends Pieza{
                     System.out.println(z + " casillas");
                     maximo = z;
                 }
-
             }
 
             int movARRIBA = Main.comprobarScanner(sc);
@@ -241,14 +234,12 @@ public class Torre extends Pieza{
                     if (!(Main.tablero[p.getI()][p.getJ()+z].getColor().equals(p.getColor()))){
                         System.out.println(z + " casillas");
                         maximo = z;
-
                     }
                     break;
                 }else{
                     System.out.println(z + " casillas");
                     maximo = z;
                 }
-
             }
             int movDERECHA = Main.comprobarScanner(sc);
 
@@ -334,14 +325,12 @@ public class Torre extends Pieza{
                     if (!(Main.tablero[p.getI()+z][p.getJ()].getColor().equals(p.getColor()))){
                         System.out.println(z + " casillas");
                         maximo = z;
-
                     }
                     break;
                 }else{
                     System.out.println(z + " casillas");
                     maximo = z;
                 }
-
             }
             int movABAJO = Main.comprobarScanner(sc);
 
@@ -428,14 +417,12 @@ public class Torre extends Pieza{
                     if (!(Main.tablero[p.getI()][p.getJ()-z].getColor().equals(p.getColor()))){
                         System.out.println(z + " casillas");
                         maximo = z;
-
                     }
                     break;
                 }else{
                     System.out.println(z + " casillas");
                     maximo = z;
                 }
-
             }
             int movIZQUIERDA = Main.comprobarScanner(sc);
 
@@ -508,14 +495,9 @@ public class Torre extends Pieza{
                     }
                 }
             }
-
-
         }
-
-
-
-
     }
+
 
     @Override
     public boolean comprobarMovimientos(Pieza p) {

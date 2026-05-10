@@ -17,7 +17,6 @@ public class Dama extends Pieza{
     public void posiblesMovimientos(Pieza p) {
         Pieza rey = Main.buscarRey(p.getColor());
 
-
         boolean ARRIBA = false;
         boolean ARRIBADERECHA = false;
         boolean DERECHA = false;
@@ -279,7 +278,6 @@ public class Dama extends Pieza{
             }
         }
 
-
         if (!ARRIBA && !ARRIBADERECHA && !DERECHA && !ABAJODERECHA &&
                 !ABAJO && !ABAJOIZQUIERDA && !IZQUIERDA && !ARRIBAIZQUIERDA) {
             System.out.println("No hay movimientos disponibles");
@@ -288,8 +286,6 @@ public class Dama extends Pieza{
         }else{
             p.setInmovil(false);
         }
-
-
 
         int decision;
 
@@ -328,8 +324,6 @@ public class Dama extends Pieza{
             if (ARRIBAIZQUIERDA) {
                 System.out.println("8. Arriba izquierda");
             }
-
-
 
             decision = Main.comprobarScanner(sc);
 
@@ -585,7 +579,6 @@ public class Dama extends Pieza{
                         System.out.println(z + " casillas");
                         maximo = z;
                     }
-
                     break;
                 } else {
                     System.out.println(z + " casillas");
@@ -1010,7 +1003,6 @@ public class Dama extends Pieza{
                         System.out.println(z + " casillas");
                         maximo = z;
                     }
-
                     break;
                 } else {
                     System.out.println(z + " casillas");
@@ -1208,8 +1200,6 @@ public class Dama extends Pieza{
                 }
             }
         }
-
-
     }
 
 

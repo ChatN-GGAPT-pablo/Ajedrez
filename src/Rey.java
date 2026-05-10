@@ -18,7 +18,6 @@ public class Rey extends Pieza {
     public void posiblesMovimientos(Pieza p) {
         Pieza rey = Main.buscarRey(p.getColor());
 
-
         boolean ARRIBA = false;
         boolean ARRIBADERECHA = false;
         boolean DERECHA = false;
@@ -86,7 +85,6 @@ public class Rey extends Pieza {
                 ARRIBAIZQUIERDA = true;
             }
         }
-
 
 //Enroque blanco
         if (p.getColor() == Color.BLANCO && !p.primerMovimiento2OEnroque && !rey.hayJaque()) {
@@ -371,7 +369,6 @@ public class Rey extends Pieza {
             jProvisional = p.getJ() - 1;
         }
 
-
         if (decision == 9 && ENROQUECORTO) {
 
     // Comprobar columna 5 por posible jaque
@@ -569,10 +566,8 @@ public class Rey extends Pieza {
                 if (reyTurno.hayJaque()) {
                     System.out.println("Jaque");
                 }
-
             }
         }
-
     }
 
     @Override
@@ -969,8 +964,6 @@ public class Rey extends Pieza {
                 }
             }
         }
-
-
 
         if (!ARRIBA && !ARRIBADERECHA && !DERECHA && !ABAJODERECHA &&
                 !ABAJO && !ABAJOIZQUIERDA && !IZQUIERDA && !ARRIBAIZQUIERDA &&

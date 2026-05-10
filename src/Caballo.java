@@ -18,8 +18,6 @@ public class Caballo extends Pieza{
 
         Pieza rey = Main.buscarRey(p.getColor());
 
-
-
         boolean ARRIBADERECHA = false;
         boolean DERECHAARRIBA = false;
         boolean DERECHAABAJO = false;
@@ -140,7 +138,6 @@ public class Caballo extends Pieza{
                 System.out.println("8. Arriba-Izquierda");
             }
 
-
             decision = Main.comprobarScanner(sc);
 
             if (decision == 0){
@@ -167,8 +164,6 @@ public class Caballo extends Pieza{
                 System.out.println("Repite decisión");
             }
         }
-
-
 
         int iOriginal = p.getI();
         int jOriginal = p.getJ();
@@ -519,7 +514,6 @@ public class Caballo extends Pieza{
                 !ABAJOIZQUIERDA && !IZQUIERDAABAJO && !IZQUIERDAARRIBA && !ARRIBAIZQUIERDA) {
             return false;
         }
-
         return true;
     }
 }
