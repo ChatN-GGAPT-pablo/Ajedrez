@@ -1,3 +1,6 @@
+/**
+ * Interfaz movible, con métodos posiblesMovimientos y comprobarMovimientos para todas las piezas
+ */
 public interface Movible {
     /**
      * Estos son los posibles movimientos que cada pieza pudiera hacer

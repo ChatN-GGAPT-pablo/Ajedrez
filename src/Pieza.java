@@ -1,3 +1,6 @@
+/**
+ * Clase Pieza padre de la que heredan todas las piezas
+ */
 public abstract class Pieza implements Movible {
 
     private TipoPieza tipoPieza;

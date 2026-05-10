@@ -2,6 +2,10 @@ import java.util.Comparator;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/**
+ * Main que ejecuta la partida
+ */
+
 public class Main{
 
     static boolean FIN = false;
