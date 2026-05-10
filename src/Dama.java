@@ -427,20 +427,26 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 }
             }
         }
@@ -541,20 +547,26 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 }
             }
         }
@@ -627,20 +639,26 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 }
             }
         }
@@ -742,20 +760,26 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 }
             }
         }
@@ -828,20 +852,26 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 }
             }
         }
@@ -942,20 +972,26 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 }
             }
         }
@@ -1028,20 +1064,26 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 }
             }
         }
@@ -1143,20 +1185,26 @@ public class Dama extends Pieza{
                     System.out.println("Pieza: " + piezaComida.getTipoPieza() + " comida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 } else {
                     System.out.println("Pieza movida.");
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());
+                    if( Main.hayJaqueMate(Main.getTurno())){
+                        Main.mostrarTablero();
+                        return;
+                    }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                    if (reyTurno.hayJaque()) {
+                        System.out.println("Jaque");
+                    }
                 }
             }
         }

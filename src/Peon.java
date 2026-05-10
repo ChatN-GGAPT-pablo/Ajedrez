@@ -340,17 +340,19 @@ public class Peon extends Pieza{
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
                         if( Main.hayJaqueMate(Main.getTurno())){
+                            Main.mostrarTablero();
                             return;
                         }
                         Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()) {
-                    System.out.println("Jaque");
-                }
+                        if (reyTurno.hayJaque()) {
+                            System.out.println("Jaque");
+                        }
                     } else {
                         System.out.println("Pieza movida.");
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
                         if( Main.hayJaqueMate(Main.getTurno())){
+                            Main.mostrarTablero();
                             return;
                         }
                         Pieza reyTurno = Main.buscarRey(Main.getTurno());
@@ -483,7 +485,8 @@ public class Peon extends Pieza{
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                     if( Main.hayJaqueMate(Main.getTurno())){
-                            return;
+                        Main.mostrarTablero();
+                        return;
                     }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
                     if (reyTurno.hayJaque()) {
@@ -622,6 +625,7 @@ public class Peon extends Pieza{
                         Main.ultimaPieza(piezaPromocionada);
                         Main.cambiarTurno();
                         if( Main.hayJaqueMate(Main.getTurno())){
+                            Main.mostrarTablero();
                             return;
                         }
                         Pieza reyTurno = Main.buscarRey(Main.getTurno());
@@ -681,6 +685,7 @@ public class Peon extends Pieza{
                         Main.ultimaPieza(piezaPromocionada);
                         Main.cambiarTurno();
                         if( Main.hayJaqueMate(Main.getTurno())){
+                            Main.mostrarTablero();
                             return;
                         }
                         Pieza reyTurno = Main.buscarRey(Main.getTurno());
@@ -770,6 +775,7 @@ public class Peon extends Pieza{
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
                         if( Main.hayJaqueMate(Main.getTurno())){
+                            Main.mostrarTablero();
                             return;
                         }
                         Pieza reyTurno = Main.buscarRey(Main.getTurno());
@@ -781,6 +787,7 @@ public class Peon extends Pieza{
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
                         if( Main.hayJaqueMate(Main.getTurno())){
+                            Main.mostrarTablero();
                             return;
                         }
                         Pieza reyTurno = Main.buscarRey(Main.getTurno());
@@ -1122,6 +1129,7 @@ public class Peon extends Pieza{
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
                         if( Main.hayJaqueMate(Main.getTurno())){
+                            Main.mostrarTablero();
                             return;
                         }
                         Pieza reyTurno = Main.buscarRey(Main.getTurno());
@@ -1133,6 +1141,7 @@ public class Peon extends Pieza{
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
                         if( Main.hayJaqueMate(Main.getTurno())){
+                            Main.mostrarTablero();
                             return;
                         }
                         Pieza reyTurno = Main.buscarRey(Main.getTurno());
@@ -1264,7 +1273,8 @@ public class Peon extends Pieza{
                     Main.ultimaPieza(p);
                     Main.cambiarTurno();
                     if( Main.hayJaqueMate(Main.getTurno())){
-                            return;
+                        Main.mostrarTablero();
+                        return;
                     }
                     Pieza reyTurno = Main.buscarRey(Main.getTurno());
                     if (reyTurno.hayJaque()) {
@@ -1402,6 +1412,7 @@ public class Peon extends Pieza{
                         Main.ultimaPieza(piezaPromocionada);
                         Main.cambiarTurno();
                         if( Main.hayJaqueMate(Main.getTurno())){
+                            Main.mostrarTablero();
                             return;
                         }
                         Pieza reyTurno = Main.buscarRey(Main.getTurno());
@@ -1460,6 +1471,7 @@ public class Peon extends Pieza{
                         Main.ultimaPieza(piezaPromocionada);
                         Main.cambiarTurno();
                         if( Main.hayJaqueMate(Main.getTurno())){
+                            Main.mostrarTablero();
                             return;
                         }
                         Pieza reyTurno = Main.buscarRey(Main.getTurno());
@@ -1553,6 +1565,7 @@ public class Peon extends Pieza{
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
                         if( Main.hayJaqueMate(Main.getTurno())){
+                            Main.mostrarTablero();
                             return;
                         }
                         Pieza reyTurno = Main.buscarRey(Main.getTurno());
@@ -1561,9 +1574,11 @@ public class Peon extends Pieza{
                         }
                     } else {
                         System.out.println("Pieza movida.");
+
                         Main.ultimaPieza(p);
                         Main.cambiarTurno();
                         if( Main.hayJaqueMate(Main.getTurno())){
+                            Main.mostrarTablero();
                             return;
                         }
                         Pieza reyTurno = Main.buscarRey(Main.getTurno());

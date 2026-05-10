@@ -433,12 +433,16 @@ public class Rey extends Pieza {
                 System.out.println("Enroque corto realizado.");
                 Main.ultimaPieza(p);
                 Main.cambiarTurno();
-                Main.hayJaqueMate(Main.getTurno());
+                if( Main.hayJaqueMate(Main.getTurno())){
+                    Main.mostrarTablero();
+                    return;
+                }
                 Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()){
+                if (reyTurno.hayJaque()) {
                     System.out.println("Jaque");
                 }
             }
+
 
             return;
         }
@@ -503,11 +507,15 @@ public class Rey extends Pieza {
                 System.out.println("Enroque largo realizado.");
                 Main.ultimaPieza(p);
                 Main.cambiarTurno();
-                Main.hayJaqueMate(Main.getTurno());
+                if( Main.hayJaqueMate(Main.getTurno())){
+                    Main.mostrarTablero();
+                    return;
+                }
                 Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                if (reyTurno.hayJaque()){
+                if (reyTurno.hayJaque()) {
                     System.out.println("Jaque");
                 }
+
             }
 
             return;
@@ -540,20 +548,27 @@ public class Rey extends Pieza {
                 p.primerMovimiento2OEnroque = true;
                 Main.ultimaPieza(p);
                 Main.cambiarTurno();
-                Main.hayJaqueMate(Main.getTurno());
+                if( Main.hayJaqueMate(Main.getTurno())){
+                    Main.mostrarTablero();
+                    return;
+                }
                 Pieza reyTurno = Main.buscarRey(Main.getTurno());
                 if (reyTurno.hayJaque()) {
                     System.out.println("Jaque");
                 }
             } else {
-                    System.out.println("Pieza movida.");
-                    Main.ultimaPieza(p);
-                    p.primerMovimiento2OEnroque = true;
-                    Main.cambiarTurno();
-                    Main.hayJaqueMate(Main.getTurno());Pieza reyTurno = Main.buscarRey(Main.getTurno());
-                    if (reyTurno.hayJaque()){
-                        System.out.println("Jaque");
-                    }
+                System.out.println("Pieza movida.");
+                Main.ultimaPieza(p);
+                p.primerMovimiento2OEnroque = true;
+                Main.cambiarTurno();
+                if( Main.hayJaqueMate(Main.getTurno())){
+                    Main.mostrarTablero();
+                    return;
+                }
+                Pieza reyTurno = Main.buscarRey(Main.getTurno());
+                if (reyTurno.hayJaque()) {
+                    System.out.println("Jaque");
+                }
 
             }
         }

@@ -532,6 +532,30 @@ public abstract class Pieza implements Movible {
         }
     }
 
+
+    public boolean hayJaqueRey() {
+        for (int fila = this.getI() - 1; fila <= this.getI() + 1; fila++) {
+            for (int columna = this.getJ() - 1; columna <= this.getJ() + 1; columna++) {
+
+                if (fila == this.getI() && columna == this.getJ()) {
+                    continue;
+                }
+
+                if (fila >= 0 && fila < 8 && columna >= 0 && columna < 8) {
+                    Pieza casilla = Main.tablero[fila][columna];
+
+                    if (casilla != null &&
+                            casilla.getColor() != this.getColor() &&
+                            casilla.getTipoPieza() == TipoPieza.REY) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
     public boolean hayJaque() {
 
         return hayJaqueARRIBA() ||
@@ -552,7 +576,7 @@ public abstract class Pieza implements Movible {
                 hayJaqueCaballoIZQUIERDAABAJO() ||
                 hayJaqueCaballoIZQUIERDAARRIBA() ||
                 hayJaqueCaballoARRIBAIZQUIERDA() ||
-                hayJaquePeones();
+                hayJaquePeones() || hayJaqueRey();
     }
 
 
